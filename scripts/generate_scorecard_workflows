@@ -1,0 +1,152 @@
+#!/usr/bin/env bash
+# Generates ready-to-copy OpenSSF Scorecard workflows from reporting/scope.json.
+
+set -euo pipefail
+
+ORG="diggsweden"
+SCOPE="reporting/scope.json"
+OUTPUT="generated/openssf-scorecard-workflows"
+REF="d31c989acd139c3e8754e116496c826af8dbbca0 # v2.8.2"
+REUSABLE_WORKFLOW="diggsweden/reusable-ci/.github/workflows/security-openssf-scorecard.yml@"
+requested_repos=()
+
+usage() {
+  cat <<'EOF'
+Usage: bash scripts/generate_scorecard_workflows [options]
+
+Options:
+  --scope PATH    Scope file. Default: reporting/scope.json
+  --org ORG       GitHub organisation. Default: diggsweden
+  --output PATH   Output directory. Default: generated/openssf-scorecard-workflows
+  --ref REF       reusable-ci ref and optional comment. Default: pinned v2.8.2 commit
+  --repo NAME     Generate only this included repository. Can be repeated.
+  --help          Show this help text.
+EOF
+}
+
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --scope)
+      SCOPE="$2"
+      shift 2
+      ;;
+    --org)
+      ORG="$2"
+      shift 2
+      ;;
+    --output)
+      OUTPUT="$2"
+      shift 2
+      ;;
+    --ref)
+      REF="$2"
+      shift 2
+      ;;
+    --repo)
+      requested_repos+=("$2")
+      shift 2
+      ;;
+    --help)
+      usage
+      exit 0
+      ;;
+    *)
+      echo "Unknown option: $1" >&2
+      usage >&2
+      exit 1
+      ;;
+  esac
+done
+
+if [ ! -f "$SCOPE" ]; then
+  echo "Scope file not found: $SCOPE" >&2
+  exit 1
+fi
+
+if ! command -v jq >/dev/null 2>&1; then
+  echo "jq is required." >&2
+  exit 1
+fi
+
+if ! command -v sha256sum >/dev/null 2>&1; then
+  echo "sha256sum is required." >&2
+  exit 1
+fi
+
+mapfile -t included_repos < <(jq -r --arg org "$ORG" '."github.com"[$org].included[]?' "$SCOPE")
+
+has_value() {
+  local needle="$1"
+  shift
+  local value
+  for value in "$@"; do
+    [ "$value" = "$needle" ] && return 0
+  done
+  return 1
+}
+
+schedule_for() {
+  local repo="$1"
+  local digest
+  local _unused
+  read -r digest _unused < <(printf '%s' "$repo" | sha256sum)
+  local minute=$((16#${digest:0:2} % 60))
+  local hour=$((1 + (16#${digest:2:2} % 5)))
+  printf '%s %s\n' "$minute" "$hour"
+}
+
+write_workflow() {
+  local repo="$1"
+  local path="$OUTPUT/$repo/.github/workflows/openssf-scorecard.yml"
+  local minute
+  local hour
+
+  read -r minute hour < <(schedule_for "$repo")
+  mkdir -p "${path%/*}"
+
+  cat > "$path" <<EOF
+# SPDX-FileCopyrightText: 2026 Digg - Agency for Digital Government
+#
+# SPDX-License-Identifier: CC0-1.0
+
+name: OpenSSF Scorecard Analysis
+on:
+  schedule:
+    # Saturdays at $(printf '%02d:%02d' "$hour" "$minute") UTC
+    - cron: "$minute $hour * * 6"
+    # Wednesdays at $(printf '%02d:%02d' "$hour" "$minute") UTC
+    - cron: "$minute $hour * * 3"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  scorecard-analysis:
+    permissions:
+      contents: read
+      security-events: write
+      id-token: write
+    uses: $REUSABLE_WORKFLOW$REF
+    with:
+      publish-results: true
+EOF
+
+  echo "$path"
+}
+
+selected_repos=("${requested_repos[@]}")
+if [ "${#selected_repos[@]}" -eq 0 ]; then
+  selected_repos=("${included_repos[@]}")
+fi
+
+for repo in "${selected_repos[@]}"; do
+  if ! has_value "$repo" "${included_repos[@]}"; then
+    echo "Repository is not in $SCOPE included[]: $repo" >&2
+    exit 1
+  fi
+done
+
+for repo in "${selected_repos[@]}"; do
+  write_workflow "$repo"
+done

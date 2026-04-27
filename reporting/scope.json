@@ -1,0 +1,46 @@
+{
+  "github.com": {
+    "diggsweden": {
+      "included": [
+        "open-source-project-template",
+        ".github",
+        "rest-api-profil-lint-processor",
+        "mla",
+        "eudiw-wallet-issuer-poc",
+        "wallet-app-android",
+        "cose-lib",
+        "eudiw-wallet-token-lib",
+        "wallet-attribute-attestation",
+        "wallet-provider",
+        "wallet-client-gateway",
+        "wallet-backend-reference",
+        "wallet-verifier-test-web",
+        "wallet-app-ios",
+        "opaque-lib-java",
+        "wallet-r2ps",
+        "r2ps-base",
+        "wallet-account",
+        "devbase-check",
+        "wallet-ecosystem",
+        "wallet-utvecklarportal"
+      ],
+      "excluded": [
+        "dgc-java",
+        "hash2curve-lib-java",
+        "devbase-access",
+        "ena-authorization",
+        "ena-samverkansplattform-os",
+        "eudi-srv-pid-issuer",
+        "information-models-investigation",
+        "interoperable-specifications",
+        "LDES-DCAT-AP-test-cases",
+        "open-source-checklists",
+        "persistent-identifiers-investigation",
+        "r2ps-demo",
+        "rest-api-profil-linter-citest",
+        "sdg-authorization",
+        "sdk-docs"
+      ]
+    }
+  }
+}

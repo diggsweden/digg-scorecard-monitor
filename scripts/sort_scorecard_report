@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+# Sorts the generated OpenSSF Scorecard Markdown table by repository name.
+
+set -euo pipefail
+
+REPORT="${REPORT:-reporting/openssf-scorecard-report.md}"
+
+if [ ! -f "$REPORT" ]; then
+  echo "Report not found: $REPORT" >&2
+  exit 1
+fi
+
+mapfile -t lines < "$REPORT"
+separator_idx=-1
+last_row_idx=-1
+
+for i in "${!lines[@]}"; do
+  line="${lines[$i]}"
+  trimmed="${line//[|: -]/}"
+  if [[ "$line" == '|'* && -z "$trimmed" && "$line" == *-* ]]; then
+    separator_idx="$i"
+    break
+  fi
+done
+
+if [ "$separator_idx" -lt 0 ]; then
+  echo "No Markdown table separator found, skipping sort."
+  exit 0
+fi
+
+last_row_idx="$separator_idx"
+for ((i = separator_idx + 1; i < ${#lines[@]}; i++)); do
+  [[ "${lines[$i]}" == '|'* ]] && last_row_idx="$i"
+done
+
+if [ "$last_row_idx" -le "$separator_idx" ]; then
+  echo "No table rows found, skipping sort."
+  exit 0
+fi
+
+tmp_report="$(mktemp)"
+trap 'rm -f "$tmp_report"' EXIT
+
+for ((i = 0; i <= separator_idx; i++)); do
+  printf '%s\n' "${lines[$i]}" >> "$tmp_report"
+done
+
+for ((i = separator_idx + 1; i <= last_row_idx; i++)); do
+  printf '%s\n' "${lines[$i]}"
+done | sort -f >> "$tmp_report"
+
+for ((i = last_row_idx + 1; i < ${#lines[@]}; i++)); do
+  printf '%s\n' "${lines[$i]}" >> "$tmp_report"
+done
+
+mv "$tmp_report" "$REPORT"
+trap - EXIT
+
+echo "Sorted $((last_row_idx - separator_idx)) rows."

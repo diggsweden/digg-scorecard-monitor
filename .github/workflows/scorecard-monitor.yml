@@ -1,0 +1,75 @@
+name: OpenSSF Scorecard Monitor
+
+on:
+  schedule:
+    - cron: "0 0 * * 0,3"  # Sundays and Wednesdays at midnight UTC
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  scorecard-monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: OpenSSF Scorecard Monitor
+        uses: ossf/scorecard-monitor@a3a9c4cfa0684480ec5f86fa178fc22c4394b69e # v2.0.0-beta8
+        with:
+          scope: reporting/scope.json
+          database: reporting/database.json
+          report: reporting/openssf-scorecard-report.md
+          auto-commit: false
+          auto-push: false
+          generate-issue: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          discovery-enabled: true
+          discovery-orgs: diggsweden
+          max-request-in-parallel: 10
+          report-tool: "scorecard-visualizer"
+
+      - name: Check if report was generated
+        run: |
+          if [ -f reporting/openssf-scorecard-report.md ]; then
+            echo "✓ Report generated successfully"
+            head -20 reporting/openssf-scorecard-report.md
+          else
+            echo "✗ Report not generated"
+            ls -la reporting/
+            exit 1
+          fi
+
+      - name: Remove StepSecurity column from report
+        run: |
+          if [ -f reporting/openssf-scorecard-report.md ]; then
+            sed -i 's/ | StepSecurity |$/ |/' reporting/openssf-scorecard-report.md
+            sed -i 's/ | -- |$/ |/' reporting/openssf-scorecard-report.md
+            sed -i 's/ | \[Fix it\]([^)]*) |$/ |/' reporting/openssf-scorecard-report.md
+          fi
+
+      - name: Append repos without scorecard to report
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          chmod +x scripts/append_repos_without_scorecard
+          ./scripts/append_repos_without_scorecard
+
+      - name: Sort report alphabetically
+        run: |
+          chmod +x scripts/sort_scorecard_report
+          ./scripts/sort_scorecard_report
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add reporting/
+          git diff --cached --quiet || git commit -m "chore: update scorecard report"
+          git push
