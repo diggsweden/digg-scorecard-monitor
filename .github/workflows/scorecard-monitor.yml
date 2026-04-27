@@ -1,0 +1,30 @@
+name: OpenSSF Scorecard Monitor
+
+on:
+  schedule:
+    - cron: "0 0 * * 0"  # Weekly on Sunday at midnight UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  scorecard-monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: OpenSSF Scorecard Monitor
+        uses: ossf/scorecard-monitor@v2.0.0-beta8
+        with:
+          scope: reporting/scope.json
+          database: reporting/database.json
+          report: reporting/openssf-scorecard-report.md
+          auto-commit: true
+          auto-push: true
+          generate-issue: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          discovery-enabled: true
+          discovery-orgs: diggsweden
+          max-request-in-parallel: 10

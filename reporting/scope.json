@@ -1,0 +1,8 @@
+{
+  "github.com": {
+    "included": {},
+    "excluded": {
+      "diggsweden": []
+    }
+  }
+}
