@@ -1,3 +1,174 @@
 {
-  "github.com": {}
+  "github.com": {
+    "diggsweden": {
+      "wallet-app-android": {
+        "previous": [],
+        "current": {
+          "score": 8.2,
+          "date": "2026-05-02T02:59:19Z",
+          "commit": "47b835787dfcfabe8ef25d197eb600f10f3748ce"
+        }
+      },
+      "hash2curve-lib-java": {
+        "previous": [],
+        "current": {
+          "score": 7.1,
+          "date": "2026-04-25T02:48:05Z",
+          "commit": "dc66c15a1f997812796a93d6fbd8d95ce9ca4df1"
+        }
+      },
+      "rest-api-profil-lint-processor": {
+        "previous": [],
+        "current": {
+          "score": 8.6,
+          "date": "2026-05-02T03:31:17Z",
+          "commit": "d6261ba7334195d260b07ae96a21f4419af01b98"
+        }
+      },
+      "mla": {
+        "previous": [],
+        "current": {
+          "score": 8.6,
+          "date": "2026-05-04T01:58:33Z",
+          "commit": "2abb7816b536646a2c0867273773bcd777858a8b"
+        }
+      },
+      ".github": {
+        "previous": [],
+        "current": {
+          "score": 7.2,
+          "date": "2025-11-29T02:25:17Z",
+          "commit": "369bfb64c52d971a54beebae5d788b377ae90a1d"
+        }
+      },
+      "dgc-java": {
+        "previous": [],
+        "current": {
+          "score": 3,
+          "date": "2026-04-27",
+          "commit": "cc34d89625e15a002a29244074bdb4f79970ec3a"
+        }
+      },
+      "eudiw-wallet-issuer-poc": {
+        "previous": [],
+        "current": {
+          "score": 6.8,
+          "date": "2026-02-18T03:14:00Z",
+          "commit": "0ed4503056b0825792959e0a87d8721537fb0f36"
+        }
+      },
+      "cose-lib": {
+        "previous": [],
+        "current": {
+          "score": 7.5,
+          "date": "2026-05-02T02:34:07Z",
+          "commit": "11d5bd5e333852947237e0ce9666369c1aa6e584"
+        }
+      },
+      "eudiw-wallet-token-lib": {
+        "previous": [],
+        "current": {
+          "score": 6.8,
+          "date": "2026-05-02T02:48:01Z",
+          "commit": "ea3ae537338a81452ff4faa0f57e91e46553cd4d"
+        }
+      },
+      "open-source-project-template": {
+        "previous": [],
+        "current": {
+          "score": 7.4,
+          "date": "2026-05-02T03:21:30Z",
+          "commit": "ea40e10660db41eaa21819543c36aee1b3322e89"
+        }
+      },
+      "r2ps-base": {
+        "previous": [],
+        "current": {
+          "score": 6.1,
+          "date": "2026-05-02T02:46:01Z",
+          "commit": "400b29422a38469b7a248a5100d0fb76963bced9"
+        }
+      },
+      "wallet-client-gateway": {
+        "previous": [],
+        "current": {
+          "score": 7.2,
+          "date": "2026-05-02T03:47:41Z",
+          "commit": "e382176e7fd324f206582bed5e99829da9e4129a"
+        }
+      },
+      "wallet-r2ps": {
+        "previous": [],
+        "current": {
+          "score": 7.7,
+          "date": "2026-05-02T03:52:43Z",
+          "commit": "d9e26a7deee495d2a8cbf764f849afe030d2ee41"
+        }
+      },
+      "wallet-provider": {
+        "previous": [],
+        "current": {
+          "score": 7.7,
+          "date": "2026-04-25T03:42:46Z",
+          "commit": "4f6e19b488b8da00c3d9052ea2614faed6ebc999"
+        }
+      },
+      "wallet-verifier-test-web": {
+        "previous": [],
+        "current": {
+          "score": 7.5,
+          "date": "2026-05-02T03:56:34Z",
+          "commit": "2e854629946ad0dfe8b6318e2a24430a0bdb56f1"
+        }
+      },
+      "opaque-lib-java": {
+        "previous": [],
+        "current": {
+          "score": 7.2,
+          "date": "2026-05-02T02:30:00Z",
+          "commit": "50cca9ad6bfab8a71a448aeeb640a58b5ee325db"
+        }
+      },
+      "wallet-account": {
+        "previous": [],
+        "current": {
+          "score": 7.5,
+          "date": "2026-05-02T03:52:52Z",
+          "commit": "7609608de2715f610e6add28079793f6bbbf9d0c"
+        }
+      },
+      "wallet-backend-reference": {
+        "previous": [],
+        "current": {
+          "score": 6.7,
+          "date": "2026-05-02T03:42:21Z",
+          "commit": "589251d16f6a05a33b1f00ca32a4259f53489a7e"
+        }
+      },
+      "wallet-app-ios": {
+        "previous": [],
+        "current": {
+          "score": 8.4,
+          "date": "2026-05-01T02:20:40Z",
+          "commit": "8525ce67993ce9a07349c15b7953fe0ea696827f"
+        }
+      },
+      "wallet-attribute-attestation": {
+        "previous": [],
+        "current": {
+          "score": 7.5,
+          "date": "2026-05-02T03:34:51Z",
+          "commit": "0b9c9d0bb74989da96a327b9f0216058f3d6f669"
+        }
+      },
+      "devbase-check": {
+        "previous": [],
+        "current": {
+          "score": 7.4,
+          "date": "2026-05-02T03:21:56Z",
+          "commit": "851ae6999af49bce199dace64d9317d58da264fb"
+        }
+      }
+    }
+  }
 }
