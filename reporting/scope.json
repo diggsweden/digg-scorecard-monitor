@@ -2,7 +2,6 @@
   "github.com": {
     "diggsweden": {
       "included": [
-        "dgc-java",
         "open-source-project-template",
         ".github",
         "rest-api-profil-lint-processor",
@@ -24,7 +23,9 @@
         "wallet-account",
         "devbase-check"
       ],
-      "excluded": []
+      "excluded": [
+        "dgc-java"
+      ]
     }
   }
 }
