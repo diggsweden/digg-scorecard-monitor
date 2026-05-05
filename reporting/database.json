@@ -9,14 +9,6 @@
           "commit": "47b835787dfcfabe8ef25d197eb600f10f3748ce"
         }
       },
-      "hash2curve-lib-java": {
-        "previous": [],
-        "current": {
-          "score": 7.1,
-          "date": "2026-04-25T02:48:05Z",
-          "commit": "dc66c15a1f997812796a93d6fbd8d95ce9ca4df1"
-        }
-      },
       "rest-api-profil-lint-processor": {
         "previous": [],
         "current": {
@@ -39,14 +31,6 @@
           "score": 7.2,
           "date": "2025-11-29T02:25:17Z",
           "commit": "369bfb64c52d971a54beebae5d788b377ae90a1d"
-        }
-      },
-      "dgc-java": {
-        "previous": [],
-        "current": {
-          "score": 3,
-          "date": "2026-04-27",
-          "commit": "cc34d89625e15a002a29244074bdb4f79970ec3a"
         }
       },
       "eudiw-wallet-issuer-poc": {
