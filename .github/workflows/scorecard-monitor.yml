@@ -31,3 +31,4 @@ jobs:
           # use without step security fix it link
           report-template: templates/report.ejs
           issue-template: templates/issue.ejs
+          report-tool: ""
