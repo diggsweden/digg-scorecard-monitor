@@ -9,7 +9,6 @@
         "eudiw-wallet-issuer-poc",
         "wallet-app-android",
         "cose-lib",
-        "hash2curve-lib-java",
         "eudiw-wallet-token-lib",
         "wallet-attribute-attestation",
         "wallet-provider",
@@ -24,7 +23,8 @@
         "devbase-check"
       ],
       "excluded": [
-        "dgc-java"
+        "dgc-java", 
+        "hash2curve-lib-java"
       ]
     }
   }
