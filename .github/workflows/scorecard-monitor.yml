@@ -21,11 +21,27 @@ jobs:
           scope: reporting/scope.json
           database: reporting/database.json
           report: reporting/openssf-scorecard-report.md
-          auto-commit: true
-          auto-push: true
+          auto-commit: false
+          auto-push: false
           generate-issue: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
           discovery-enabled: true
           discovery-orgs: diggsweden
           max-request-in-parallel: 10
-          report-tool: ""
+          report-tool: "scorecard-visualizer"
+
+      - name: Remove StepSecurity column from report
+        run: |
+          if [ -f reporting/openssf-scorecard-report.md ]; then
+            sed -i 's/ | StepSecurity |$/ |/' reporting/openssf-scorecard-report.md
+            sed -i 's/ | -- |$/ |/' reporting/openssf-scorecard-report.md
+            sed -i 's/ | \[Fix it\]([^)]*) |$/ |/' reporting/openssf-scorecard-report.md
+          fi
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add reporting/
+          git diff --cached --quiet || git commit -m "chore: update scorecard report"
+          git push
