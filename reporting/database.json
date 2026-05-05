@@ -58,10 +58,16 @@
         }
       },
       "open-source-project-template": {
-        "previous": [],
+        "previous": [
+          {
+            "score": 7,
+            "date": "2026-05-01T03:21:30Z",
+            "commit": "ea40e10660db41eaa21819543c36aee1b3322e89"
+          }
+        ],
         "current": {
-          "score": 7.0,
-          "date": "2026-05-01T03:21:30Z",
+          "score": 7.4,
+          "date": "2026-05-02T03:21:30Z",
           "commit": "ea40e10660db41eaa21819543c36aee1b3322e89"
         }
       },
@@ -90,9 +96,15 @@
         }
       },
       "wallet-provider": {
-        "previous": [],
+        "previous": [
+          {
+            "score": 7.6,
+            "date": "2026-04-25T03:42:46Z",
+            "commit": "4f6e19b488b8da00c3d9052ea2614faed6ebc999"
+          }
+        ],
         "current": {
-          "score": 7.6,
+          "score": 7.7,
           "date": "2026-04-25T03:42:46Z",
           "commit": "4f6e19b488b8da00c3d9052ea2614faed6ebc999"
         }

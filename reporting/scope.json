@@ -23,7 +23,7 @@
         "devbase-check"
       ],
       "excluded": [
-        "dgc-java", 
+        "dgc-java",
         "hash2curve-lib-java"
       ]
     }
