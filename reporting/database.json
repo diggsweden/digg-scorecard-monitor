@@ -63,10 +63,15 @@
             "score": 7,
             "date": "2026-05-01T03:21:30Z",
             "commit": "ea40e10660db41eaa21819543c36aee1b3322e89"
+          },
+          {
+            "score": 7,
+            "date": "2026-05-02T03:21:30Z",
+            "commit": "ea40e10660db41eaa21819543c36aee1b3322e89"
           }
         ],
         "current": {
-          "score": 7,
+          "score": 7.4,
           "date": "2026-05-02T03:21:30Z",
           "commit": "ea40e10660db41eaa21819543c36aee1b3322e89"
         }
