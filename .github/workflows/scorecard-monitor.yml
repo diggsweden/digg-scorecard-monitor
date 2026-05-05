@@ -28,7 +28,4 @@ jobs:
           discovery-enabled: true
           discovery-orgs: diggsweden
           max-request-in-parallel: 10
-          # use without step security fix it link
-          report-template: templates/report.ejs
-          issue-template: templates/issue.ejs
           report-tool: ""
