@@ -36,6 +36,7 @@ jobs:
             sed -i 's/ | StepSecurity |$/ |/' reporting/openssf-scorecard-report.md
             sed -i 's/ | -- |$/ |/' reporting/openssf-scorecard-report.md
             sed -i 's/ | \[Fix it\]([^)]*) |$/ |/' reporting/openssf-scorecard-report.md
+            npx --yes prettier --write reporting/openssf-scorecard-report.md
           fi
 
       - name: Commit and push changes
