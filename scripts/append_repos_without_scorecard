@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+# Appends rows to the scorecard report for diggsweden repos that don't
+# implement reusable-ci's security-openssf-scorecard.yml workflow.
+
+set -euo pipefail
+
+ORG="diggsweden"
+REPORT="reporting/openssf-scorecard-report.md"
+
+if [ ! -f "$REPORT" ]; then
+  echo "Report not found: $REPORT"
+  exit 1
+fi
+
+echo "Scanning $ORG repos for missing security-openssf-scorecard.yml..."
+
+repos=$(gh repo list "$ORG" --limit 1000 --json name,isArchived \
+  -q '.[] | select(.isArchived == false) | .name')
+
+no_scorecard=()
+
+for repo in $repos; do
+  echo "Checking $repo..."
+
+  files=$(gh api "repos/$ORG/$repo/contents/.github/workflows" \
+    --jq '.[].download_url' 2>/dev/null) || true
+
+  if [ -z "$files" ]; then
+    no_scorecard+=("$repo")
+    continue
+  fi
+
+  found=0
+  for file in $files; do
+    if curl -s "$file" | grep -q "security-openssf-scorecard.yml"; then
+      found=1
+      break
+    fi
+  done
+
+  [ "$found" -eq 0 ] && no_scorecard+=("$repo")
+done
+
+if [ "${#no_scorecard[@]}" -eq 0 ]; then
+  echo "All repos implement security-openssf-scorecard.yml — nothing to append."
+  exit 0
+fi
+
+# Build new rows, skipping repos already listed in the report
+new_rows=()
+for repo in "${no_scorecard[@]}"; do
+  if grep -qF "$ORG/$repo" "$REPORT"; then
+    echo "  Skipping $repo (already in report)"
+    continue
+  fi
+  url="https://github.com/$ORG/$repo"
+  new_rows+=("| [$ORG/$repo]($url) | - | - | - | - | - |")
+  echo "  Adding $repo"
+done
+
+if [ "${#new_rows[@]}" -eq 0 ]; then
+  echo "No new repos to add."
+  exit 0
+fi
+
+echo "Appending ${#new_rows[@]} repo(s) to report..."
+
+# Insert rows directly after the last table row so they stay inside the table.
+# Using Python to find the last | line and splice in the new rows before the
+# trailing blank line + footer.
+ROWS_DATA=$(printf '%s\n' "${new_rows[@]}") \
+REPORT_PATH="$REPORT" \
+python3 <<'PYEOF'
+import os
+
+rows = os.environ["ROWS_DATA"]
+report = os.environ["REPORT_PATH"]
+
+with open(report, "r") as f:
+    lines = f.readlines()
+
+last_table_idx = max(i for i, l in enumerate(lines) if l.rstrip("\n").endswith("|"))
+lines.insert(last_table_idx + 1, rows + "\n")
+
+with open(report, "w") as f:
+    f.writelines(lines)
+PYEOF
+
+echo "Done."fdsafs
