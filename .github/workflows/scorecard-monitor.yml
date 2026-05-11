@@ -46,6 +46,41 @@ jobs:
           chmod +x scripts/append_repos_without_scorecard
           ./scripts/append_repos_without_scorecard
 
+      - name: Sort report alphabetically
+        run: |
+          python3 <<'PYEOF'
+          import re
+
+          report = "reporting/openssf-scorecard-report.md"
+          with open(report) as f:
+              lines = f.readlines()
+
+          sep_idx = None
+          for i, line in enumerate(lines):
+              stripped = line.strip()
+              if stripped.startswith("|") and re.match(r"^[\|\-\s:]+$", stripped) and "-" in stripped:
+                  sep_idx = i
+                  break
+
+          if sep_idx is None:
+              print("No separator found, skipping sort.")
+              exit(0)
+
+          last_row = sep_idx
+          for i in range(sep_idx + 1, len(lines)):
+              if lines[i].strip().startswith("|"):
+                  last_row = i
+
+          data = lines[sep_idx + 1 : last_row + 1]
+          data.sort(key=lambda r: r.strip().lower())
+          lines[sep_idx + 1 : last_row + 1] = data
+
+          with open(report, "w") as f:
+              f.writelines(lines)
+
+          print(f"Sorted {len(data)} rows.")
+          PYEOF
+
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"
