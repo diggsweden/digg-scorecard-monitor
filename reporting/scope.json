@@ -20,7 +20,9 @@
         "wallet-r2ps",
         "r2ps-base",
         "wallet-account",
-        "devbase-check"
+        "devbase-check",
+        "wallet-ecosystem",
+        "wallet-utvecklarportal"
       ],
       "excluded": [
         "dgc-java",
