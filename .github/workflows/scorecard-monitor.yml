@@ -30,6 +30,17 @@ jobs:
           max-request-in-parallel: 10
           report-tool: "scorecard-visualizer"
 
+      - name: Check if report was generated
+        run: |
+          if [ -f reporting/openssf-scorecard-report.md ]; then
+            echo "✓ Report generated successfully"
+            head -20 reporting/openssf-scorecard-report.md
+          else
+            echo "✗ Report not generated"
+            ls -la reporting/
+            exit 1
+          fi
+
       - name: Remove StepSecurity column from report
         run: |
           if [ -f reporting/openssf-scorecard-report.md ]; then
