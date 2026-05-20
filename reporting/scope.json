@@ -27,19 +27,19 @@
       "excluded": [
         "dgc-java",
         "hash2curve-lib-java",
-        "diggsweden/devbase-access", 
-        "diggsweden/ena-authorization", 
-        "diggsweden/ena-samverkansplattform-os",
-        "diggsweden/eudi-srv-pid-issuer",
-        "diggsweden/information-models-investigation",
-        "diggsweden/interoperable-specifications",
-        "diggsweden/LDES-DCAT-AP-test-cases",
-        "diggsweden/open-source-checklists",
-        "diggsweden/persistent-identifiers-investigation",
-        "diggsweden/r2ps-demo", 
-        "diggsweden/rest-api-profil-linter-citest", 
-        "diggsweden/sdg-authorization", 
-        "diggsweden/sdk-docs"
+        "devbase-access", 
+        "ena-authorization", 
+        "ena-samverkansplattform-os",
+        "eudi-srv-pid-issuer",
+        "information-models-investigation",
+        "interoperable-specifications",
+        "LDES-DCAT-AP-test-cases",
+        "open-source-checklists",
+        "persistent-identifiers-investigation",
+        "r2ps-demo", 
+        "rest-api-profil-linter-citest", 
+        "sdg-authorization", 
+        "sdk-docs"
       ]
     }
   }
