@@ -1,0 +1,568 @@
+#!/usr/bin/env bash
+# Generates the structured REUSE API report consumed by opensource-docs.
+
+set -euo pipefail
+
+ORG="diggsweden"
+OUTPUT="reporting/reuse-report.json"
+REPOSITORIES="reporting/repositories.json"
+REPORT_EXCLUSIONS="reporting/report-exclusions.json"
+REPORT_KEY="reuse"
+SOURCE_REPOSITORY="diggsweden/digg-scorecard-monitor"
+WORKFLOW_NAME="scorecard-monitor.yml"
+GENERATED_AT="${GENERATED_AT:-}"
+REUSE_API_BASE="https://api.reuse.software"
+ONLY_REPO=""
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+
+# shellcheck source=scripts/lib/report_exclusions.sh
+source "$SCRIPT_DIR/lib/report_exclusions.sh"
+
+usage() {
+  cat <<'EOF'
+Usage: generate_reuse_report_json [options]
+
+Options:
+  --output PATH             Output JSON report. Default: reporting/reuse-report.json
+  --repositories PATH       Shared public repository list. Default: reporting/repositories.json
+  --report-exclusions PATH  Report-specific exclusions. Default: reporting/report-exclusions.json
+  --org ORG                 GitHub organisation. Default: diggsweden
+  --repo REPO               Limit report generation to one repository.
+  --source-repository REPO  Source repository. Default: diggsweden/digg-scorecard-monitor
+  --workflow NAME           Workflow filename. Default: scorecard-monitor.yml
+  --generated-at TIMESTAMP  Override generation timestamp.
+EOF
+}
+
+require_value() {
+  local option="$1"
+  local value="${2:-}"
+
+  if [ -z "$value" ]; then
+    echo "Missing value for $option" >&2
+    usage >&2
+    exit 1
+  fi
+}
+
+require_command() {
+  local command_name="$1"
+
+  if ! command -v "$command_name" >/dev/null 2>&1; then
+    echo "$command_name is required." >&2
+    exit 1
+  fi
+}
+
+parse_args() {
+  while [ "$#" -gt 0 ]; do
+    case "$1" in
+      --output)
+        require_value "$1" "${2:-}"
+        OUTPUT="${2:-}"
+        shift 2
+        ;;
+      --repositories)
+        require_value "$1" "${2:-}"
+        REPOSITORIES="${2:-}"
+        shift 2
+        ;;
+      --report-exclusions)
+        require_value "$1" "${2:-}"
+        REPORT_EXCLUSIONS="${2:-}"
+        shift 2
+        ;;
+      --org)
+        require_value "$1" "${2:-}"
+        ORG="${2:-}"
+        shift 2
+        ;;
+      --repo)
+        require_value "$1" "${2:-}"
+        ONLY_REPO="${2:-}"
+        shift 2
+        ;;
+      --source-repository)
+        require_value "$1" "${2:-}"
+        SOURCE_REPOSITORY="${2:-}"
+        shift 2
+        ;;
+      --workflow)
+        require_value "$1" "${2:-}"
+        WORKFLOW_NAME="${2:-}"
+        shift 2
+        ;;
+      --generated-at)
+        require_value "$1" "${2:-}"
+        GENERATED_AT="${2:-}"
+        shift 2
+        ;;
+      -h|--help)
+        usage
+        exit 0
+        ;;
+      *)
+        echo "Unknown argument: $1" >&2
+        usage >&2
+        exit 1
+        ;;
+    esac
+  done
+}
+
+auth_header_args() {
+  local token="${GH_TOKEN:-${GITHUB_TOKEN:-}}"
+
+  if [ -n "$token" ]; then
+    printf '%s\n' -H "Authorization: Bearer $token"
+  fi
+}
+
+fetch_url() {
+  local url="$1"
+  local output="$2"
+  local status
+  local auth_args=()
+
+  mapfile -t auth_args < <(auth_header_args)
+  status="$(curl -sSL \
+    -H "Accept: application/vnd.github+json" \
+    -H "X-GitHub-Api-Version: 2022-11-28" \
+    "${auth_args[@]}" \
+    -o "$output" \
+    -w '%{http_code}' \
+    "$url")" || status="000"
+
+  printf '%s\n' "$status"
+}
+
+load_repositories() {
+  repo_metadata_rows=()
+
+  [ -f "$REPOSITORIES" ] || {
+    echo "Repository list not found: $REPOSITORIES" >&2
+    exit 1
+  }
+
+  jq -e '
+    .schema_version == 1 and
+    (.repositories | type == "array")
+  ' "$REPOSITORIES" >/dev/null || {
+    echo "Invalid repository list: $REPOSITORIES" >&2
+    exit 1
+  }
+
+  while IFS= read -r repo_json; do
+    repo_metadata_rows+=("$repo_json")
+  done < <(jq -c --arg org "$ORG" --arg repo "$ONLY_REPO" '
+    .repositories[]
+    | select(.org == $org and (.archived // false) == false and (.private // false) == false)
+    | select($repo == "" or .repo == $repo)
+    | {
+        name: .repo,
+        html_url: .url,
+        default_branch: .default_branch,
+        pushed_at: .pushed_at,
+        fork: .fork,
+        archived: .archived,
+        private: .private,
+        license: {spdx_id: .github_license}
+      }
+  ' "$REPOSITORIES")
+}
+
+json_bool() {
+  case "$1" in
+    true|false|null)
+      printf '%s\n' "$1"
+      ;;
+    *)
+      printf 'null\n'
+      ;;
+  esac
+}
+
+json_number_or_null() {
+  local value="$1"
+
+  if [[ "$value" =~ ^-?[0-9]+$ ]]; then
+    printf '%s\n' "$value"
+  else
+    printf 'null\n'
+  fi
+}
+
+content_download_url() {
+  local content_file="$1"
+  local path="$2"
+
+  jq -r --arg path "$path" '
+    map(select((.path | ascii_downcase) == ($path | ascii_downcase)))[0].download_url // empty
+  ' "$content_file"
+}
+
+content_has_path() {
+  local content_file="$1"
+  local path="$2"
+
+  jq -e --arg path "$path" 'any(.[]; (.path | ascii_downcase) == ($path | ascii_downcase))' "$content_file" >/dev/null
+}
+
+content_has_directory() {
+  local content_file="$1"
+  local path="$2"
+
+  jq -e --arg path "$path" 'any(.[]; (.path | ascii_downcase) == ($path | ascii_downcase) and .type == "dir")' "$content_file" >/dev/null
+}
+
+first_readme_download_url() {
+  local content_file="$1"
+
+  jq -r '
+    map(select((.type == "file") and ((.name | ascii_downcase) | test("^readme(\\..*)?$"))))[0].download_url // empty
+  ' "$content_file"
+}
+
+extract_publiccode_license() {
+  local file="$1"
+  local in_legal=0
+  local line
+  local trimmed
+  local value
+
+  while IFS= read -r line; do
+    trimmed="${line#"${line%%[![:space:]]*}"}"
+    [[ "$trimmed" == \#* || -z "$trimmed" ]] && continue
+
+    if [[ "$line" != [[:space:]]* && "$trimmed" == legal:* ]]; then
+      in_legal=1
+      continue
+    fi
+
+    if [[ "$line" != [[:space:]]* && "$in_legal" -eq 1 ]]; then
+      break
+    fi
+
+    if [ "$in_legal" -eq 1 ] && [[ "$trimmed" == license:* ]]; then
+      value="${trimmed#license:}"
+      value="${value#"${value%%[![:space:]]*}"}"
+      value="${value%\"}"
+      value="${value#\"}"
+      printf '%s\n' "$value"
+      return 0
+    fi
+  done < "$file"
+}
+
+detect_reuse_badge() {
+  local readme_url="$1"
+  local readme_file
+
+  [ -n "$readme_url" ] || {
+    printf 'false\n'
+    return 0
+  }
+
+  readme_file="$(mktemp)"
+  tmp_files+=("$readme_file")
+  if ! curl -fsSL "$readme_url" > "$readme_file"; then
+    printf 'null\n'
+    return 0
+  fi
+
+  if jq -e -Rs 'ascii_downcase | contains("api.reuse.software/")' "$readme_file" >/dev/null; then
+    printf 'true\n'
+  else
+    printf 'false\n'
+  fi
+}
+
+reuse_api_status() {
+  local repo="$1"
+  local output="$2"
+  local status
+
+  status="$(curl -sSL \
+    -H "Accept: application/json" \
+    -o "$output" \
+    -w '%{http_code}' \
+    "$REUSE_API_BASE/status/github.com/$ORG/$repo.json")" || status="000"
+
+  printf '%s\n' "$status"
+}
+
+licenses_from_directory() {
+  local repo="$1"
+  local output_file="$2"
+  local status
+
+  status="$(fetch_url "https://api.github.com/repos/$ORG/$repo/contents/LICENSES" "$output_file")"
+
+  if [ "$status" -eq 404 ]; then
+    printf '[]\n'
+    return 0
+  fi
+
+  if [ "$status" -lt 200 ] || [ "$status" -ge 300 ]; then
+    printf 'null\n'
+    return 0
+  fi
+
+  jq '[.[] | select(.type == "file") | .name | sub("\\.(txt|md|license)$"; "") ] | sort_by(ascii_downcase)' "$output_file"
+}
+
+scan_repository() {
+  local repo_json="$1"
+  local repo
+  local url
+  local default_branch
+  local pushed_at
+  local github_license
+  local contents_file
+  local contents_status
+  local reuse_status_file
+  local reuse_status_code
+  local reuse_registered="null"
+  local reuse_status="unknown"
+  local reuse_lint_code="null"
+  local reuse_commit=""
+  local reuse_checked_at=""
+  local reuse_metadata_present="null"
+  local reuse_toml_present="null"
+  local reuse_dep5_present="null"
+  local license_file_present="null"
+  local licenses_dir_present="null"
+  local declared_licenses="null"
+  local licenses_file
+  local readme_url=""
+  local reuse_badge_present="null"
+  local publiccode_yml_present="null"
+  local publiccode_license=""
+  local publiccode_url=""
+  local publiccode_file
+  local dep5_file
+  local dep5_status
+
+  repo="$(jq -r '.name' <<< "$repo_json")"
+  url="$(jq -r '.html_url' <<< "$repo_json")"
+  default_branch="$(jq -r '.default_branch // empty' <<< "$repo_json")"
+  pushed_at="$(jq -r '.pushed_at // empty' <<< "$repo_json")"
+  github_license="$(jq -r '.license.spdx_id // empty' <<< "$repo_json")"
+
+  if is_report_excluded "$repo"; then
+    echo "Skipping report-specific excluded: $repo"
+    return 0
+  fi
+
+  echo "Checking $ORG/$repo..."
+
+  contents_file="$(mktemp)"
+  tmp_files+=("$contents_file")
+  contents_status="$(fetch_url "https://api.github.com/repos/$ORG/$repo/contents" "$contents_file")"
+  if [ "$contents_status" -ge 200 ] && [ "$contents_status" -lt 300 ]; then
+    content_has_path "$contents_file" "REUSE.toml" && reuse_toml_present="true" || reuse_toml_present="false"
+    if content_has_directory "$contents_file" ".reuse"; then
+      dep5_file="$(mktemp)"
+      tmp_files+=("$dep5_file")
+      dep5_status="$(fetch_url "https://api.github.com/repos/$ORG/$repo/contents/.reuse/dep5" "$dep5_file")"
+      if [ "$dep5_status" -ge 200 ] && [ "$dep5_status" -lt 300 ]; then
+        reuse_dep5_present="true"
+      else
+        reuse_dep5_present="false"
+      fi
+    else
+      reuse_dep5_present="false"
+    fi
+    content_has_directory "$contents_file" "LICENSES" && licenses_dir_present="true" || licenses_dir_present="false"
+    content_has_path "$contents_file" "publiccode.yml" && publiccode_yml_present="true" || publiccode_yml_present="false"
+    readme_url="$(first_readme_download_url "$contents_file")"
+    publiccode_url="$(content_download_url "$contents_file" "publiccode.yml")"
+
+    if content_has_path "$contents_file" "LICENSE" || content_has_path "$contents_file" "LICENSE.md" || content_has_path "$contents_file" "LICENCE" || content_has_path "$contents_file" "LICENCE.md" || content_has_path "$contents_file" "COPYING"; then
+      license_file_present="true"
+    else
+      license_file_present="false"
+    fi
+
+    if [ "$reuse_toml_present" = "true" ] || [ "$reuse_dep5_present" = "true" ] || [ "$licenses_dir_present" = "true" ]; then
+      reuse_metadata_present="true"
+    else
+      reuse_metadata_present="false"
+    fi
+
+    if [ "$licenses_dir_present" = "true" ]; then
+      licenses_file="$(mktemp)"
+      tmp_files+=("$licenses_file")
+      declared_licenses="$(licenses_from_directory "$repo" "$licenses_file")"
+    else
+      declared_licenses="[]"
+    fi
+
+    reuse_badge_present="$(detect_reuse_badge "$readme_url")"
+
+    if [ "$publiccode_yml_present" = "true" ] && [ -n "$publiccode_url" ]; then
+      publiccode_file="$(mktemp)"
+      tmp_files+=("$publiccode_file")
+      if curl -fsSL "$publiccode_url" > "$publiccode_file"; then
+        publiccode_license="$(extract_publiccode_license "$publiccode_file")"
+      fi
+    fi
+  else
+    echo "Could not inspect repository contents for $repo; marking file-derived fields unknown." >&2
+  fi
+
+  reuse_status_file="$(mktemp)"
+  tmp_files+=("$reuse_status_file")
+  reuse_status_code="$(reuse_api_status "$repo" "$reuse_status_file")"
+  if [ "$reuse_status_code" -ge 200 ] && [ "$reuse_status_code" -lt 300 ]; then
+    reuse_registered="true"
+    reuse_status="$(jq -r '.status // "unknown"' "$reuse_status_file")"
+    reuse_lint_code="$(json_number_or_null "$(jq -r '.lint_code // empty' "$reuse_status_file")")"
+    reuse_commit="$(jq -r '.hash // empty' "$reuse_status_file")"
+    reuse_checked_at="$(jq -r '.last_access // empty' "$reuse_status_file")"
+  elif [ "$reuse_status_code" -eq 404 ]; then
+    reuse_registered="false"
+    reuse_status="not_registered"
+  else
+    echo "Could not read REUSE API status for $repo; marking registration unknown." >&2
+  fi
+
+  repo_rows+=("$(jq -c -n \
+    --arg org "$ORG" \
+    --arg repo "$repo" \
+    --arg name "$ORG/$repo" \
+    --arg url "$url" \
+    --arg default_branch "$default_branch" \
+    --arg pushed_at "$pushed_at" \
+    --arg github_license "$github_license" \
+    --arg reuse_status "$reuse_status" \
+    --arg reuse_commit "$reuse_commit" \
+    --arg reuse_checked_at "$reuse_checked_at" \
+    --arg reuse_info_url "$REUSE_API_BASE/info/github.com/$ORG/$repo" \
+    --arg reuse_status_url "$REUSE_API_BASE/status/github.com/$ORG/$repo.json" \
+    --arg reuse_badge_url "$REUSE_API_BASE/badge/github.com/$ORG/$repo" \
+    --arg publiccode_license "$publiccode_license" \
+    --argjson reuse_registered "$(json_bool "$reuse_registered")" \
+    --argjson reuse_lint_code "$reuse_lint_code" \
+    --argjson reuse_badge_present "$(json_bool "$reuse_badge_present")" \
+    --argjson reuse_metadata_present "$(json_bool "$reuse_metadata_present")" \
+    --argjson reuse_toml_present "$(json_bool "$reuse_toml_present")" \
+    --argjson reuse_dep5_present "$(json_bool "$reuse_dep5_present")" \
+    --argjson license_file_present "$(json_bool "$license_file_present")" \
+    --argjson licenses_dir_present "$(json_bool "$licenses_dir_present")" \
+    --argjson publiccode_yml_present "$(json_bool "$publiccode_yml_present")" \
+    --argjson declared_licenses "$declared_licenses" \
+    '{
+      name: $name,
+      platform: "github.com",
+      org: $org,
+      repo: $repo,
+      url: $url,
+      default_branch: (if $default_branch == "" then null else $default_branch end),
+      pushed_at: (if $pushed_at == "" then null else $pushed_at end),
+      github_license: (if $github_license == "" or $github_license == "NOASSERTION" then null else $github_license end),
+      license_file_present: $license_file_present,
+      licenses_dir_present: $licenses_dir_present,
+      declared_licenses: $declared_licenses,
+      reuse_registered: $reuse_registered,
+      reuse_status: $reuse_status,
+      reuse_lint_code: $reuse_lint_code,
+      reuse_commit: (if $reuse_commit == "" then null else $reuse_commit end),
+      reuse_commit_short: (if $reuse_commit == "" then null else $reuse_commit[0:7] end),
+      reuse_checked_at: (if $reuse_checked_at == "" then null else $reuse_checked_at end),
+      reuse_info_url: $reuse_info_url,
+      reuse_status_url: $reuse_status_url,
+      reuse_badge_url: $reuse_badge_url,
+      reuse_badge_present: $reuse_badge_present,
+      reuse_metadata_present: $reuse_metadata_present,
+      reuse_toml_present: $reuse_toml_present,
+      reuse_dep5_present: $reuse_dep5_present,
+      publiccode_yml_present: $publiccode_yml_present,
+      publiccode_license: (if $publiccode_license == "" then null else $publiccode_license end)
+    }')")
+}
+
+write_report() {
+  mkdir -p "$(dirname "$OUTPUT")"
+  tmp_output="$(mktemp)"
+  tmp_files+=("$tmp_output")
+
+  if [ "${#repo_rows[@]}" -eq 0 ]; then
+    : > "$tmp_output.rows"
+    tmp_files+=("$tmp_output.rows")
+  else
+    printf '%s\n' "${repo_rows[@]}" > "$tmp_output.rows"
+    tmp_files+=("$tmp_output.rows")
+  fi
+
+  jq -s \
+    --arg generated_at "$GENERATED_AT" \
+    --arg source_repository "$SOURCE_REPOSITORY" \
+    --arg workflow_name "$WORKFLOW_NAME" \
+    --arg workflow_run_id "${GITHUB_RUN_ID:-}" \
+    --arg report_exclusions_path "$REPORT_EXCLUSIONS" \
+    --arg report_exclusion_key "$REPORT_KEY" \
+    --arg json_report_path "$OUTPUT" '
+      sort_by(.name | ascii_downcase) as $repos |
+      {
+        schema_version: 1,
+        generated_at: $generated_at,
+        source: {
+          repository: $source_repository,
+          workflow: $workflow_name,
+          workflow_run_id: (if $workflow_run_id == "" then null else $workflow_run_id end),
+          report_exclusions_path: $report_exclusions_path,
+          report_exclusion_key: $report_exclusion_key,
+          json_report_path: $json_report_path
+        },
+        summary: {
+          total_repositories: ($repos | length),
+          repositories_registered_in_reuse_api: ($repos | map(select(.reuse_registered == true)) | length),
+          repositories_not_registered_in_reuse_api: ($repos | map(select(.reuse_registered == false)) | length),
+          repositories_with_unknown_reuse_api_registration: ($repos | map(select(.reuse_registered == null)) | length),
+          repositories_reuse_compliant: ($repos | map(select(.reuse_status == "compliant")) | length),
+          repositories_with_reuse_badge: ($repos | map(select(.reuse_badge_present == true)) | length),
+          repositories_with_reuse_metadata: ($repos | map(select(.reuse_metadata_present == true)) | length),
+          repositories_with_github_license: ($repos | map(select(.github_license != null)) | length),
+          repositories_with_publiccode_yml: ($repos | map(select(.publiccode_yml_present == true)) | length)
+        },
+        repositories: $repos
+      }
+    ' "$tmp_output.rows" > "$tmp_output"
+
+  jq -e '
+    .schema_version == 1 and
+    (.source.json_report_path | type == "string") and
+    (.summary.total_repositories == (.repositories | length))
+  ' "$tmp_output" >/dev/null
+
+  mv "$tmp_output" "$OUTPUT"
+  echo "Wrote structured REUSE report to $OUTPUT"
+}
+
+main() {
+  parse_args "$@"
+  require_command curl
+  require_command jq
+
+  if [ -z "$GENERATED_AT" ]; then
+    GENERATED_AT="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+  fi
+
+  tmp_files=()
+  trap 'rm -f "${tmp_files[@]}"' EXIT
+  load_report_exclusions "$REPORT_EXCLUSIONS" "$REPORT_KEY"
+  load_repositories
+  validate_report_exclusions_repositories "$REPOSITORIES" "$ORG"
+
+  repo_rows=()
+  for repo_json in "${repo_metadata_rows[@]}"; do
+    scan_repository "$repo_json"
+  done
+
+  write_report
+  trap - EXIT
+  rm -f "${tmp_files[@]}"
+}
+
+main "$@"

@@ -1,0 +1,325 @@
+#!/usr/bin/env bash
+# Generates the structured OpenSSF Scorecard report consumed by opensource-docs.
+
+set -euo pipefail
+
+ORG="diggsweden"
+SCORES=""
+WORKFLOW_STATUS=""
+SCOPE="reporting/scope.json"
+REPOSITORIES="reporting/repositories.json"
+REPORT_EXCLUSIONS="reporting/report-exclusions.json"
+REPORT_KEY="openssf_scorecard"
+OUTPUT="reporting/openssf-scorecard-report.json"
+SOURCE_REPOSITORY="diggsweden/digg-scorecard-monitor"
+WORKFLOW_NAME="scorecard-monitor.yml"
+MARKDOWN_REPORT="reporting/openssf-scorecard-report.md"
+JSON_REPORT="reporting/openssf-scorecard-report.json"
+GENERATED_AT="${GENERATED_AT:-}"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+
+# shellcheck source=scripts/lib/report_exclusions.sh
+source "$SCRIPT_DIR/lib/report_exclusions.sh"
+
+usage() {
+  cat <<'EOF'
+Usage: generate_scorecard_report_json --scores PATH --workflow-status PATH [options]
+
+Options:
+  --scores PATH             JSON array from ossf/scorecard-monitor outputs.scores.
+  --workflow-status PATH    JSON array from append_repos_without_scorecard.
+  --scope PATH              Scope file. Default: reporting/scope.json
+  --repositories PATH       Shared public repository list. Default: reporting/repositories.json
+  --report-exclusions PATH  Report-specific exclusions. Default: reporting/report-exclusions.json
+  --output PATH             Output JSON report. Default: reporting/openssf-scorecard-report.json
+  --org ORG                 GitHub organisation. Default: diggsweden
+  --source-repository REPO  Source repository. Default: diggsweden/digg-scorecard-monitor
+  --workflow NAME           Workflow filename. Default: scorecard-monitor.yml
+  --markdown-report PATH    Markdown report path. Default: reporting/openssf-scorecard-report.md
+  --json-report PATH        JSON report path for provenance. Default: reporting/openssf-scorecard-report.json
+  --generated-at TIMESTAMP  Override generation timestamp.
+EOF
+}
+
+require_value() {
+  local option="$1"
+  local value="${2:-}"
+
+  if [ -z "$value" ]; then
+    echo "Missing value for $option" >&2
+    usage >&2
+    exit 1
+  fi
+}
+
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --scores)
+      require_value "$1" "${2:-}"
+      SCORES="${2:-}"
+      shift 2
+      ;;
+    --workflow-status)
+      require_value "$1" "${2:-}"
+      WORKFLOW_STATUS="${2:-}"
+      shift 2
+      ;;
+    --scope)
+      require_value "$1" "${2:-}"
+      SCOPE="${2:-}"
+      shift 2
+      ;;
+    --repositories)
+      require_value "$1" "${2:-}"
+      REPOSITORIES="${2:-}"
+      shift 2
+      ;;
+    --report-exclusions)
+      require_value "$1" "${2:-}"
+      REPORT_EXCLUSIONS="${2:-}"
+      shift 2
+      ;;
+    --output)
+      require_value "$1" "${2:-}"
+      OUTPUT="${2:-}"
+      shift 2
+      ;;
+    --org)
+      require_value "$1" "${2:-}"
+      ORG="${2:-}"
+      shift 2
+      ;;
+    --source-repository)
+      require_value "$1" "${2:-}"
+      SOURCE_REPOSITORY="${2:-}"
+      shift 2
+      ;;
+    --workflow)
+      require_value "$1" "${2:-}"
+      WORKFLOW_NAME="${2:-}"
+      shift 2
+      ;;
+    --markdown-report)
+      require_value "$1" "${2:-}"
+      MARKDOWN_REPORT="${2:-}"
+      shift 2
+      ;;
+    --json-report)
+      require_value "$1" "${2:-}"
+      JSON_REPORT="${2:-}"
+      shift 2
+      ;;
+    --generated-at)
+      require_value "$1" "${2:-}"
+      GENERATED_AT="${2:-}"
+      shift 2
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    *)
+      echo "Unknown argument: $1" >&2
+      usage >&2
+      exit 1
+      ;;
+  esac
+done
+
+command -v jq >/dev/null 2>&1 || {
+  echo "jq is required." >&2
+  exit 1
+}
+
+[ -n "$SCORES" ] || {
+  echo "Missing --scores" >&2
+  usage >&2
+  exit 1
+}
+
+[ -n "$WORKFLOW_STATUS" ] || {
+  echo "Missing --workflow-status" >&2
+  usage >&2
+  exit 1
+}
+
+[ -f "$SCORES" ] || {
+  echo "Scores file not found: $SCORES" >&2
+  exit 1
+}
+
+[ -f "$WORKFLOW_STATUS" ] || {
+  echo "Workflow status file not found: $WORKFLOW_STATUS" >&2
+  exit 1
+}
+
+[ -f "$SCOPE" ] || {
+  echo "Scope file not found: $SCOPE" >&2
+  exit 1
+}
+
+[ -f "$REPOSITORIES" ] || {
+  echo "Repository list not found: $REPOSITORIES" >&2
+  exit 1
+}
+
+jq -e '
+  .schema_version == 1 and
+  (.repositories | type == "array")
+' "$REPOSITORIES" >/dev/null || {
+  echo "Invalid repository list: $REPOSITORIES" >&2
+  exit 1
+}
+
+jq -e 'type == "array"' "$SCORES" >/dev/null || {
+  echo "Scores file must contain a JSON array: $SCORES" >&2
+  exit 1
+}
+
+jq -e 'type == "array"' "$WORKFLOW_STATUS" >/dev/null || {
+  echo "Workflow status file must contain a JSON array: $WORKFLOW_STATUS" >&2
+  exit 1
+}
+
+jq -e --arg org "$ORG" '."github.com"[$org] | type == "object"' "$SCOPE" >/dev/null || {
+  echo "Scope has no github.com/$ORG entry" >&2
+  exit 1
+}
+
+if [ -z "$GENERATED_AT" ]; then
+  GENERATED_AT="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+fi
+
+load_report_exclusions "$REPORT_EXCLUSIONS" "$REPORT_KEY"
+validate_report_exclusions_repositories "$REPOSITORIES" "$ORG"
+report_excluded_json="$(report_excluded_repos_json)"
+
+mkdir -p "$(dirname "$OUTPUT")"
+tmp_output="$(mktemp)"
+trap 'rm -f "$tmp_output"' EXIT
+
+jq -n \
+  --slurpfile scores "$SCORES" \
+  --slurpfile workflowStatus "$WORKFLOW_STATUS" \
+  --slurpfile scope "$SCOPE" \
+  --arg org "$ORG" \
+  --arg generated_at "$GENERATED_AT" \
+  --arg source_repository "$SOURCE_REPOSITORY" \
+  --arg workflow_name "$WORKFLOW_NAME" \
+  --arg workflow_run_id "${GITHUB_RUN_ID:-}" \
+  --arg scope_path "$SCOPE" \
+  --arg report_exclusions_path "$REPORT_EXCLUSIONS" \
+  --arg report_exclusion_key "$REPORT_KEY" \
+  --arg markdown_report_path "$MARKDOWN_REPORT" \
+  --arg json_report_path "$JSON_REPORT" \
+  --argjson report_excluded "$report_excluded_json" '
+    def round_one: (. * 10 | round / 10);
+    def not_excluded($excluded): (. as $repo | ($excluded | index($repo) | not));
+    def full_name($org; $repo): $org + "/" + $repo;
+    def repo_url($org; $repo): "https://github.com/" + $org + "/" + $repo;
+    def commit_short($commit): if $commit == null or $commit == "" then null else $commit[0:7] end;
+    def commit_url($org; $repo; $commit): if $commit == null or $commit == "" then null else repo_url($org; $repo) + "/commit/" + $commit end;
+    def report_url($org; $repo; $commit): if $commit == null or $commit == "" then null else "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/" + $org + "/" + $repo + "/commit/" + $commit end;
+    def details_url($org; $repo; $commit; $prevCommit): if $commit == null or $commit == "" or $prevCommit == null or $prevCommit == "" then null else "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/" + $org + "/" + $repo + "/compare/" + $prevCommit + "/" + $commit end;
+
+    ($scores[0] // []) as $score_rows |
+    ($workflowStatus[0] // []) as $workflow_rows |
+    ($scope[0]."github.com"[$org].excluded // []) as $excluded |
+    ($workflow_rows | map({key: .name, value: .}) | from_entries) as $workflow_by_name |
+
+    ($score_rows
+      | map(select(.org == $org and (.repo | not_excluded($excluded)) and (.repo | not_excluded($report_excluded))))
+      | map(
+          full_name($org; .repo) as $name |
+          {
+            name: $name,
+            platform: (.platform // "github.com"),
+            org: $org,
+            repo: .repo,
+            url: repo_url($org; .repo),
+            score: .score,
+            score_status: "available",
+            workflow_status: (($workflow_by_name[$name].workflow_status) // "unknown"),
+            status: "available",
+            date: (.date // null),
+            commit: (.commit // null),
+            commit_short: commit_short(.commit // null),
+            commit_url: commit_url($org; .repo; .commit // null),
+            previous_score: (.prevScore // null),
+            previous_date: (.prevDate // null),
+            previous_commit: (.prevCommit // null),
+            delta: (.currentDiff // 0),
+            details_url: details_url($org; .repo; .commit // null; .prevCommit // null),
+            report_url: report_url($org; .repo; .commit // null)
+          }
+        )) as $scored |
+
+    ($scored | map(.name)) as $scored_names |
+    ($workflow_rows
+      | map(select(.name as $name | .org == $org and (.repo | not_excluded($excluded)) and (.repo | not_excluded($report_excluded)) and (($scored_names | index($name)) | not)))
+      | map({
+          name: .name,
+          platform: "github.com",
+          org: $org,
+          repo: .repo,
+          url: .url,
+          score: null,
+          score_status: "missing_scorecard_data",
+          workflow_status: .workflow_status,
+          status: "missing_scorecard_data",
+          reason: (if .workflow_status == "missing_approved_workflow" then "approved_scorecard_workflow_missing" else "scorecard_data_unavailable" end),
+          date: null,
+          commit: null,
+          commit_short: null,
+          commit_url: null,
+          previous_score: null,
+          previous_date: null,
+          previous_commit: null,
+          delta: null,
+          details_url: null,
+          report_url: null
+        })) as $missing |
+
+    ($scored + $missing | sort_by(.name | ascii_downcase)) as $repos |
+    ($repos | map(select(.score != null) | .score)) as $scores_with_values |
+    ($repos | map(select(.date != null) | .date) | max) as $latest_scorecard_at |
+    {
+      schema_version: 1,
+      generated_at: $generated_at,
+      latest_scorecard_at: $latest_scorecard_at,
+      source: {
+        repository: $source_repository,
+        workflow: $workflow_name,
+        workflow_run_id: (if $workflow_run_id == "" then null else $workflow_run_id end),
+        scope_path: $scope_path,
+        report_exclusions_path: $report_exclusions_path,
+        report_exclusion_key: $report_exclusion_key,
+        markdown_report_path: $markdown_report_path,
+        json_report_path: $json_report_path
+      },
+      summary: {
+        total_repositories: ($repos | length),
+        repositories_with_score: ($scores_with_values | length),
+        repositories_without_score: (($repos | length) - ($scores_with_values | length)),
+        repositories_with_approved_workflow: ($repos | map(select(.workflow_status == "approved")) | length),
+        repositories_without_approved_workflow: ($repos | map(select(.workflow_status == "missing_approved_workflow")) | length),
+        repositories_with_unknown_workflow: ($repos | map(select(.workflow_status == "unknown")) | length),
+        average_score: (if ($scores_with_values | length) > 0 then (($scores_with_values | add) / ($scores_with_values | length) | round_one) else null end),
+        lowest_score: (if ($scores_with_values | length) > 0 then ($scores_with_values | min) else null end),
+        highest_score: (if ($scores_with_values | length) > 0 then ($scores_with_values | max) else null end)
+      },
+      repositories: $repos
+    }
+  ' > "$tmp_output"
+
+jq -e '
+  .schema_version == 1 and
+  (.source.scope_path | type == "string") and
+  (.source.json_report_path | type == "string") and
+  (.summary.total_repositories == (.repositories | length))
+' "$tmp_output" >/dev/null
+
+mv "$tmp_output" "$OUTPUT"
+trap - EXIT
+
+echo "Wrote structured Scorecard report to $OUTPUT"

@@ -17,7 +17,7 @@ scorecard_workflow_uses_approved_ref() {
   local value
   local ref
 
-  content="$(curl -fsSL "$url")" || return 1
+  content="$(curl -fsSL "$url")" || return 2
 
   while IFS= read -r line; do
     line="${line#"${line%%[![:space:]]*}"}"

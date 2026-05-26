@@ -1,8 +1,6 @@
-name: OpenSSF Scorecard Monitor
+name: Generate repository reports
 
 on:
-  schedule:
-    - cron: "0 0 * * 0,3"  # Sundays and Wednesdays at midnight UTC
   workflow_dispatch:
 
 concurrency:
@@ -14,13 +12,22 @@ permissions:
   issues: write
 
 jobs:
-  scorecard-monitor:
+  generate-reports:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
-      - name: OpenSSF Scorecard Monitor
+      - name: Generate public repository list
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          chmod +x scripts/list_public_repositories
+          ./scripts/list_public_repositories \
+            --output reporting/repositories.json
+
+      - name: Run OpenSSF Scorecard monitor
+        id: scorecard-monitor
         uses: ossf/scorecard-monitor@a3a9c4cfa0684480ec5f86fa178fc22c4394b69e # v2.0.0-beta8
         with:
           scope: reporting/scope.json
@@ -35,7 +42,19 @@ jobs:
           max-request-in-parallel: 10
           report-tool: "scorecard-visualizer"
 
-      - name: Check if report was generated
+      - name: Save Scorecard scores output
+        env:
+          SCORES_JSON: ${{ steps.scorecard-monitor.outputs.scores }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/scorecard-monitor"
+          if [ -z "${SCORES_JSON}" ]; then
+            echo "OpenSSF Scorecard Monitor did not expose scores output." >&2
+            exit 1
+          fi
+          printf '%s\n' "$SCORES_JSON" > "$RUNNER_TEMP/scorecard-monitor/scores.json"
+          jq -e 'type == "array"' "$RUNNER_TEMP/scorecard-monitor/scores.json" >/dev/null
+
+      - name: Check generated Scorecard Markdown report
         run: |
           if [ -f reporting/openssf-scorecard-report.md ]; then
             echo "✓ Report generated successfully"
@@ -54,22 +73,68 @@ jobs:
             sed -i 's/ | \[Fix it\]([^)]*) |$/ |/' reporting/openssf-scorecard-report.md
           fi
 
-      - name: Append repos without scorecard to report
+      - name: Append repositories without approved Scorecard workflow
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           chmod +x scripts/append_repos_without_scorecard
-          ./scripts/append_repos_without_scorecard
+          ./scripts/append_repos_without_scorecard \
+            --repositories reporting/repositories.json \
+            --report-exclusions reporting/report-exclusions.json \
+            --workflow-status "$RUNNER_TEMP/scorecard-monitor/workflow-status.json"
 
       - name: Sort report alphabetically
         run: |
           chmod +x scripts/sort_scorecard_report
           ./scripts/sort_scorecard_report
 
-      - name: Commit and push changes
+      - name: Generate OpenSSF Scorecard JSON report
+        run: |
+          chmod +x scripts/generate_scorecard_report_json
+          ./scripts/generate_scorecard_report_json \
+            --scores "$RUNNER_TEMP/scorecard-monitor/scores.json" \
+            --workflow-status "$RUNNER_TEMP/scorecard-monitor/workflow-status.json" \
+            --scope reporting/scope.json \
+            --repositories reporting/repositories.json \
+            --report-exclusions reporting/report-exclusions.json \
+            --output reporting/openssf-scorecard-report.json
+
+      - name: Generate REUSE JSON report
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          chmod +x scripts/generate_reuse_report_json
+          ./scripts/generate_reuse_report_json \
+            --repositories reporting/repositories.json \
+            --report-exclusions reporting/report-exclusions.json \
+            --output reporting/reuse-report.json
+
+      - name: Generate SCA/Renovate JSON report
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          chmod +x scripts/generate_sca_renovate_report_json
+          ./scripts/generate_sca_renovate_report_json \
+            --repositories reporting/repositories.json \
+            --report-exclusions reporting/report-exclusions.json \
+            --output reporting/sca-renovate-report.json
+
+      - name: Generate CODEOWNERS report
+        run: |
+          chmod +x scripts/generate_codeowners_report_json
+          ./scripts/generate_codeowners_report_json \
+            --repositories reporting/repositories.json \
+            --report-exclusions reporting/report-exclusions.json \
+            --output reporting/codeowners-report.json
+
+      - name: Commit generated report data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add reporting/
-          git diff --cached --quiet || git commit -m "chore: update scorecard report"
-          git push
+          if git diff --cached --quiet; then
+            echo "No report data changes to commit."
+          else
+            git commit -m "chore: update repository reports"
+            git push
+          fi

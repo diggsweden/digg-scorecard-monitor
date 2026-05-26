@@ -1,0 +1,634 @@
+#!/usr/bin/env bash
+# Generates the structured SCA/Renovate report consumed by opensource-docs.
+
+set -euo pipefail
+
+ORG="diggsweden"
+OUTPUT="reporting/sca-renovate-report.json"
+REPOSITORIES="reporting/repositories.json"
+REPORT_EXCLUSIONS="reporting/report-exclusions.json"
+REPORT_KEY="sca_renovate"
+SOURCE_REPOSITORY="diggsweden/digg-scorecard-monitor"
+WORKFLOW_NAME="scorecard-monitor.yml"
+GENERATED_AT="${GENERATED_AT:-}"
+ONLY_REPO=""
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+
+# shellcheck source=scripts/lib/report_exclusions.sh
+source "$SCRIPT_DIR/lib/report_exclusions.sh"
+BASE_PRESET="local>diggsweden/.github:renovate-base"
+BASE_PRESETS=(
+  "local>diggsweden/.github:renovate-base"
+  "github>diggsweden/.github//renovate-base.json"
+)
+CONFIG_PATHS=(
+  "renovate.json"
+  "renovate.json5"
+  ".github/renovate.json"
+  ".github/renovate.json5"
+  ".renovaterc"
+  ".renovaterc.json"
+)
+
+usage() {
+  cat <<'EOF'
+Usage: generate_sca_renovate_report_json [options]
+
+Options:
+  --output PATH             Output JSON report. Default: reporting/sca-renovate-report.json
+  --repositories PATH       Shared public repository list. Default: reporting/repositories.json
+  --report-exclusions PATH  Report-specific exclusions. Default: reporting/report-exclusions.json
+  --org ORG                 GitHub organisation. Default: diggsweden
+  --repo REPO               Limit report generation to one repository.
+  --base-preset PRESET      Required Renovate base preset. Overrides defaults.
+                            Default: local>diggsweden/.github:renovate-base
+  --source-repository REPO  Source repository. Default: diggsweden/digg-scorecard-monitor
+  --workflow NAME           Workflow filename. Default: scorecard-monitor.yml
+  --generated-at TIMESTAMP  Override generation timestamp.
+EOF
+}
+
+require_value() {
+  local option="$1"
+  local value="${2:-}"
+
+  if [ -z "$value" ]; then
+    echo "Missing value for $option" >&2
+    usage >&2
+    exit 1
+  fi
+}
+
+require_command() {
+  local command_name="$1"
+
+  if ! command -v "$command_name" >/dev/null 2>&1; then
+    echo "$command_name is required." >&2
+    exit 1
+  fi
+}
+
+parse_args() {
+  while [ "$#" -gt 0 ]; do
+    case "$1" in
+      --output)
+        require_value "$1" "${2:-}"
+        OUTPUT="${2:-}"
+        shift 2
+        ;;
+      --repositories)
+        require_value "$1" "${2:-}"
+        REPOSITORIES="${2:-}"
+        shift 2
+        ;;
+      --report-exclusions)
+        require_value "$1" "${2:-}"
+        REPORT_EXCLUSIONS="${2:-}"
+        shift 2
+        ;;
+      --org)
+        require_value "$1" "${2:-}"
+        ORG="${2:-}"
+        shift 2
+        ;;
+      --repo)
+        require_value "$1" "${2:-}"
+        ONLY_REPO="${2:-}"
+        shift 2
+        ;;
+      --base-preset)
+        require_value "$1" "${2:-}"
+        BASE_PRESET="${2:-}"
+        BASE_PRESETS=("${2:-}")
+        shift 2
+        ;;
+      --source-repository)
+        require_value "$1" "${2:-}"
+        SOURCE_REPOSITORY="${2:-}"
+        shift 2
+        ;;
+      --workflow)
+        require_value "$1" "${2:-}"
+        WORKFLOW_NAME="${2:-}"
+        shift 2
+        ;;
+      --generated-at)
+        require_value "$1" "${2:-}"
+        GENERATED_AT="${2:-}"
+        shift 2
+        ;;
+      -h|--help)
+        usage
+        exit 0
+        ;;
+      *)
+        echo "Unknown argument: $1" >&2
+        usage >&2
+        exit 1
+        ;;
+    esac
+  done
+}
+
+auth_header_args() {
+  local token="${GH_TOKEN:-${GITHUB_TOKEN:-}}"
+
+  if [ -n "$token" ]; then
+    printf '%s\n' -H "Authorization: Bearer $token"
+  fi
+}
+
+fetch_url() {
+  local url="$1"
+  local output="$2"
+  local status
+  local auth_args=()
+
+  mapfile -t auth_args < <(auth_header_args)
+  status="$(curl -sSL \
+    -H "Accept: application/vnd.github+json" \
+    -H "X-GitHub-Api-Version: 2022-11-28" \
+    "${auth_args[@]}" \
+    -o "$output" \
+    -w '%{http_code}' \
+    "$url")" || status="000"
+
+  printf '%s\n' "$status"
+}
+
+fetch_search_issues() {
+  local query="$1"
+  local output="$2"
+  local status
+  local auth_args=()
+
+  mapfile -t auth_args < <(auth_header_args)
+  status="$(curl -sSLG \
+    -H "Accept: application/vnd.github+json" \
+    -H "X-GitHub-Api-Version: 2022-11-28" \
+    "${auth_args[@]}" \
+    --data-urlencode "q=$query" \
+    -o "$output" \
+    -w '%{http_code}' \
+    "https://api.github.com/search/issues")" || status="000"
+
+  printf '%s\n' "$status"
+}
+
+load_repositories() {
+  repo_metadata_rows=()
+
+  [ -f "$REPOSITORIES" ] || {
+    echo "Repository list not found: $REPOSITORIES" >&2
+    exit 1
+  }
+
+  jq -e '
+    .schema_version == 1 and
+    (.repositories | type == "array")
+  ' "$REPOSITORIES" >/dev/null || {
+    echo "Invalid repository list: $REPOSITORIES" >&2
+    exit 1
+  }
+
+  while IFS= read -r repo_json; do
+    repo_metadata_rows+=("$repo_json")
+  done < <(jq -c --arg org "$ORG" --arg repo "$ONLY_REPO" '
+    .repositories[]
+    | select(.org == $org and (.archived // false) == false and (.private // false) == false)
+    | select($repo == "" or .repo == $repo)
+    | {
+        name: .repo,
+        html_url: .url,
+        default_branch: .default_branch,
+        pushed_at: .pushed_at,
+        fork: .fork,
+        archived: .archived,
+        private: .private
+      }
+  ' "$REPOSITORIES")
+}
+
+json_bool() {
+  case "$1" in
+    true|false|null)
+      printf '%s\n' "$1"
+      ;;
+    *)
+      printf 'null\n'
+      ;;
+  esac
+}
+
+repo_file_url() {
+  local repo_url="$1"
+  local branch="$2"
+  local path="$3"
+
+  if [ -z "$branch" ] || [ -z "$path" ]; then
+    printf '\n'
+    return 0
+  fi
+
+  printf '%s/blob/%s/%s\n' "$repo_url" "$branch" "$path"
+}
+
+base_presets_json() {
+  printf '%s\n' "${BASE_PRESETS[@]}" | jq -R . | jq -s .
+}
+
+raw_content_url() {
+  local repo="$1"
+  local branch="$2"
+  local path="$3"
+
+  if [ -z "$branch" ]; then
+    printf '\n'
+    return 0
+  fi
+
+  printf 'https://raw.githubusercontent.com/%s/%s/%s/%s\n' "$ORG" "$repo" "$branch" "$path"
+}
+
+fetch_raw_url() {
+  local url="$1"
+  local output="$2"
+  local status
+
+  status="$(curl -sSL \
+    -o "$output" \
+    -w '%{http_code}' \
+    "$url")" || status="000"
+
+  printf '%s\n' "$status"
+}
+
+try_raw_config() {
+  local repo="$1"
+  local branch="$2"
+  local config_path="$3"
+  local output="$4"
+  local candidate
+  local existing
+  local raw_url
+  local status
+  local tried=()
+
+  for candidate in "$branch" main master; do
+    [ -n "$candidate" ] || continue
+    for existing in "${tried[@]}"; do
+      [ "$existing" = "$candidate" ] && continue 2
+    done
+    tried+=("$candidate")
+
+    raw_url="$(raw_content_url "$repo" "$candidate" "$config_path")"
+    [ -n "$raw_url" ] || continue
+
+    status="$(fetch_raw_url "$raw_url" "$output")"
+    if [ "$status" -ge 200 ] && [ "$status" -lt 300 ]; then
+      found_config_branch="$candidate"
+      return 0
+    fi
+  done
+
+  return 1
+}
+
+dashboard_issue_search_url() {
+  local repo_url="$1"
+
+  printf '%s/issues?q=is%%3Aissue%%20%%22Dependency%%20Dashboard%%22\n' "$repo_url"
+}
+
+download_config_content() {
+  local download_url="$1"
+  local output="$2"
+
+  [ -n "$download_url" ] || return 1
+  curl -fsSL "$download_url" > "$output"
+}
+
+find_renovate_config() {
+  local repo="$1"
+  local default_branch="$2"
+  local api_file
+  local config_path
+  local download_url
+  local raw_url
+  local raw_status
+  local status
+
+  found_config_path=""
+  found_config_branch=""
+  found_config_status="missing"
+  found_config_file=""
+
+  for config_path in "${CONFIG_PATHS[@]}"; do
+    found_config_file="$(mktemp)"
+    tmp_files+=("$found_config_file")
+    raw_url="$(raw_content_url "$repo" "$default_branch" "$config_path")"
+    if [ -n "$raw_url" ]; then
+      raw_status="$(fetch_raw_url "$raw_url" "$found_config_file")"
+      if [ "$raw_status" -ge 200 ] && [ "$raw_status" -lt 300 ]; then
+        found_config_path="$config_path"
+        found_config_status="present"
+        return 0
+      fi
+
+      [ "$raw_status" -eq 404 ] && continue
+    fi
+
+    api_file="$(mktemp)"
+    tmp_files+=("$api_file")
+    status="$(fetch_url "https://api.github.com/repos/$ORG/$repo/contents/$config_path" "$api_file")"
+
+    if [ "$status" -eq 404 ]; then
+      continue
+    fi
+
+    if [ "$status" -ge 200 ] && [ "$status" -lt 300 ]; then
+      download_url="$(jq -r '.download_url // empty' "$api_file")"
+      if download_config_content "$download_url" "$found_config_file" || try_raw_config "$repo" "$default_branch" "$config_path" "$found_config_file"; then
+        found_config_path="$config_path"
+        [ -n "$found_config_branch" ] || found_config_branch="$default_branch"
+        found_config_status="present"
+      else
+        found_config_status="unknown"
+      fi
+      return 0
+    fi
+
+    if try_raw_config "$repo" "$default_branch" "$config_path" "$found_config_file"; then
+      found_config_path="$config_path"
+      found_config_status="present"
+      return 0
+    fi
+
+    if [ "$status" -eq 403 ]; then
+      continue
+    else
+      found_config_status="unknown"
+      return 0
+    fi
+  done
+}
+
+config_base_preset_match() {
+  local config_file="$1"
+  local preset
+
+  [ -n "$config_file" ] || {
+    return 0
+  }
+
+  for preset in "${BASE_PRESETS[@]}"; do
+    if jq -e -Rs --arg preset "$preset" 'contains($preset)' "$config_file" >/dev/null; then
+      printf '%s\n' "$preset"
+      return 0
+    fi
+  done
+}
+
+config_valid_json() {
+  local config_file="$1"
+
+  [ -n "$config_file" ] || {
+    printf 'null\n'
+    return 0
+  }
+
+  if jq -e . "$config_file" >/dev/null 2>&1; then
+    printf 'true\n'
+  else
+    printf 'false\n'
+  fi
+}
+
+enabled_managers() {
+  local config_file="$1"
+
+  [ -n "$config_file" ] || {
+    printf 'null\n'
+    return 0
+  }
+
+  if ! jq -e . "$config_file" >/dev/null 2>&1; then
+    printf 'null\n'
+    return 0
+  fi
+
+  jq -c '
+    if (.enabledManagers? | type) == "array" then .enabledManagers
+    elif (.enabledManagers? | type) == "string" then [.enabledManagers]
+    else null
+    end
+  ' "$config_file"
+}
+
+find_dependency_dashboard() {
+  local repo="$1"
+  local dashboard_file
+  local status
+
+  dashboard_found="null"
+  dashboard_url=""
+
+  dashboard_file="$(mktemp)"
+  tmp_files+=("$dashboard_file")
+  status="$(fetch_search_issues "repo:$ORG/$repo is:issue in:title Dependency Dashboard" "$dashboard_file")"
+  if [ "$status" -lt 200 ] || [ "$status" -ge 300 ]; then
+    return 0
+  fi
+
+  dashboard_url="$(jq -r '.items[0].html_url // empty' "$dashboard_file")"
+  if [ -n "$dashboard_url" ]; then
+    dashboard_found="true"
+  else
+    dashboard_found="false"
+  fi
+}
+
+scan_repository() {
+  local repo_json="$1"
+  local repo
+  local url
+  local default_branch
+  local pushed_at
+  local config_present="null"
+  local config_url=""
+  local base_preset_used="null"
+  local matched_base_preset=""
+  local valid_json="null"
+  local managers="null"
+  local fallback_dashboard_url=""
+
+  repo="$(jq -r '.name' <<< "$repo_json")"
+  url="$(jq -r '.html_url' <<< "$repo_json")"
+  default_branch="$(jq -r '.default_branch // empty' <<< "$repo_json")"
+  pushed_at="$(jq -r '.pushed_at // empty' <<< "$repo_json")"
+
+  if is_report_excluded "$repo"; then
+    echo "Skipping report-specific excluded: $repo"
+    return 0
+  fi
+
+  echo "Checking $ORG/$repo..."
+
+  find_renovate_config "$repo" "$default_branch"
+  case "$found_config_status" in
+    present)
+      config_present="true"
+      config_url="$(repo_file_url "$url" "${found_config_branch:-$default_branch}" "$found_config_path")"
+      matched_base_preset="$(config_base_preset_match "$found_config_file")"
+      if [ -n "$matched_base_preset" ]; then
+        base_preset_used="true"
+      else
+        base_preset_used="false"
+      fi
+      valid_json="$(config_valid_json "$found_config_file")"
+      managers="$(enabled_managers "$found_config_file")"
+      fallback_dashboard_url="$(dashboard_issue_search_url "$url")"
+      find_dependency_dashboard "$repo"
+      [ -n "$dashboard_url" ] || dashboard_url="$fallback_dashboard_url"
+      ;;
+    missing)
+      config_present="false"
+      dashboard_found="false"
+      dashboard_url=""
+      ;;
+    *)
+      config_present="null"
+      dashboard_found="null"
+      dashboard_url=""
+      ;;
+  esac
+
+  repo_rows+=("$(jq -c -n \
+    --arg org "$ORG" \
+    --arg repo "$repo" \
+    --arg name "$ORG/$repo" \
+    --arg url "$url" \
+    --arg default_branch "$default_branch" \
+    --arg pushed_at "$pushed_at" \
+    --arg renovate_config_status "$found_config_status" \
+    --arg renovate_config_path "$found_config_path" \
+    --arg renovate_config_url "$config_url" \
+    --arg renovate_base_preset "$BASE_PRESET" \
+    --arg renovate_matched_base_preset "$matched_base_preset" \
+    --arg renovate_dashboard_url "$dashboard_url" \
+    --argjson renovate_config_present "$(json_bool "$config_present")" \
+    --argjson renovate_uses_base_preset "$(json_bool "$base_preset_used")" \
+    --argjson renovate_config_valid_json "$(json_bool "$valid_json")" \
+    --argjson renovate_dashboard_found "$(json_bool "$dashboard_found")" \
+    --argjson enabled_managers "$managers" \
+    '{
+      name: $name,
+      platform: "github.com",
+      org: $org,
+      repo: $repo,
+      url: $url,
+      default_branch: (if $default_branch == "" then null else $default_branch end),
+      pushed_at: (if $pushed_at == "" then null else $pushed_at end),
+      renovate_config_present: $renovate_config_present,
+      renovate_config_status: $renovate_config_status,
+      renovate_config_path: (if $renovate_config_path == "" then null else $renovate_config_path end),
+      renovate_config_url: (if $renovate_config_url == "" then null else $renovate_config_url end),
+      renovate_base_preset: $renovate_base_preset,
+      renovate_matched_base_preset: (if $renovate_matched_base_preset == "" then null else $renovate_matched_base_preset end),
+      renovate_uses_base_preset: $renovate_uses_base_preset,
+      renovate_config_valid_json: $renovate_config_valid_json,
+      enabled_managers: $enabled_managers,
+      renovate_dashboard_found: $renovate_dashboard_found,
+      renovate_dashboard_url: (if $renovate_dashboard_url == "" then null else $renovate_dashboard_url end)
+    }')")
+}
+
+write_report() {
+  local accepted_base_presets
+
+  mkdir -p "$(dirname "$OUTPUT")"
+  tmp_output="$(mktemp)"
+  tmp_files+=("$tmp_output")
+
+  if [ "${#repo_rows[@]}" -eq 0 ]; then
+    : > "$tmp_output.rows"
+  else
+    printf '%s\n' "${repo_rows[@]}" > "$tmp_output.rows"
+  fi
+  tmp_files+=("$tmp_output.rows")
+  accepted_base_presets="$(base_presets_json)"
+
+  jq -s \
+    --arg generated_at "$GENERATED_AT" \
+    --arg source_repository "$SOURCE_REPOSITORY" \
+    --arg workflow_name "$WORKFLOW_NAME" \
+    --arg workflow_run_id "${GITHUB_RUN_ID:-}" \
+    --arg report_exclusions_path "$REPORT_EXCLUSIONS" \
+    --arg report_exclusion_key "$REPORT_KEY" \
+    --arg json_report_path "$OUTPUT" \
+    --arg base_preset "$BASE_PRESET" \
+    --argjson accepted_base_presets "$accepted_base_presets" '
+      sort_by(.name | ascii_downcase) as $repos |
+      {
+        schema_version: 1,
+        generated_at: $generated_at,
+        source: {
+          repository: $source_repository,
+          workflow: $workflow_name,
+          workflow_run_id: (if $workflow_run_id == "" then null else $workflow_run_id end),
+          report_exclusions_path: $report_exclusions_path,
+          report_exclusion_key: $report_exclusion_key,
+          json_report_path: $json_report_path,
+          required_base_preset: $base_preset,
+          accepted_base_presets: $accepted_base_presets
+        },
+        summary: {
+          total_repositories: ($repos | length),
+          repositories_with_renovate_config: ($repos | map(select(.renovate_config_present == true)) | length),
+          repositories_without_renovate_config: ($repos | map(select(.renovate_config_present == false)) | length),
+          repositories_with_unknown_renovate_config: ($repos | map(select(.renovate_config_present == null)) | length),
+          repositories_using_base_preset: ($repos | map(select(.renovate_uses_base_preset == true)) | length),
+          repositories_missing_base_preset: ($repos | map(select(.renovate_config_present == true and .renovate_uses_base_preset == false)) | length),
+          repositories_with_dependency_dashboard_issue: ($repos | map(select(.renovate_dashboard_found == true)) | length)
+        },
+        repositories: $repos
+      }
+    ' "$tmp_output.rows" > "$tmp_output"
+
+  jq -e '
+    .schema_version == 1 and
+    (.source.json_report_path | type == "string") and
+    (.source.required_base_preset | type == "string") and
+    (.summary.total_repositories == (.repositories | length))
+  ' "$tmp_output" >/dev/null
+
+  mv "$tmp_output" "$OUTPUT"
+  echo "Wrote structured SCA/Renovate report to $OUTPUT"
+}
+
+main() {
+  parse_args "$@"
+  require_command curl
+  require_command jq
+
+  if [ -z "$GENERATED_AT" ]; then
+    GENERATED_AT="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+  fi
+
+  tmp_files=()
+  trap 'rm -f "${tmp_files[@]}"' EXIT
+  load_report_exclusions "$REPORT_EXCLUSIONS" "$REPORT_KEY"
+  load_repositories
+  validate_report_exclusions_repositories "$REPOSITORIES" "$ORG"
+
+  repo_rows=()
+  for repo_json in "${repo_metadata_rows[@]}"; do
+    scan_repository "$repo_json"
+  done
+
+  write_report
+  trap - EXIT
+  rm -f "${tmp_files[@]}"
+}
+
+main "$@"

@@ -1,0 +1,428 @@
+#!/usr/bin/env bash
+# Generates the structured CODEOWNERS report consumed by opensource-docs.
+
+set -euo pipefail
+
+ORG="diggsweden"
+OUTPUT="reporting/codeowners-report.json"
+REPOSITORIES="reporting/repositories.json"
+REPORT_EXCLUSIONS="reporting/report-exclusions.json"
+REPORT_KEY="codeowners"
+SOURCE_REPOSITORY="diggsweden/digg-scorecard-monitor"
+WORKFLOW_NAME="scorecard-monitor.yml"
+GENERATED_AT="${GENERATED_AT:-}"
+ONLY_REPO=""
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+
+# shellcheck source=scripts/lib/report_exclusions.sh
+source "$SCRIPT_DIR/lib/report_exclusions.sh"
+CODEOWNERS_PATHS=(
+  ".github/CODEOWNERS"
+  "CODEOWNERS"
+  "docs/CODEOWNERS"
+)
+
+usage() {
+  cat <<'EOF'
+Usage: generate_codeowners_report_json [options]
+
+Options:
+  --output PATH             Output JSON report. Default: reporting/codeowners-report.json
+  --repositories PATH       Shared public repository list. Default: reporting/repositories.json
+  --report-exclusions PATH  Report-specific exclusions. Default: reporting/report-exclusions.json
+  --org ORG                 GitHub organisation. Default: diggsweden
+  --repo REPO               Limit report generation to one repository.
+  --source-repository REPO  Source repository. Default: diggsweden/digg-scorecard-monitor
+  --workflow NAME           Workflow filename. Default: scorecard-monitor.yml
+  --generated-at TIMESTAMP  Override generation timestamp.
+EOF
+}
+
+require_value() {
+  local option="$1"
+  local value="${2:-}"
+
+  if [ -z "$value" ]; then
+    echo "Missing value for $option" >&2
+    usage >&2
+    exit 1
+  fi
+}
+
+require_command() {
+  local command_name="$1"
+
+  if ! command -v "$command_name" >/dev/null 2>&1; then
+    echo "$command_name is required." >&2
+    exit 1
+  fi
+}
+
+parse_args() {
+  while [ "$#" -gt 0 ]; do
+    case "$1" in
+      --output)
+        require_value "$1" "${2:-}"
+        OUTPUT="${2:-}"
+        shift 2
+        ;;
+      --repositories)
+        require_value "$1" "${2:-}"
+        REPOSITORIES="${2:-}"
+        shift 2
+        ;;
+      --report-exclusions)
+        require_value "$1" "${2:-}"
+        REPORT_EXCLUSIONS="${2:-}"
+        shift 2
+        ;;
+      --org)
+        require_value "$1" "${2:-}"
+        ORG="${2:-}"
+        shift 2
+        ;;
+      --repo)
+        require_value "$1" "${2:-}"
+        ONLY_REPO="${2:-}"
+        shift 2
+        ;;
+      --source-repository)
+        require_value "$1" "${2:-}"
+        SOURCE_REPOSITORY="${2:-}"
+        shift 2
+        ;;
+      --workflow)
+        require_value "$1" "${2:-}"
+        WORKFLOW_NAME="${2:-}"
+        shift 2
+        ;;
+      --generated-at)
+        require_value "$1" "${2:-}"
+        GENERATED_AT="${2:-}"
+        shift 2
+        ;;
+      -h|--help)
+        usage
+        exit 0
+        ;;
+      *)
+        echo "Unknown argument: $1" >&2
+        usage >&2
+        exit 1
+        ;;
+    esac
+  done
+}
+
+load_repositories() {
+  repo_metadata_rows=()
+
+  [ -f "$REPOSITORIES" ] || {
+    echo "Repository list not found: $REPOSITORIES" >&2
+    exit 1
+  }
+
+  jq -e '
+    .schema_version == 1 and
+    (.repositories | type == "array")
+  ' "$REPOSITORIES" >/dev/null || {
+    echo "Invalid repository list: $REPOSITORIES" >&2
+    exit 1
+  }
+
+  while IFS= read -r repo_json; do
+    repo_metadata_rows+=("$repo_json")
+  done < <(jq -c --arg org "$ORG" --arg repo "$ONLY_REPO" '
+    .repositories[]
+    | select(.org == $org and (.archived // false) == false and (.private // false) == false)
+    | select($repo == "" or .repo == $repo)
+    | {
+        name: .repo,
+        html_url: .url,
+        default_branch: .default_branch,
+        pushed_at: .pushed_at,
+        fork: .fork,
+        archived: .archived,
+        private: .private
+      }
+  ' "$REPOSITORIES")
+}
+
+json_bool() {
+  case "$1" in
+    true|false|null)
+      printf '%s\n' "$1"
+      ;;
+    *)
+      printf 'null\n'
+      ;;
+  esac
+}
+
+repo_file_url() {
+  local repo_url="$1"
+  local branch="$2"
+  local path="$3"
+
+  if [ -z "$branch" ] || [ -z "$path" ]; then
+    printf '\n'
+    return 0
+  fi
+
+  printf '%s/blob/%s/%s\n' "$repo_url" "$branch" "$path"
+}
+
+raw_content_url() {
+  local repo="$1"
+  local branch="$2"
+  local path="$3"
+
+  if [ -z "$branch" ]; then
+    printf '\n'
+    return 0
+  fi
+
+  printf 'https://raw.githubusercontent.com/%s/%s/%s/%s\n' "$ORG" "$repo" "$branch" "$path"
+}
+
+fetch_raw_url() {
+  local url="$1"
+  local output="$2"
+  local status
+
+  status="$(curl -sSL \
+    -o "$output" \
+    -w '%{http_code}' \
+    "$url")" || status="000"
+
+  printf '%s\n' "$status"
+}
+
+try_raw_codeowners() {
+  local repo="$1"
+  local branch="$2"
+  local path="$3"
+  local output="$4"
+  local candidate
+  local existing
+  local raw_url
+  local status
+  local tried=()
+
+  for candidate in "$branch" main master; do
+    [ -n "$candidate" ] || continue
+    for existing in "${tried[@]}"; do
+      [ "$existing" = "$candidate" ] && continue 2
+    done
+    tried+=("$candidate")
+
+    raw_url="$(raw_content_url "$repo" "$candidate" "$path")"
+    [ -n "$raw_url" ] || continue
+
+    status="$(fetch_raw_url "$raw_url" "$output")"
+    if [ "$status" -ge 200 ] && [ "$status" -lt 300 ]; then
+      found_codeowners_branch="$candidate"
+      return 0
+    fi
+  done
+
+  return 1
+}
+
+find_codeowners_file() {
+  local repo="$1"
+  local default_branch="$2"
+  local path
+
+  found_codeowners_path=""
+  found_codeowners_branch=""
+  found_codeowners_status="missing"
+  found_codeowners_file=""
+
+  for path in "${CODEOWNERS_PATHS[@]}"; do
+    found_codeowners_file="$(mktemp)"
+    tmp_files+=("$found_codeowners_file")
+
+    if try_raw_codeowners "$repo" "$default_branch" "$path" "$found_codeowners_file"; then
+      found_codeowners_path="$path"
+      found_codeowners_status="present"
+      return 0
+    fi
+  done
+}
+
+codeowners_metrics() {
+  local file="$1"
+
+  jq -Rs '
+    split("\n")
+    | map(gsub("^[[:space:]]+|[[:space:]]+$"; "")) as $lines
+    | ($lines | map(select(. != "" and (startswith("#") | not)))) as $entries
+    | ($entries
+        | map(gsub("[[:space:]]+"; " ") | split(" ") | select(length > 1))) as $rules
+    | {
+        entry_count: ($entries | length),
+        rule_count: ($rules | length),
+        owners: (($rules | map(.[1:] | map(select(startswith("@") or test("^[^[:space:]@]+@[^[:space:]@]+$")))) | add // []) | unique | sort)
+      }
+  ' "$file"
+}
+
+scan_repository() {
+  local repo_json="$1"
+  local repo
+  local url
+  local default_branch
+  local pushed_at
+  local codeowners_present="null"
+  local codeowners_url=""
+  local codeowners_has_rules="null"
+  local metrics='{"entry_count":null,"rule_count":null,"owners":null}'
+  local rule_count
+
+  repo="$(jq -r '.name' <<< "$repo_json")"
+  url="$(jq -r '.html_url' <<< "$repo_json")"
+  default_branch="$(jq -r '.default_branch // empty' <<< "$repo_json")"
+  pushed_at="$(jq -r '.pushed_at // empty' <<< "$repo_json")"
+
+  if is_report_excluded "$repo"; then
+    echo "Skipping report-specific excluded: $repo"
+    return 0
+  fi
+
+  echo "Checking $ORG/$repo..."
+
+  find_codeowners_file "$repo" "$default_branch"
+  case "$found_codeowners_status" in
+    present)
+      codeowners_present="true"
+      codeowners_url="$(repo_file_url "$url" "${found_codeowners_branch:-$default_branch}" "$found_codeowners_path")"
+      metrics="$(codeowners_metrics "$found_codeowners_file")"
+      rule_count="$(jq -r '.rule_count // 0' <<< "$metrics")"
+      if [ "$rule_count" -gt 0 ]; then
+        codeowners_has_rules="true"
+      else
+        codeowners_has_rules="false"
+      fi
+      ;;
+    missing)
+      codeowners_present="false"
+      ;;
+    *)
+      codeowners_present="null"
+      ;;
+  esac
+
+  repo_rows+=("$(jq -c -n \
+    --arg org "$ORG" \
+    --arg repo "$repo" \
+    --arg name "$ORG/$repo" \
+    --arg url "$url" \
+    --arg default_branch "$default_branch" \
+    --arg pushed_at "$pushed_at" \
+    --arg codeowners_status "$found_codeowners_status" \
+    --arg codeowners_path "$found_codeowners_path" \
+    --arg codeowners_url "$codeowners_url" \
+    --argjson codeowners_present "$(json_bool "$codeowners_present")" \
+    --argjson codeowners_has_rules "$(json_bool "$codeowners_has_rules")" \
+    --argjson metrics "$metrics" \
+    '{
+      name: $name,
+      platform: "github.com",
+      org: $org,
+      repo: $repo,
+      url: $url,
+      default_branch: (if $default_branch == "" then null else $default_branch end),
+      pushed_at: (if $pushed_at == "" then null else $pushed_at end),
+      codeowners_present: $codeowners_present,
+      codeowners_status: $codeowners_status,
+      codeowners_path: (if $codeowners_path == "" then null else $codeowners_path end),
+      codeowners_url: (if $codeowners_url == "" then null else $codeowners_url end),
+      codeowners_has_rules: $codeowners_has_rules,
+      codeowners_entry_count: $metrics.entry_count,
+      codeowners_rule_count: $metrics.rule_count,
+      codeowners_owners: $metrics.owners
+    }')")
+}
+
+write_report() {
+  mkdir -p "$(dirname "$OUTPUT")"
+  tmp_output="$(mktemp)"
+  tmp_files+=("$tmp_output")
+
+  if [ "${#repo_rows[@]}" -eq 0 ]; then
+    : > "$tmp_output.rows"
+  else
+    printf '%s\n' "${repo_rows[@]}" > "$tmp_output.rows"
+  fi
+  tmp_files+=("$tmp_output.rows")
+
+  jq -s \
+    --arg generated_at "$GENERATED_AT" \
+    --arg source_repository "$SOURCE_REPOSITORY" \
+    --arg workflow_name "$WORKFLOW_NAME" \
+    --arg workflow_run_id "${GITHUB_RUN_ID:-}" \
+    --arg report_exclusions_path "$REPORT_EXCLUSIONS" \
+    --arg report_exclusion_key "$REPORT_KEY" \
+    --arg json_report_path "$OUTPUT" '
+      sort_by(.name | ascii_downcase) as $repos |
+      {
+        schema_version: 1,
+        generated_at: $generated_at,
+        source: {
+          repository: $source_repository,
+          workflow: $workflow_name,
+          workflow_run_id: (if $workflow_run_id == "" then null else $workflow_run_id end),
+          report_exclusions_path: $report_exclusions_path,
+          report_exclusion_key: $report_exclusion_key,
+          json_report_path: $json_report_path,
+          accepted_paths: [".github/CODEOWNERS", "CODEOWNERS", "docs/CODEOWNERS"]
+        },
+        summary: {
+          total_repositories: ($repos | length),
+          repositories_with_codeowners: ($repos | map(select(.codeowners_present == true)) | length),
+          repositories_without_codeowners: ($repos | map(select(.codeowners_present == false)) | length),
+          repositories_with_unknown_codeowners: ($repos | map(select(.codeowners_present == null)) | length),
+          repositories_with_codeowner_rules: ($repos | map(select(.codeowners_has_rules == true)) | length),
+          repositories_without_codeowner_rules: ($repos | map(select(.codeowners_present == true and .codeowners_has_rules == false)) | length)
+        },
+        repositories: $repos
+      }
+    ' "$tmp_output.rows" > "$tmp_output"
+
+  jq -e '
+    .schema_version == 1 and
+    (.source.json_report_path | type == "string") and
+    (.summary.total_repositories == (.repositories | length))
+  ' "$tmp_output" >/dev/null
+
+  mv "$tmp_output" "$OUTPUT"
+  echo "Wrote structured CODEOWNERS report to $OUTPUT"
+}
+
+main() {
+  parse_args "$@"
+  require_command curl
+  require_command jq
+
+  if [ -z "$GENERATED_AT" ]; then
+    GENERATED_AT="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+  fi
+
+  tmp_files=()
+  trap 'rm -f "${tmp_files[@]}"' EXIT
+  load_report_exclusions "$REPORT_EXCLUSIONS" "$REPORT_KEY"
+  load_repositories
+  validate_report_exclusions_repositories "$REPOSITORIES" "$ORG"
+
+  repo_rows=()
+  for repo_json in "${repo_metadata_rows[@]}"; do
+    scan_repository "$repo_json"
+  done
+
+  write_report
+  trap - EXIT
+  rm -f "${tmp_files[@]}"
+}
+
+main "$@"
