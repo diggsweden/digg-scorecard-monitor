@@ -12,12 +12,17 @@
             "score": 8.1,
             "date": "2026-05-09T02:59:47Z",
             "commit": "b66b2dc89c487159989c726c8b0cec18a8db898b"
+          },
+          {
+            "score": 8.2,
+            "date": "2026-05-16T02:59:44Z",
+            "commit": "e7a169abbe767caf756890eea42cb152c365decd"
           }
         ],
         "current": {
-          "score": 8.2,
-          "date": "2026-05-16T02:59:44Z",
-          "commit": "e7a169abbe767caf756890eea42cb152c365decd"
+          "score": 8.1,
+          "date": "2026-05-30T02:59:54Z",
+          "commit": "cffc4277741e389b2bd0dc8eb3ee45685a67338d"
         }
       },
       "rest-api-profil-lint-processor": {
@@ -60,12 +65,17 @@
             "score": 8.7,
             "date": "2026-05-11T00:46:20Z",
             "commit": "1c155330f41bf30c9381931bfeaa68775f7060b9"
+          },
+          {
+            "score": 8.6,
+            "date": "2026-05-23T02:15:29Z",
+            "commit": "9e13de2cf9fbeedc1674bc142ce7d327d87b299e"
           }
         ],
         "current": {
-          "score": 8.6,
-          "date": "2026-05-23T02:15:29Z",
-          "commit": "9e13de2cf9fbeedc1674bc142ce7d327d87b299e"
+          "score": 8.5,
+          "date": "2026-05-30T02:15:50Z",
+          "commit": "a172558a1386d40137560d241f22ffc8bd56b995"
         }
       },
       ".github": {
@@ -170,12 +180,17 @@
             "score": 7.6,
             "date": "2026-05-16T03:51:35Z",
             "commit": "351e5dbf62e4c2de0be9cddf8845256945b2f38d"
+          },
+          {
+            "score": 7,
+            "date": "2026-05-20T03:55:35Z",
+            "commit": "6ca58c6ebf52a639e9a8db2a96dada2fd80de1a6"
           }
         ],
         "current": {
-          "score": 7,
-          "date": "2026-05-20T03:55:35Z",
-          "commit": "6ca58c6ebf52a639e9a8db2a96dada2fd80de1a6"
+          "score": 7.6,
+          "date": "2026-05-30T03:52:12Z",
+          "commit": "4397eac635e32dae87b35320ce1b7e714d6c3554"
         }
       },
       "wallet-r2ps": {
@@ -305,12 +320,17 @@
             "score": 7.7,
             "date": "2026-05-16T03:56:47Z",
             "commit": "ea2f145c298befbdf5e608aeb4f5562b3f12caa1"
+          },
+          {
+            "score": 7.1,
+            "date": "2026-05-20T03:59:33Z",
+            "commit": "04e1eb2bcdd5926e53a6cda946a640f3ec2221fb"
           }
         ],
         "current": {
-          "score": 7.1,
-          "date": "2026-05-20T03:59:33Z",
-          "commit": "04e1eb2bcdd5926e53a6cda946a640f3ec2221fb"
+          "score": 7.5,
+          "date": "2026-05-30T04:00:42Z",
+          "commit": "77cd7bb917470d9d5e267e8e21ddcf8e6a6749e8"
         }
       },
       "wallet-backend-reference": {
@@ -393,6 +413,14 @@
           "score": 4.8,
           "date": "2026-05-20T03:58:47Z",
           "commit": "0fb78637afb258e28928c212bfdc663447700c30"
+        }
+      },
+      "DCAT-AP-SE-Processor": {
+        "previous": [],
+        "current": {
+          "score": 7.8,
+          "date": "2026-05-30T04:03:26Z",
+          "commit": "765bf0a19825f0c308c535d2b0c0643e2930ff2c"
         }
       }
     }

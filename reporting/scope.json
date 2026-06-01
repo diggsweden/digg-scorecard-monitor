@@ -22,7 +22,8 @@
         "wallet-account",
         "devbase-check",
         "wallet-ecosystem",
-        "wallet-utvecklarportal"
+        "wallet-utvecklarportal",
+        "DCAT-AP-SE-Processor"
       ],
       "excluded": [
         "dgc-java",
