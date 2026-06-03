@@ -248,12 +248,17 @@
             "score": 7.8,
             "date": "2026-05-16T03:57:08Z",
             "commit": "96be41e4758fc392f54adf3b7b30052e735ff618"
+          },
+          {
+            "score": 7.2,
+            "date": "2026-05-20T04:01:09Z",
+            "commit": "96be41e4758fc392f54adf3b7b30052e735ff618"
           }
         ],
         "current": {
-          "score": 7.2,
-          "date": "2026-05-20T04:01:09Z",
-          "commit": "96be41e4758fc392f54adf3b7b30052e735ff618"
+          "score": 7.8,
+          "date": "2026-06-03T04:02:06Z",
+          "commit": "3f16b586d94f4d1678b84af55b4732adffaea56a"
         }
       },
       "wallet-verifier-test-web": {
@@ -394,11 +399,17 @@
         }
       },
       "wallet-ecosystem": {
-        "previous": [],
+        "previous": [
+          {
+            "score": 8,
+            "date": "2026-05-16T03:57:51Z",
+            "commit": "b5011c3b0dec84b0953c5cfa1fc9b19019cbcbe3"
+          }
+        ],
         "current": {
-          "score": 8,
-          "date": "2026-05-16T03:57:51Z",
-          "commit": "b5011c3b0dec84b0953c5cfa1fc9b19019cbcbe3"
+          "score": 7.9,
+          "date": "2026-06-03T04:01:02Z",
+          "commit": "452f79399d52483c102482df841fcf80a802de2e"
         }
       },
       "wallet-utvecklarportal": {
@@ -407,12 +418,17 @@
             "score": 4.7,
             "date": "2026-05-16T03:57:50Z",
             "commit": "0fb78637afb258e28928c212bfdc663447700c30"
+          },
+          {
+            "score": 4.8,
+            "date": "2026-05-20T03:58:47Z",
+            "commit": "0fb78637afb258e28928c212bfdc663447700c30"
           }
         ],
         "current": {
-          "score": 4.8,
-          "date": "2026-05-20T03:58:47Z",
-          "commit": "0fb78637afb258e28928c212bfdc663447700c30"
+          "score": 4.9,
+          "date": "2026-06-03T03:59:34Z",
+          "commit": "9e5029fd03473920854da9b74912e26c4becdbc7"
         }
       },
       "DCAT-AP-SE-Processor": {
