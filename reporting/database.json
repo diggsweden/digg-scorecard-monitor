@@ -41,12 +41,17 @@
             "score": 8.3,
             "date": "2026-05-16T03:31:48Z",
             "commit": "a9c0c76328f8b1fda8cbb48aa5acb745bdc332e7"
+          },
+          {
+            "score": 8.5,
+            "date": "2026-05-23T03:32:02Z",
+            "commit": "a37a52d698fc9b72de9d7907ef3f5683b5f83cbb"
           }
         ],
         "current": {
-          "score": 8.5,
-          "date": "2026-05-23T03:32:02Z",
-          "commit": "a37a52d698fc9b72de9d7907ef3f5683b5f83cbb"
+          "score": 8.6,
+          "date": "2026-06-06T03:32:17Z",
+          "commit": "af585ef74a5b977bf18b4bae4afe63e1ea7a7375"
         }
       },
       "mla": {
@@ -70,11 +75,16 @@
             "score": 8.6,
             "date": "2026-05-23T02:15:29Z",
             "commit": "9e13de2cf9fbeedc1674bc142ce7d327d87b299e"
+          },
+          {
+            "score": 8.5,
+            "date": "2026-05-30T02:15:50Z",
+            "commit": "a172558a1386d40137560d241f22ffc8bd56b995"
           }
         ],
         "current": {
-          "score": 8.5,
-          "date": "2026-05-30T02:15:50Z",
+          "score": 8.4,
+          "date": "2026-06-06T02:15:41Z",
           "commit": "a172558a1386d40137560d241f22ffc8bd56b995"
         }
       },
@@ -432,11 +442,17 @@
         }
       },
       "DCAT-AP-SE-Processor": {
-        "previous": [],
+        "previous": [
+          {
+            "score": 7.8,
+            "date": "2026-05-30T04:03:26Z",
+            "commit": "765bf0a19825f0c308c535d2b0c0643e2930ff2c"
+          }
+        ],
         "current": {
-          "score": 7.8,
-          "date": "2026-05-30T04:03:26Z",
-          "commit": "765bf0a19825f0c308c535d2b0c0643e2930ff2c"
+          "score": 8.3,
+          "date": "2026-06-06T04:03:27Z",
+          "commit": "ac0cb121b0bd597ab19414949beb1883f7cd0754"
         }
       }
     }
