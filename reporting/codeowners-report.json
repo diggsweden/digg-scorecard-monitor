@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-06-08T12:33:50Z",
+  "generated_at": "2026-06-08T14:27:34Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "27137787671",
+    "workflow_run_id": "27144492503",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "codeowners",
     "json_report_path": "reporting/codeowners-report.json",
@@ -16,11 +16,11 @@
   },
   "summary": {
     "total_repositories": 51,
-    "repositories_with_codeowners": 11,
-    "repositories_without_codeowners": 40,
+    "repositories_with_codeowners": 14,
+    "repositories_without_codeowners": 37,
     "repositories_with_unknown_codeowners": 0,
-    "repositories_with_codeowner_rules": 7,
-    "repositories_without_codeowner_rules": 4
+    "repositories_with_codeowner_rules": 11,
+    "repositories_without_codeowner_rules": 3
   },
   "repositories": [
     {
@@ -47,7 +47,7 @@
       "repo": "android-access-mechanism",
       "url": "https://github.com/diggsweden/android-access-mechanism",
       "default_branch": "main",
-      "pushed_at": "2026-06-08T12:12:09Z",
+      "pushed_at": "2026-06-08T12:48:27Z",
       "codeowners_present": false,
       "codeowners_status": "missing",
       "codeowners_path": null,
@@ -185,7 +185,7 @@
       "repo": "digg-scorecard-monitor",
       "url": "https://github.com/diggsweden/digg-scorecard-monitor",
       "default_branch": "main",
-      "pushed_at": "2026-06-08T10:38:20Z",
+      "pushed_at": "2026-06-08T12:34:39Z",
       "codeowners_present": false,
       "codeowners_status": "missing",
       "codeowners_path": null,
@@ -450,7 +450,7 @@
       "repo": "opensource-docs",
       "url": "https://github.com/diggsweden/opensource-docs",
       "default_branch": "main",
-      "pushed_at": "2026-06-08T11:12:59Z",
+      "pushed_at": "2026-06-08T12:50:40Z",
       "codeowners_present": false,
       "codeowners_status": "missing",
       "codeowners_path": null,
@@ -694,7 +694,7 @@
       "repo": "wallet-app-android",
       "url": "https://github.com/diggsweden/wallet-app-android",
       "default_branch": "main",
-      "pushed_at": "2026-06-08T06:52:24Z",
+      "pushed_at": "2026-06-08T13:28:02Z",
       "codeowners_present": false,
       "codeowners_status": "missing",
       "codeowners_path": null,
@@ -711,7 +711,7 @@
       "repo": "wallet-app-ios",
       "url": "https://github.com/diggsweden/wallet-app-ios",
       "default_branch": "main",
-      "pushed_at": "2026-06-08T12:18:37Z",
+      "pushed_at": "2026-06-08T14:09:05Z",
       "codeowners_present": false,
       "codeowners_status": "missing",
       "codeowners_path": null,
@@ -779,15 +779,17 @@
       "repo": "wallet-ecosystem",
       "url": "https://github.com/diggsweden/wallet-ecosystem",
       "default_branch": "main",
-      "pushed_at": "2026-06-05T12:37:39Z",
-      "codeowners_present": false,
-      "codeowners_status": "missing",
-      "codeowners_path": null,
-      "codeowners_url": null,
-      "codeowners_has_rules": null,
-      "codeowners_entry_count": null,
-      "codeowners_rule_count": null,
-      "codeowners_owners": null
+      "pushed_at": "2026-06-08T14:13:18Z",
+      "codeowners_present": true,
+      "codeowners_status": "present",
+      "codeowners_path": "CODEOWNERS",
+      "codeowners_url": "https://github.com/diggsweden/wallet-ecosystem/blob/main/CODEOWNERS",
+      "codeowners_has_rules": true,
+      "codeowners_entry_count": 1,
+      "codeowners_rule_count": 1,
+      "codeowners_owners": [
+        "@diggsweden/team-wallet-issuer-functions"
+      ]
     },
     {
       "name": "diggsweden/wallet-provider",
@@ -796,15 +798,17 @@
       "repo": "wallet-provider",
       "url": "https://github.com/diggsweden/wallet-provider",
       "default_branch": "main",
-      "pushed_at": "2026-06-05T17:46:17Z",
+      "pushed_at": "2026-06-08T14:12:58Z",
       "codeowners_present": true,
       "codeowners_status": "present",
       "codeowners_path": "CODEOWNERS",
       "codeowners_url": "https://github.com/diggsweden/wallet-provider/blob/main/CODEOWNERS",
-      "codeowners_has_rules": false,
-      "codeowners_entry_count": 0,
-      "codeowners_rule_count": 0,
-      "codeowners_owners": []
+      "codeowners_has_rules": true,
+      "codeowners_entry_count": 1,
+      "codeowners_rule_count": 1,
+      "codeowners_owners": [
+        "@diggsweden/team-wallet-issuer-functions"
+      ]
     },
     {
       "name": "diggsweden/wallet-r2ps",
@@ -881,15 +885,17 @@
       "repo": "wallet-utvecklarportal",
       "url": "https://github.com/diggsweden/wallet-utvecklarportal",
       "default_branch": "main",
-      "pushed_at": "2026-06-01T09:39:55Z",
-      "codeowners_present": false,
-      "codeowners_status": "missing",
-      "codeowners_path": null,
-      "codeowners_url": null,
-      "codeowners_has_rules": null,
-      "codeowners_entry_count": null,
-      "codeowners_rule_count": null,
-      "codeowners_owners": null
+      "pushed_at": "2026-06-08T14:02:13Z",
+      "codeowners_present": true,
+      "codeowners_status": "present",
+      "codeowners_path": "CODEOWNERS",
+      "codeowners_url": "https://github.com/diggsweden/wallet-utvecklarportal/blob/main/CODEOWNERS",
+      "codeowners_has_rules": true,
+      "codeowners_entry_count": 1,
+      "codeowners_rule_count": 1,
+      "codeowners_owners": [
+        "@diggsweden/team-wallet-issuer-functions"
+      ]
     },
     {
       "name": "diggsweden/wallet-verifier-test-web",
@@ -898,15 +904,17 @@
       "repo": "wallet-verifier-test-web",
       "url": "https://github.com/diggsweden/wallet-verifier-test-web",
       "default_branch": "main",
-      "pushed_at": "2026-06-04T10:48:48Z",
-      "codeowners_present": false,
-      "codeowners_status": "missing",
-      "codeowners_path": null,
-      "codeowners_url": null,
-      "codeowners_has_rules": null,
-      "codeowners_entry_count": null,
-      "codeowners_rule_count": null,
-      "codeowners_owners": null
+      "pushed_at": "2026-06-08T14:13:31Z",
+      "codeowners_present": true,
+      "codeowners_status": "present",
+      "codeowners_path": "CODEOWNERS",
+      "codeowners_url": "https://github.com/diggsweden/wallet-verifier-test-web/blob/main/CODEOWNERS",
+      "codeowners_has_rules": true,
+      "codeowners_entry_count": 1,
+      "codeowners_rule_count": 1,
+      "codeowners_owners": [
+        "@diggsweden/team-wallet-issuer-functions"
+      ]
     }
   ]
 }
