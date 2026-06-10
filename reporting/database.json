@@ -17,12 +17,17 @@
             "score": 8.2,
             "date": "2026-05-16T02:59:44Z",
             "commit": "e7a169abbe767caf756890eea42cb152c365decd"
+          },
+          {
+            "score": 8.1,
+            "date": "2026-05-30T02:59:54Z",
+            "commit": "cffc4277741e389b2bd0dc8eb3ee45685a67338d"
           }
         ],
         "current": {
-          "score": 8.1,
-          "date": "2026-05-30T02:59:54Z",
-          "commit": "cffc4277741e389b2bd0dc8eb3ee45685a67338d"
+          "score": 8.2,
+          "date": "2026-06-10T03:06:25Z",
+          "commit": "15d48537266b00d6e7e5eddc99d01489ae7c9e62"
         }
       },
       "rest-api-profil-lint-processor": {
@@ -200,12 +205,17 @@
             "score": 7,
             "date": "2026-05-20T03:55:35Z",
             "commit": "6ca58c6ebf52a639e9a8db2a96dada2fd80de1a6"
+          },
+          {
+            "score": 7.6,
+            "date": "2026-05-30T03:52:12Z",
+            "commit": "4397eac635e32dae87b35320ce1b7e714d6c3554"
           }
         ],
         "current": {
-          "score": 7.6,
-          "date": "2026-05-30T03:52:12Z",
-          "commit": "4397eac635e32dae87b35320ce1b7e714d6c3554"
+          "score": 7.2,
+          "date": "2026-06-10T03:55:50Z",
+          "commit": "3b6f7dca2cc8b008cad8fe5e29619d5096579264"
         }
       },
       "wallet-r2ps": {
@@ -429,12 +439,17 @@
             "score": 8,
             "date": "2026-05-16T03:57:51Z",
             "commit": "b5011c3b0dec84b0953c5cfa1fc9b19019cbcbe3"
+          },
+          {
+            "score": 7.9,
+            "date": "2026-06-03T04:01:02Z",
+            "commit": "452f79399d52483c102482df841fcf80a802de2e"
           }
         ],
         "current": {
-          "score": 7.9,
-          "date": "2026-06-03T04:01:02Z",
-          "commit": "452f79399d52483c102482df841fcf80a802de2e"
+          "score": 8,
+          "date": "2026-06-10T04:00:03Z",
+          "commit": "227f8e7b2fd1f3ed6c4baf038d348928c9215916"
         }
       },
       "wallet-utvecklarportal": {
@@ -448,12 +463,17 @@
             "score": 4.8,
             "date": "2026-05-20T03:58:47Z",
             "commit": "0fb78637afb258e28928c212bfdc663447700c30"
+          },
+          {
+            "score": 4.9,
+            "date": "2026-06-03T03:59:34Z",
+            "commit": "9e5029fd03473920854da9b74912e26c4becdbc7"
           }
         ],
         "current": {
-          "score": 4.9,
-          "date": "2026-06-03T03:59:34Z",
-          "commit": "9e5029fd03473920854da9b74912e26c4becdbc7"
+          "score": 5,
+          "date": "2026-06-10T03:58:53Z",
+          "commit": "7fd96ba30f3fb8b437574e268c665c14bc4823fa"
         }
       },
       "DCAT-AP-SE-Processor": {
