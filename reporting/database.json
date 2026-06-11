@@ -249,12 +249,17 @@
             "score": 8.1,
             "date": "2026-05-23T03:59:51Z",
             "commit": "6c4d63116002ed3a92bf5749e6e090c10b41fb79"
+          },
+          {
+            "score": 8.2,
+            "date": "2026-06-08T11:21:26Z",
+            "commit": "897570e34fb29c6a8870d0633fb7aee4c9d2f9be"
           }
         ],
         "current": {
-          "score": 8.2,
-          "date": "2026-06-08T11:21:26Z",
-          "commit": "897570e34fb29c6a8870d0633fb7aee4c9d2f9be"
+          "score": 8.3,
+          "date": "2026-06-11T08:05:52Z",
+          "commit": "f0146394e24a137a3f9a274dab0c04f8f7826554"
         }
       },
       "wallet-provider": {
