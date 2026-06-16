@@ -95,12 +95,17 @@
             "score": 8.5,
             "date": "2026-06-09T01:06:53Z",
             "commit": "eb34bedd738b1dfd0e183ee2100f56f05582df66"
+          },
+          {
+            "score": 8.4,
+            "date": "2026-06-13T02:16:06Z",
+            "commit": "eb34bedd738b1dfd0e183ee2100f56f05582df66"
           }
         ],
         "current": {
-          "score": 8.4,
-          "date": "2026-06-13T02:16:06Z",
-          "commit": "eb34bedd738b1dfd0e183ee2100f56f05582df66"
+          "score": 8.3,
+          "date": "2026-06-16T16:14:02Z",
+          "commit": "2307e8f5e4cd1d5481cc7778df8a17dc6cfabad6"
         }
       },
       ".github": {
