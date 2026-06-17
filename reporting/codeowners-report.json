@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-06-17T10:19:16Z",
+  "generated_at": "2026-06-17T10:36:23Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "27681932628",
+    "workflow_run_id": "27682833582",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "codeowners",
     "json_report_path": "reporting/codeowners-report.json",
@@ -15,9 +15,9 @@
     ]
   },
   "summary": {
-    "total_repositories": 47,
+    "total_repositories": 43,
     "repositories_with_codeowners": 26,
-    "repositories_without_codeowners": 21,
+    "repositories_without_codeowners": 17,
     "repositories_with_unknown_codeowners": 0,
     "repositories_with_codeowner_rules": 26,
     "repositories_without_codeowner_rules": 0
@@ -193,7 +193,7 @@
       "repo": "digg-scorecard-monitor",
       "url": "https://github.com/diggsweden/digg-scorecard-monitor",
       "default_branch": "main",
-      "pushed_at": "2026-06-17T08:47:29Z",
+      "pushed_at": "2026-06-17T10:19:52Z",
       "codeowners_present": true,
       "codeowners_status": "present",
       "codeowners_path": "CODEOWNERS",
@@ -259,23 +259,6 @@
       "codeowners_owners": [
         "@eu-digital-identity-wallet/niscy-admins"
       ]
-    },
-    {
-      "name": "diggsweden/eudiw-wallet-token-lib",
-      "platform": "github.com",
-      "org": "diggsweden",
-      "repo": "eudiw-wallet-token-lib",
-      "url": "https://github.com/diggsweden/eudiw-wallet-token-lib",
-      "default_branch": "main",
-      "pushed_at": "2026-06-09T20:17:48Z",
-      "codeowners_present": false,
-      "codeowners_status": "missing",
-      "codeowners_path": null,
-      "codeowners_url": null,
-      "codeowners_has_rules": null,
-      "codeowners_entry_count": null,
-      "codeowners_rule_count": null,
-      "codeowners_owners": null
     },
     {
       "name": "diggsweden/haskell-digg-oidc",
@@ -365,23 +348,6 @@
         "@Nicestone1",
         "@Whiteflight"
       ]
-    },
-    {
-      "name": "diggsweden/opaque-lib-java",
-      "platform": "github.com",
-      "org": "diggsweden",
-      "repo": "opaque-lib-java",
-      "url": "https://github.com/diggsweden/opaque-lib-java",
-      "default_branch": "main",
-      "pushed_at": "2026-06-16T21:54:43Z",
-      "codeowners_present": false,
-      "codeowners_status": "missing",
-      "codeowners_path": null,
-      "codeowners_url": null,
-      "codeowners_has_rules": null,
-      "codeowners_entry_count": null,
-      "codeowners_rule_count": null,
-      "codeowners_owners": null
     },
     {
       "name": "diggsweden/opaque_ke_uniffi",
@@ -790,23 +756,6 @@
       ]
     },
     {
-      "name": "diggsweden/wallet-r2ps-secure-channel",
-      "platform": "github.com",
-      "org": "diggsweden",
-      "repo": "wallet-r2ps-secure-channel",
-      "url": "https://github.com/diggsweden/wallet-r2ps-secure-channel",
-      "default_branch": "main",
-      "pushed_at": "2025-10-19T07:25:17Z",
-      "codeowners_present": false,
-      "codeowners_status": "missing",
-      "codeowners_path": null,
-      "codeowners_url": null,
-      "codeowners_has_rules": null,
-      "codeowners_entry_count": null,
-      "codeowners_rule_count": null,
-      "codeowners_owners": null
-    },
-    {
       "name": "diggsweden/wallet-r2ps-specification",
       "platform": "github.com",
       "org": "diggsweden",
@@ -814,23 +763,6 @@
       "url": "https://github.com/diggsweden/wallet-r2ps-specification",
       "default_branch": "main",
       "pushed_at": "2026-02-10T15:33:44Z",
-      "codeowners_present": false,
-      "codeowners_status": "missing",
-      "codeowners_path": null,
-      "codeowners_url": null,
-      "codeowners_has_rules": null,
-      "codeowners_entry_count": null,
-      "codeowners_rule_count": null,
-      "codeowners_owners": null
-    },
-    {
-      "name": "diggsweden/wallet-technical-specifications",
-      "platform": "github.com",
-      "org": "diggsweden",
-      "repo": "wallet-technical-specifications",
-      "url": "https://github.com/diggsweden/wallet-technical-specifications",
-      "default_branch": "main",
-      "pushed_at": "2026-01-26T15:26:55Z",
       "codeowners_present": false,
       "codeowners_status": "missing",
       "codeowners_path": null,
