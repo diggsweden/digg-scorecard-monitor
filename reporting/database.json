@@ -51,12 +51,17 @@
             "score": 8.5,
             "date": "2026-05-23T03:32:02Z",
             "commit": "a37a52d698fc9b72de9d7907ef3f5683b5f83cbb"
+          },
+          {
+            "score": 8.6,
+            "date": "2026-06-06T03:32:17Z",
+            "commit": "af585ef74a5b977bf18b4bae4afe63e1ea7a7375"
           }
         ],
         "current": {
-          "score": 8.6,
-          "date": "2026-06-06T03:32:17Z",
-          "commit": "af585ef74a5b977bf18b4bae4afe63e1ea7a7375"
+          "score": 8.4,
+          "date": "2026-06-17T03:32:19Z",
+          "commit": "87dbf4586e8a2de556da8f28b39ab691fb9da5ca"
         }
       },
       "mla": {
@@ -220,12 +225,17 @@
             "score": 7.6,
             "date": "2026-05-30T03:52:12Z",
             "commit": "4397eac635e32dae87b35320ce1b7e714d6c3554"
+          },
+          {
+            "score": 7.2,
+            "date": "2026-06-10T03:55:50Z",
+            "commit": "3b6f7dca2cc8b008cad8fe5e29619d5096579264"
           }
         ],
         "current": {
-          "score": 7.2,
-          "date": "2026-06-10T03:55:50Z",
-          "commit": "3b6f7dca2cc8b008cad8fe5e29619d5096579264"
+          "score": 7.1,
+          "date": "2026-06-17T03:56:39Z",
+          "commit": "39d106fa05f081206696cbcd0ba74b362f2374e0"
         }
       },
       "wallet-r2ps": {
