@@ -1,17 +1,17 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-06-17T10:34:28Z",
+  "generated_at": "2026-06-17T10:52:02Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "27682833582",
+    "workflow_run_id": "27683735483",
     "org": "diggsweden",
     "api_path": "/orgs/diggsweden/repos?type=public"
   },
   "summary": {
     "total_repositories": 79,
     "active_repositories": 0,
-    "archived_repositories": 36,
+    "archived_repositories": 39,
     "fork_repositories": 9
   },
   "repositories": [
@@ -274,7 +274,7 @@
       "repo": "digg-scorecard-monitor",
       "url": "https://github.com/diggsweden/digg-scorecard-monitor",
       "default_branch": "main",
-      "pushed_at": "2026-06-17T10:19:52Z",
+      "pushed_at": "2026-06-17T10:36:53Z",
       "fork": null,
       "archived": null,
       "private": null,
@@ -290,7 +290,7 @@
       "default_branch": "main",
       "pushed_at": "2025-09-11T20:40:59Z",
       "fork": null,
-      "archived": null,
+      "archived": true,
       "private": null,
       "visibility": "public",
       "github_license": null
@@ -710,7 +710,7 @@
       "default_branch": "main",
       "pushed_at": "2026-05-06T08:54:48Z",
       "fork": null,
-      "archived": null,
+      "archived": true,
       "private": null,
       "visibility": "public",
       "github_license": null
@@ -724,7 +724,7 @@
       "default_branch": "main",
       "pushed_at": "2026-01-08T13:07:27Z",
       "fork": null,
-      "archived": null,
+      "archived": true,
       "private": null,
       "visibility": "public",
       "github_license": null

@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-06-17T10:36:23Z",
+  "generated_at": "2026-06-17T10:53:29Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "27682833582",
+    "workflow_run_id": "27683735483",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "codeowners",
     "json_report_path": "reporting/codeowners-report.json",
@@ -15,9 +15,9 @@
     ]
   },
   "summary": {
-    "total_repositories": 43,
+    "total_repositories": 40,
     "repositories_with_codeowners": 26,
-    "repositories_without_codeowners": 17,
+    "repositories_without_codeowners": 14,
     "repositories_with_unknown_codeowners": 0,
     "repositories_with_codeowner_rules": 26,
     "repositories_without_codeowner_rules": 0
@@ -193,7 +193,7 @@
       "repo": "digg-scorecard-monitor",
       "url": "https://github.com/diggsweden/digg-scorecard-monitor",
       "default_branch": "main",
-      "pushed_at": "2026-06-17T10:19:52Z",
+      "pushed_at": "2026-06-17T10:36:53Z",
       "codeowners_present": true,
       "codeowners_status": "present",
       "codeowners_path": "CODEOWNERS",
@@ -204,23 +204,6 @@
       "codeowners_owners": [
         "@diggsweden/devsecops"
       ]
-    },
-    {
-      "name": "diggsweden/ena-authorization",
-      "platform": "github.com",
-      "org": "diggsweden",
-      "repo": "ena-authorization",
-      "url": "https://github.com/diggsweden/ena-authorization",
-      "default_branch": "main",
-      "pushed_at": "2025-09-11T20:40:59Z",
-      "codeowners_present": false,
-      "codeowners_status": "missing",
-      "codeowners_path": null,
-      "codeowners_url": null,
-      "codeowners_has_rules": null,
-      "codeowners_entry_count": null,
-      "codeowners_rule_count": null,
-      "codeowners_owners": null
     },
     {
       "name": "diggsweden/eudi-srv-pid-issuer",
@@ -414,40 +397,6 @@
       "url": "https://github.com/diggsweden/persistent-identifiers-investigation",
       "default_branch": "main",
       "pushed_at": "2026-02-25T15:52:37Z",
-      "codeowners_present": false,
-      "codeowners_status": "missing",
-      "codeowners_path": null,
-      "codeowners_url": null,
-      "codeowners_has_rules": null,
-      "codeowners_entry_count": null,
-      "codeowners_rule_count": null,
-      "codeowners_owners": null
-    },
-    {
-      "name": "diggsweden/r2ps-base",
-      "platform": "github.com",
-      "org": "diggsweden",
-      "repo": "r2ps-base",
-      "url": "https://github.com/diggsweden/r2ps-base",
-      "default_branch": "main",
-      "pushed_at": "2026-05-06T08:54:48Z",
-      "codeowners_present": false,
-      "codeowners_status": "missing",
-      "codeowners_path": null,
-      "codeowners_url": null,
-      "codeowners_has_rules": null,
-      "codeowners_entry_count": null,
-      "codeowners_rule_count": null,
-      "codeowners_owners": null
-    },
-    {
-      "name": "diggsweden/r2ps-demo",
-      "platform": "github.com",
-      "org": "diggsweden",
-      "repo": "r2ps-demo",
-      "url": "https://github.com/diggsweden/r2ps-demo",
-      "default_branch": "main",
-      "pushed_at": "2026-01-08T13:07:27Z",
       "codeowners_present": false,
       "codeowners_status": "missing",
       "codeowners_path": null,
