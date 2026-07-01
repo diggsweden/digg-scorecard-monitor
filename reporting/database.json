@@ -255,12 +255,17 @@
             "score": 7.7,
             "date": "2026-06-20T03:52:43Z",
             "commit": "39d106fa05f081206696cbcd0ba74b362f2374e0"
+          },
+          {
+            "score": 6.9,
+            "date": "2026-06-24T03:55:23Z",
+            "commit": "39d106fa05f081206696cbcd0ba74b362f2374e0"
           }
         ],
         "current": {
-          "score": 6.9,
-          "date": "2026-06-24T03:55:23Z",
-          "commit": "39d106fa05f081206696cbcd0ba74b362f2374e0"
+          "score": 7,
+          "date": "2026-07-01T03:56:02Z",
+          "commit": "dac583348e6c97f15a55b9d7a0b720c242003a04"
         }
       },
       "wallet-r2ps": {
@@ -304,11 +309,16 @@
             "score": 8.3,
             "date": "2026-06-11T08:05:52Z",
             "commit": "f0146394e24a137a3f9a274dab0c04f8f7826554"
+          },
+          {
+            "score": 8.2,
+            "date": "2026-06-24T04:00:36Z",
+            "commit": "80c05646bb2742dcafc5da7eb315af88ab3cdc0c"
           }
         ],
         "current": {
-          "score": 8.2,
-          "date": "2026-06-24T04:00:36Z",
+          "score": 8.1,
+          "date": "2026-07-01T04:01:14Z",
           "commit": "80c05646bb2742dcafc5da7eb315af88ab3cdc0c"
         }
       },
@@ -529,12 +539,17 @@
             "score": 7.9,
             "date": "2026-06-13T04:01:45Z",
             "commit": "3edff2af9ccbe97b9c514d4365b90e7d5cd3ed2d"
+          },
+          {
+            "score": 8,
+            "date": "2026-06-27T04:01:12Z",
+            "commit": "a7a6fdb5f47dbecf02604c24585dba6084becb3c"
           }
         ],
         "current": {
-          "score": 8,
-          "date": "2026-06-27T04:01:12Z",
-          "commit": "a7a6fdb5f47dbecf02604c24585dba6084becb3c"
+          "score": 8.1,
+          "date": "2026-07-01T04:00:31Z",
+          "commit": "a09a6fa3bf9dcfff079b36b36e5b5a14ae5dd265"
         }
       },
       "wallet-utvecklarportal": {
@@ -568,12 +583,17 @@
             "score": 4.8,
             "date": "2026-06-20T04:01:32Z",
             "commit": "5752ec2a0bfd4cfc43d431d77bdfe6ad0acd5a22"
+          },
+          {
+            "score": 5,
+            "date": "2026-06-27T04:00:58Z",
+            "commit": "c226c1d548c9d36fa481136d4846891700cb8865"
           }
         ],
         "current": {
-          "score": 5,
-          "date": "2026-06-27T04:00:58Z",
-          "commit": "c226c1d548c9d36fa481136d4846891700cb8865"
+          "score": 5.8,
+          "date": "2026-07-01T03:59:04Z",
+          "commit": "be79f7e896ae71052e8a8fa8f2465f998e5b1d0c"
         }
       },
       "DCAT-AP-SE-Processor": {
