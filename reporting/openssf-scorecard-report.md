@@ -3,7 +3,7 @@
 ## Summary
 
 | Repository | Commit | Score | Date | Score Delta | Report |
-| -- | -- | -- | -- | -- | -- |
+| -- | -- | -- | -- | -- |
 | [diggsweden/.github](https://github.com/diggsweden/.github) | [369bfb6](https://github.com/diggsweden/.github/commit/369bfb64c52d971a54beebae5d788b377ae90a1d) | 7.2 | 2025-11-29T02:25:17Z | 0 / [Details](https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/.github/compare/369bfb64c52d971a54beebae5d788b377ae90a1d/369bfb64c52d971a54beebae5d788b377ae90a1d) | [View](https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/.github/commit/369bfb64c52d971a54beebae5d788b377ae90a1d) |
 | [diggsweden/android-access-mechanism](https://github.com/diggsweden/android-access-mechanism) | - | - | - | - | - |
 | [diggsweden/cose-lib](https://github.com/diggsweden/cose-lib) | [25a3e92](https://github.com/diggsweden/cose-lib/commit/25a3e92ceec72b869e2d04e4cbdebd9660ad8b7a) | 7.5 | 2026-07-04T02:34:10Z | 0 / [Details](https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/cose-lib/compare/11d5bd5e333852947237e0ce9666369c1aa6e584/25a3e92ceec72b869e2d04e4cbdebd9660ad8b7a) | [View](https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/cose-lib/commit/25a3e92ceec72b869e2d04e4cbdebd9660ad8b7a) |
@@ -26,6 +26,7 @@
 | [diggsweden/r2ps-base](https://github.com/diggsweden/r2ps-base) | [71da36a](https://github.com/diggsweden/r2ps-base/commit/71da36ad8213c4cbdedabdaea579ab9a3ea2276f) | 6.2 | 2026-06-17T02:49:53Z | 0 / [Details](https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/r2ps-base/compare/71da36ad8213c4cbdedabdaea579ab9a3ea2276f/71da36ad8213c4cbdedabdaea579ab9a3ea2276f) | [View](https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/r2ps-base/commit/71da36ad8213c4cbdedabdaea579ab9a3ea2276f) |
 | [diggsweden/rest-api-profil-lint-processor](https://github.com/diggsweden/rest-api-profil-lint-processor) | [2f13eed](https://github.com/diggsweden/rest-api-profil-lint-processor/commit/2f13eede43384493f073e206b74a711890d1e747) | 8.4 | 2026-07-04T03:31:36Z | 0 / [Details](https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/rest-api-profil-lint-processor/compare/87dbf4586e8a2de556da8f28b39ab691fb9da5ca/2f13eede43384493f073e206b74a711890d1e747) | [View](https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/rest-api-profil-lint-processor/commit/2f13eede43384493f073e206b74a711890d1e747) |
 | [diggsweden/reusable-ci-testsuite](https://github.com/diggsweden/reusable-ci-testsuite) | - | - | - | - | - |
+| [diggsweden/reusable-ci](https://github.com/diggsweden/reusable-ci) | - | - | - | - | - |
 | [diggsweden/sdg-intermediation-eu](https://github.com/diggsweden/sdg-intermediation-eu) | - | - | - | - | - |
 | [diggsweden/sdg-intermediation-se](https://github.com/diggsweden/sdg-intermediation-se) | - | - | - | - | - |
 | [diggsweden/SwiftAccessMechanism](https://github.com/diggsweden/SwiftAccessMechanism) | - | - | - | - | - |
