@@ -358,11 +358,16 @@
             "score": 7.2,
             "date": "2026-06-24T04:00:58Z",
             "commit": "8ed59cbb3a711a4f55cc0b8e9934dcd6d604a3ed"
+          },
+          {
+            "score": 7.3,
+            "date": "2026-06-27T04:01:23Z",
+            "commit": "005c3aae554d51d163f49fb2845555a66fe2bd8b"
           }
         ],
         "current": {
-          "score": 7.3,
-          "date": "2026-06-27T04:01:23Z",
+          "score": 7.2,
+          "date": "2026-07-04T03:57:28Z",
           "commit": "005c3aae554d51d163f49fb2845555a66fe2bd8b"
         }
       },
@@ -387,12 +392,17 @@
             "score": 6.9,
             "date": "2026-05-20T04:08:13Z",
             "commit": "bf41f8d650b494be931bed70c6b5ee953fa7dde4"
+          },
+          {
+            "score": 6.8,
+            "date": "2026-05-23T04:05:04Z",
+            "commit": "bf41f8d650b494be931bed70c6b5ee953fa7dde4"
           }
         ],
         "current": {
-          "score": 6.8,
-          "date": "2026-05-23T04:05:04Z",
-          "commit": "bf41f8d650b494be931bed70c6b5ee953fa7dde4"
+          "score": 7.6,
+          "date": "2026-07-04T04:01:52Z",
+          "commit": "12a0d7fb5e2eb62b49bbfe73ba4847dd545a6a50"
         }
       },
       "opaque-lib-java": {
@@ -607,12 +617,17 @@
             "score": 8.3,
             "date": "2026-06-06T04:03:27Z",
             "commit": "ac0cb121b0bd597ab19414949beb1883f7cd0754"
+          },
+          {
+            "score": 7.7,
+            "date": "2026-06-24T03:59:42Z",
+            "commit": "ac0cb121b0bd597ab19414949beb1883f7cd0754"
           }
         ],
         "current": {
-          "score": 7.7,
-          "date": "2026-06-24T03:59:42Z",
-          "commit": "ac0cb121b0bd597ab19414949beb1883f7cd0754"
+          "score": 7.6,
+          "date": "2026-07-04T03:58:40Z",
+          "commit": "3ee89bf59e2dc20db284dbc1b7edcb480fdaadbd"
         }
       }
     }
