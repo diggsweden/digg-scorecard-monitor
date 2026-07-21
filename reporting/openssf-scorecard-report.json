@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-21T13:28:53Z",
+  "generated_at": "2026-07-21T15:40:19Z",
   "latest_scorecard_at": "2026-07-21T09:28:22Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "29834564771",
+    "workflow_run_id": "29845021273",
     "scope_path": "reporting/scope.json",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "openssf_scorecard",
@@ -13,10 +13,10 @@
     "json_report_path": "reporting/openssf-scorecard-report.json"
   },
   "summary": {
-    "total_repositories": 38,
+    "total_repositories": 39,
     "repositories_with_score": 22,
-    "repositories_without_score": 16,
-    "repositories_with_approved_workflow": 15,
+    "repositories_without_score": 17,
+    "repositories_with_approved_workflow": 16,
     "repositories_without_approved_workflow": 18,
     "repositories_with_unknown_workflow": 5,
     "average_score": 7.3,
@@ -710,6 +710,28 @@
       "delta": 0,
       "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-client-gateway/compare/dac583348e6c97f15a55b9d7a0b720c242003a04/478bf32cd0ee5909cd657319381d6326d9b9c473",
       "report_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-client-gateway/commit/478bf32cd0ee5909cd657319381d6326d9b9c473"
+    },
+    {
+      "name": "diggsweden/wallet-dss-cli",
+      "platform": "github.com",
+      "org": "diggsweden",
+      "repo": "wallet-dss-cli",
+      "url": "https://github.com/diggsweden/wallet-dss-cli",
+      "score": null,
+      "score_status": "missing_scorecard_data",
+      "workflow_status": "approved",
+      "status": "missing_scorecard_data",
+      "reason": "scorecard_data_unavailable",
+      "date": null,
+      "commit": null,
+      "commit_short": null,
+      "commit_url": null,
+      "previous_score": null,
+      "previous_date": null,
+      "previous_commit": null,
+      "delta": null,
+      "details_url": null,
+      "report_url": null
     },
     {
       "name": "diggsweden/wallet-ecosystem",
