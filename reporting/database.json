@@ -548,12 +548,17 @@
             "score": 8.3,
             "date": "2026-05-06T09:41:20Z",
             "commit": "b6026b17544854c9e70cfcfbf93ca5d3a1e4617d"
+          },
+          {
+            "score": 7.5,
+            "date": "2026-06-08T14:02:13Z",
+            "commit": "c64a9a8968d5ba0fa032b1b2b87c02c0e7079192"
           }
         ],
         "current": {
-          "score": 7.5,
-          "date": "2026-06-08T14:02:13Z",
-          "commit": "c64a9a8968d5ba0fa032b1b2b87c02c0e7079192"
+          "score": 7.6,
+          "date": "2026-07-22T15:22:20Z",
+          "commit": "8b01f0d1da492fc10cd0a0f16d9078e45e7fd041"
         }
       },
       "wallet-attribute-attestation": {
