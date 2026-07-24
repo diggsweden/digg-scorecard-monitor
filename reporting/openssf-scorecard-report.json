@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-24T14:51:39Z",
+  "generated_at": "2026-07-24T16:33:20Z",
   "latest_scorecard_at": "2026-07-24T13:51:11Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "30102744683",
+    "workflow_run_id": "30109018189",
     "scope_path": "reporting/scope.json",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "openssf_scorecard",
@@ -641,11 +641,11 @@
       "commit": "d0eab244fafb24e65b76f6ac6609d8c0e5b80c81",
       "commit_short": "d0eab24",
       "commit_url": "https://github.com/diggsweden/wallet-app-ios/commit/d0eab244fafb24e65b76f6ac6609d8c0e5b80c81",
-      "previous_score": 7.5,
-      "previous_date": "2026-07-22T18:56:27Z",
-      "previous_commit": "488a4ddf896267ec176656df89bb47da44f744e0",
-      "delta": -0.1,
-      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-app-ios/compare/488a4ddf896267ec176656df89bb47da44f744e0/d0eab244fafb24e65b76f6ac6609d8c0e5b80c81",
+      "previous_score": 7.4,
+      "previous_date": "2026-07-24T13:51:11Z",
+      "previous_commit": "d0eab244fafb24e65b76f6ac6609d8c0e5b80c81",
+      "delta": 0,
+      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-app-ios/compare/d0eab244fafb24e65b76f6ac6609d8c0e5b80c81/d0eab244fafb24e65b76f6ac6609d8c0e5b80c81",
       "report_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-app-ios/commit/d0eab244fafb24e65b76f6ac6609d8c0e5b80c81"
     },
     {
