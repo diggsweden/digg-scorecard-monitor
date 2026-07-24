@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-23T20:58:10Z",
-  "latest_scorecard_at": "2026-07-23T19:35:45Z",
+  "generated_at": "2026-07-24T05:45:58Z",
+  "latest_scorecard_at": "2026-07-24T04:46:45Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "30044248389",
+    "workflow_run_id": "30070305467",
     "scope_path": "reporting/scope.json",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "openssf_scorecard",
@@ -21,7 +21,7 @@
     "repositories_with_unknown_workflow": 5,
     "average_score": 7.2,
     "lowest_score": 5.1,
-    "highest_score": 8.6
+    "highest_score": 8.5
   },
   "repositories": [
     {
@@ -332,20 +332,20 @@
       "org": "diggsweden",
       "repo": "mla",
       "url": "https://github.com/diggsweden/mla",
-      "score": 8.6,
+      "score": 8.5,
       "score_status": "available",
       "workflow_status": "missing_approved_workflow",
       "status": "available",
-      "date": "2026-07-18T04:18:03Z",
-      "commit": "2d3d5ebce093f02f012b6622ad82fcc4ba2aa117",
-      "commit_short": "2d3d5eb",
-      "commit_url": "https://github.com/diggsweden/mla/commit/2d3d5ebce093f02f012b6622ad82fcc4ba2aa117",
+      "date": "2026-07-24T01:59:58Z",
+      "commit": "6effbb8e3afa2959fe5570d8c18656e7a644b88e",
+      "commit_short": "6effbb8",
+      "commit_url": "https://github.com/diggsweden/mla/commit/6effbb8e3afa2959fe5570d8c18656e7a644b88e",
       "previous_score": 8.6,
       "previous_date": "2026-07-11T04:34:09Z",
       "previous_commit": "b9c3158d002e2b47561c2bef34bd83a0facf604a",
-      "delta": 0,
-      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/mla/compare/b9c3158d002e2b47561c2bef34bd83a0facf604a/2d3d5ebce093f02f012b6622ad82fcc4ba2aa117",
-      "report_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/mla/commit/2d3d5ebce093f02f012b6622ad82fcc4ba2aa117"
+      "delta": -0.1,
+      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/mla/compare/b9c3158d002e2b47561c2bef34bd83a0facf604a/6effbb8e3afa2959fe5570d8c18656e7a644b88e",
+      "report_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/mla/commit/6effbb8e3afa2959fe5570d8c18656e7a644b88e"
     },
     {
       "name": "diggsweden/opaque-lib-java",
@@ -637,7 +637,7 @@
       "score_status": "available",
       "workflow_status": "approved",
       "status": "available",
-      "date": "2026-07-23T19:35:45Z",
+      "date": "2026-07-24T04:46:45Z",
       "commit": "5f76e8323489fc146e93a53b99d2ab6237e95169",
       "commit_short": "5f76e83",
       "commit_url": "https://github.com/diggsweden/wallet-app-ios/commit/5f76e8323489fc146e93a53b99d2ab6237e95169",
