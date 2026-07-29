@@ -3,7 +3,7 @@
 ## Summary
 
 | Repository | Commit | Score | Date | Score Delta | Report |
-| -- | -- | -- |
+| -- | -- |
 | [diggsweden/.github](https://github.com/diggsweden/.github) | [369bfb6](https://github.com/diggsweden/.github/commit/369bfb64c52d971a54beebae5d788b377ae90a1d) | 7.2 | 2025-11-29T02:25:17Z | 0 / [Details](https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/.github/compare/369bfb64c52d971a54beebae5d788b377ae90a1d/369bfb64c52d971a54beebae5d788b377ae90a1d) | [View](https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/.github/commit/369bfb64c52d971a54beebae5d788b377ae90a1d) |
 | [diggsweden/android-access-mechanism](https://github.com/diggsweden/android-access-mechanism) | - | - | - | - | - |
 | [diggsweden/cose-lib](https://github.com/diggsweden/cose-lib) | [25a3e92](https://github.com/diggsweden/cose-lib/commit/25a3e92ceec72b869e2d04e4cbdebd9660ad8b7a) | 7.5 | 2026-07-29T04:51:47Z | 0 / [Details](https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/cose-lib/compare/11d5bd5e333852947237e0ce9666369c1aa6e584/25a3e92ceec72b869e2d04e4cbdebd9660ad8b7a) | [View](https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/cose-lib/commit/25a3e92ceec72b869e2d04e4cbdebd9660ad8b7a) |
