@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-29T19:07:32Z",
+  "generated_at": "2026-07-29T20:51:02Z",
   "latest_scorecard_at": "2026-07-29T05:38:28Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "30482967730",
+    "workflow_run_id": "30490005569",
     "scope_path": "reporting/scope.json",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "openssf_scorecard",
