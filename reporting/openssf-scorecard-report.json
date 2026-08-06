@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-06T13:34:06Z",
+  "generated_at": "2026-08-06T14:47:39Z",
   "latest_scorecard_at": "2026-08-06T13:07:01Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "31106479295",
+    "workflow_run_id": "31112565360",
     "scope_path": "reporting/scope.json",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "openssf_scorecard",
@@ -788,11 +788,11 @@
       "commit": "7ac7a17bd9e0279f6af2856b44fb12abaa9df927",
       "commit_short": "7ac7a17",
       "commit_url": "https://github.com/diggsweden/wallet-r2ps/commit/7ac7a17bd9e0279f6af2856b44fb12abaa9df927",
-      "previous_score": 7.9,
-      "previous_date": "2026-08-01T05:41:50Z",
-      "previous_commit": "80c05646bb2742dcafc5da7eb315af88ab3cdc0c",
-      "delta": 0.3,
-      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-r2ps/compare/80c05646bb2742dcafc5da7eb315af88ab3cdc0c/7ac7a17bd9e0279f6af2856b44fb12abaa9df927",
+      "previous_score": 8.2,
+      "previous_date": "2026-08-06T13:07:01Z",
+      "previous_commit": "7ac7a17bd9e0279f6af2856b44fb12abaa9df927",
+      "delta": 0,
+      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-r2ps/compare/7ac7a17bd9e0279f6af2856b44fb12abaa9df927/7ac7a17bd9e0279f6af2856b44fb12abaa9df927",
       "report_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-r2ps/commit/7ac7a17bd9e0279f6af2856b44fb12abaa9df927"
     },
     {
