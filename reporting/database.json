@@ -32,12 +32,17 @@
             "score": 8.1,
             "date": "2026-08-01T05:14:48Z",
             "commit": "4beb6de24524e4deb76751e89c5d2c13250e382d"
+          },
+          {
+            "score": 8,
+            "date": "2026-08-05T05:09:04Z",
+            "commit": "4beb6de24524e4deb76751e89c5d2c13250e382d"
           }
         ],
         "current": {
-          "score": 8,
-          "date": "2026-08-05T05:09:04Z",
-          "commit": "4beb6de24524e4deb76751e89c5d2c13250e382d"
+          "score": 8.2,
+          "date": "2026-08-08T03:14:55Z",
+          "commit": "1d6ffe29746ddbe4128fdf9a35db3d001f2bda7f"
         }
       },
       "rest-api-profil-lint-processor": {
@@ -165,12 +170,17 @@
             "score": 8.5,
             "date": "2026-07-27T02:40:33Z",
             "commit": "c7451420e8764a2f13992b2ab74a2691a4a86bff"
+          },
+          {
+            "score": 8.6,
+            "date": "2026-08-03T02:52:06Z",
+            "commit": "db11956790a628ac85f5b43749efee791d383581"
           }
         ],
         "current": {
-          "score": 8.6,
-          "date": "2026-08-03T02:52:06Z",
-          "commit": "db11956790a628ac85f5b43749efee791d383581"
+          "score": 8.5,
+          "date": "2026-08-08T03:02:47Z",
+          "commit": "e11685c6deb28c1dd6f1ce8a448737cd3fed57dc"
         }
       },
       ".github": {
@@ -190,11 +200,17 @@
         }
       },
       "cose-lib": {
-        "previous": [],
+        "previous": [
+          {
+            "score": 7.5,
+            "date": "2026-05-02T02:34:07Z",
+            "commit": "11d5bd5e333852947237e0ce9666369c1aa6e584"
+          }
+        ],
         "current": {
-          "score": 7.5,
-          "date": "2026-05-02T02:34:07Z",
-          "commit": "11d5bd5e333852947237e0ce9666369c1aa6e584"
+          "score": 7.4,
+          "date": "2026-08-08T03:12:39Z",
+          "commit": "25a3e92ceec72b869e2d04e4cbdebd9660ad8b7a"
         }
       },
       "eudiw-wallet-token-lib": {
