@@ -722,11 +722,16 @@
             "score": 7.4,
             "date": "2026-05-02T03:21:56Z",
             "commit": "851ae6999af49bce199dace64d9317d58da264fb"
+          },
+          {
+            "score": 7.2,
+            "date": "2026-08-05T05:23:58Z",
+            "commit": "4fb03ef8b81ed4f275b4a1d79ad30564ef64e202"
           }
         ],
         "current": {
-          "score": 7.2,
-          "date": "2026-08-05T05:23:58Z",
+          "score": 7.1,
+          "date": "2026-08-08T03:41:49Z",
           "commit": "4fb03ef8b81ed4f275b4a1d79ad30564ef64e202"
         }
       },
@@ -766,12 +771,17 @@
             "score": 8.2,
             "date": "2026-07-25T05:30:23Z",
             "commit": "9726f19a5964e6af6104068ed181def3341328e2"
+          },
+          {
+            "score": 8.1,
+            "date": "2026-08-01T05:41:45Z",
+            "commit": "6234ba4aeafb2d60438c58c801ec3b771f0240f5"
           }
         ],
         "current": {
-          "score": 8.1,
-          "date": "2026-08-01T05:41:45Z",
-          "commit": "6234ba4aeafb2d60438c58c801ec3b771f0240f5"
+          "score": 8,
+          "date": "2026-08-08T03:55:12Z",
+          "commit": "8b766d3506a72c44fad727e3795b62817b7d75c3"
         }
       },
       "wallet-utvecklarportal": {
