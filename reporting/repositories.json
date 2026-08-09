@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-09T13:21:05Z",
+  "generated_at": "2026-08-09T14:12:51Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "31315577891",
+    "workflow_run_id": "31317850279",
     "org": "diggsweden",
     "api_path": "/orgs/diggsweden/repos?type=public"
   },
@@ -274,7 +274,7 @@
       "repo": "digg-scorecard-monitor",
       "url": "https://github.com/diggsweden/digg-scorecard-monitor",
       "default_branch": "main",
-      "pushed_at": "2026-08-09T12:11:40Z",
+      "pushed_at": "2026-08-09T13:23:31Z",
       "fork": null,
       "archived": null,
       "private": null,
@@ -932,7 +932,7 @@
       "repo": "wallet-app-android",
       "url": "https://github.com/diggsweden/wallet-app-android",
       "default_branch": "main",
-      "pushed_at": "2026-08-09T10:46:19Z",
+      "pushed_at": "2026-08-09T13:57:53Z",
       "fork": null,
       "archived": null,
       "private": null,
