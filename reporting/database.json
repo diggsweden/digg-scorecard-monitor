@@ -37,12 +37,17 @@
             "score": 8,
             "date": "2026-08-05T05:09:04Z",
             "commit": "4beb6de24524e4deb76751e89c5d2c13250e382d"
+          },
+          {
+            "score": 8.2,
+            "date": "2026-08-08T03:14:55Z",
+            "commit": "1d6ffe29746ddbe4128fdf9a35db3d001f2bda7f"
           }
         ],
         "current": {
-          "score": 8.2,
-          "date": "2026-08-08T03:14:55Z",
-          "commit": "1d6ffe29746ddbe4128fdf9a35db3d001f2bda7f"
+          "score": 8.3,
+          "date": "2026-08-12T02:51:48Z",
+          "commit": "f6b2323fdc50b4d62a712bf7a4fec137cca71b40"
         }
       },
       "rest-api-profil-lint-processor": {
@@ -210,11 +215,16 @@
             "score": 7.5,
             "date": "2026-05-02T02:34:07Z",
             "commit": "11d5bd5e333852947237e0ce9666369c1aa6e584"
+          },
+          {
+            "score": 7.4,
+            "date": "2026-08-08T03:12:39Z",
+            "commit": "25a3e92ceec72b869e2d04e4cbdebd9660ad8b7a"
           }
         ],
         "current": {
-          "score": 7.4,
-          "date": "2026-08-08T03:12:39Z",
+          "score": 7.3,
+          "date": "2026-08-12T02:31:57Z",
           "commit": "25a3e92ceec72b869e2d04e4cbdebd9660ad8b7a"
         }
       },
@@ -781,12 +791,17 @@
             "score": 8.1,
             "date": "2026-08-01T05:41:45Z",
             "commit": "6234ba4aeafb2d60438c58c801ec3b771f0240f5"
+          },
+          {
+            "score": 8,
+            "date": "2026-08-08T03:55:12Z",
+            "commit": "8b766d3506a72c44fad727e3795b62817b7d75c3"
           }
         ],
         "current": {
-          "score": 8,
-          "date": "2026-08-08T03:55:12Z",
-          "commit": "8b766d3506a72c44fad727e3795b62817b7d75c3"
+          "score": 8.3,
+          "date": "2026-08-12T03:27:24Z",
+          "commit": "ad6ddb87b6b713e4a21363ce6f58efe1d264a1db"
         }
       },
       "wallet-utvecklarportal": {
