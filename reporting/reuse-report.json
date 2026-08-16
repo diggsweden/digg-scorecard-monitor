@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-16T08:06:34Z",
+  "generated_at": "2026-08-16T09:08:13Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "31935586727",
+    "workflow_run_id": "31938204413",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "reuse",
     "json_report_path": "reporting/reuse-report.json"
@@ -301,7 +301,7 @@
       "repo": "digg-scorecard-monitor",
       "url": "https://github.com/diggsweden/digg-scorecard-monitor",
       "default_branch": "main",
-      "pushed_at": "2026-08-16T07:15:31Z",
+      "pushed_at": "2026-08-16T08:08:18Z",
       "github_license": null,
       "license_file_present": false,
       "licenses_dir_present": false,
