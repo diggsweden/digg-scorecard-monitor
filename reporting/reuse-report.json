@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-16T17:05:29Z",
+  "generated_at": "2026-08-16T18:04:30Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "31960517707",
+    "workflow_run_id": "31963480302",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "reuse",
     "json_report_path": "reporting/reuse-report.json"
@@ -88,7 +88,7 @@
       "repo": "cose-lib",
       "url": "https://github.com/diggsweden/cose-lib",
       "default_branch": "main",
-      "pushed_at": "2026-08-12T10:48:37Z",
+      "pushed_at": "2026-08-16T18:01:46Z",
       "github_license": "BSD-3-Clause",
       "license_file_present": true,
       "licenses_dir_present": true,
@@ -301,7 +301,7 @@
       "repo": "digg-scorecard-monitor",
       "url": "https://github.com/diggsweden/digg-scorecard-monitor",
       "default_branch": "main",
-      "pushed_at": "2026-08-16T16:05:45Z",
+      "pushed_at": "2026-08-16T17:07:19Z",
       "github_license": null,
       "license_file_present": false,
       "licenses_dir_present": false,
