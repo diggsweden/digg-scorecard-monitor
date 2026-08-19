@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T14:12:37Z",
+  "generated_at": "2026-08-19T15:09:18Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "32262573904",
+    "workflow_run_id": "32268263595",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "reuse",
     "json_report_path": "reporting/reuse-report.json"
@@ -15,10 +15,10 @@
     "repositories_not_registered_in_reuse_api": 37,
     "repositories_with_unknown_reuse_api_registration": 0,
     "repositories_reuse_compliant": 4,
-    "repositories_with_reuse_badge": 13,
+    "repositories_with_reuse_badge": 14,
     "repositories_with_reuse_metadata": 21,
     "repositories_with_github_license": 16,
-    "repositories_with_publiccode_yml": 6
+    "repositories_with_publiccode_yml": 7
   },
   "repositories": [
     {
@@ -204,7 +204,7 @@
       "repo": "DCAT-AP-SE-Processor",
       "url": "https://github.com/diggsweden/DCAT-AP-SE-Processor",
       "default_branch": "main",
-      "pushed_at": "2026-08-19T14:11:25Z",
+      "pushed_at": "2026-08-19T14:16:47Z",
       "github_license": null,
       "license_file_present": false,
       "licenses_dir_present": true,
@@ -223,12 +223,12 @@
       "reuse_info_url": "https://api.reuse.software/info/github.com/diggsweden/DCAT-AP-SE-Processor",
       "reuse_status_url": "https://api.reuse.software/status/github.com/diggsweden/DCAT-AP-SE-Processor.json",
       "reuse_badge_url": "https://api.reuse.software/badge/github.com/diggsweden/DCAT-AP-SE-Processor",
-      "reuse_badge_present": false,
+      "reuse_badge_present": true,
       "reuse_metadata_present": true,
       "reuse_toml_present": true,
       "reuse_dep5_present": false,
-      "publiccode_yml_present": false,
-      "publiccode_license": null
+      "publiccode_yml_present": true,
+      "publiccode_license": "EUPL-1.2"
     },
     {
       "name": "diggsweden/devbase-check",
@@ -268,7 +268,7 @@
       "repo": "devbase-core",
       "url": "https://github.com/diggsweden/devbase-core",
       "default_branch": "main",
-      "pushed_at": "2026-08-19T13:45:32Z",
+      "pushed_at": "2026-08-19T14:17:00Z",
       "github_license": "CC0-1.0",
       "license_file_present": true,
       "licenses_dir_present": true,
@@ -301,7 +301,7 @@
       "repo": "digg-scorecard-monitor",
       "url": "https://github.com/diggsweden/digg-scorecard-monitor",
       "default_branch": "main",
-      "pushed_at": "2026-08-19T13:20:42Z",
+      "pushed_at": "2026-08-19T14:14:29Z",
       "github_license": null,
       "license_file_present": false,
       "licenses_dir_present": false,
