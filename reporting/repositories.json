@@ -1,15 +1,15 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-19T10:07:12Z",
+  "generated_at": "2026-08-19T11:06:33Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "32241086960",
+    "workflow_run_id": "32245956818",
     "org": "diggsweden",
     "api_path": "/orgs/diggsweden/repos?type=public"
   },
   "summary": {
-    "total_repositories": 80,
+    "total_repositories": 81,
     "active_repositories": 0,
     "archived_repositories": 40,
     "fork_repositories": 9
@@ -274,7 +274,7 @@
       "repo": "digg-scorecard-monitor",
       "url": "https://github.com/diggsweden/digg-scorecard-monitor",
       "default_branch": "main",
-      "pushed_at": "2026-08-19T09:12:28Z",
+      "pushed_at": "2026-08-19T10:09:57Z",
       "fork": null,
       "archived": null,
       "private": null,
@@ -291,6 +291,20 @@
       "pushed_at": "2025-09-11T20:40:59Z",
       "fork": null,
       "archived": true,
+      "private": null,
+      "visibility": "public",
+      "github_license": null
+    },
+    {
+      "name": "diggsweden/ena-kodsamverkansplattform-poc",
+      "platform": "github.com",
+      "org": "diggsweden",
+      "repo": "ena-kodsamverkansplattform-poc",
+      "url": "https://github.com/diggsweden/ena-kodsamverkansplattform-poc",
+      "default_branch": "main",
+      "pushed_at": "2026-08-19T11:00:58Z",
+      "fork": null,
+      "archived": null,
       "private": null,
       "visibility": "public",
       "github_license": null
