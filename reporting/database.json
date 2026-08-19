@@ -435,12 +435,17 @@
             "score": 7.9,
             "date": "2026-08-01T05:41:50Z",
             "commit": "80c05646bb2742dcafc5da7eb315af88ab3cdc0c"
+          },
+          {
+            "score": 8.2,
+            "date": "2026-08-06T13:07:01Z",
+            "commit": "7ac7a17bd9e0279f6af2856b44fb12abaa9df927"
           }
         ],
         "current": {
-          "score": 8.2,
-          "date": "2026-08-06T13:07:01Z",
-          "commit": "7ac7a17bd9e0279f6af2856b44fb12abaa9df927"
+          "score": 8.1,
+          "date": "2026-08-19T03:00:30Z",
+          "commit": "45b407809ca1219868649bdffecb020498a7e7f6"
         }
       },
       "wallet-provider": {
@@ -747,11 +752,16 @@
             "score": 7.2,
             "date": "2026-08-05T05:23:58Z",
             "commit": "4fb03ef8b81ed4f275b4a1d79ad30564ef64e202"
+          },
+          {
+            "score": 7.1,
+            "date": "2026-08-08T03:41:49Z",
+            "commit": "4fb03ef8b81ed4f275b4a1d79ad30564ef64e202"
           }
         ],
         "current": {
-          "score": 7.1,
-          "date": "2026-08-08T03:41:49Z",
+          "score": 7,
+          "date": "2026-08-19T02:37:47Z",
           "commit": "4fb03ef8b81ed4f275b4a1d79ad30564ef64e202"
         }
       },
