@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-24T05:16:10Z",
+  "generated_at": "2026-08-24T06:14:58Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "32692847275",
+    "workflow_run_id": "32696416006",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "sca_renovate",
     "json_report_path": "reporting/sca-renovate-report.json",
@@ -224,7 +224,7 @@
       "repo": "digg-scorecard-monitor",
       "url": "https://github.com/diggsweden/digg-scorecard-monitor",
       "default_branch": "main",
-      "pushed_at": "2026-08-24T04:18:23Z",
+      "pushed_at": "2026-08-24T05:16:42Z",
       "renovate_config_present": true,
       "renovate_config_status": "present",
       "renovate_config_path": "renovate.json",
