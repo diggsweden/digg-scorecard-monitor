@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-24T16:11:47Z",
-  "latest_scorecard_at": "2026-08-22T02:59:45Z",
+  "generated_at": "2026-08-24T17:11:13Z",
+  "latest_scorecard_at": "2026-08-21T02:03:50Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "32749319501",
+    "workflow_run_id": "32755098040",
     "scope_path": "reporting/scope.json",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "openssf_scorecard",
@@ -806,7 +806,7 @@
       "score_status": "available",
       "workflow_status": "approved",
       "status": "available",
-      "date": "2026-08-22T02:59:45Z",
+      "date": "2026-08-19T03:00:30Z",
       "commit": "45b407809ca1219868649bdffecb020498a7e7f6",
       "commit_short": "45b4078",
       "commit_url": "https://github.com/diggsweden/wallet-r2ps/commit/45b407809ca1219868649bdffecb020498a7e7f6",
