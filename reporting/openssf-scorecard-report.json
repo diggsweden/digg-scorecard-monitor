@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-25T14:16:36Z",
-  "latest_scorecard_at": "2026-08-22T03:01:55Z",
+  "generated_at": "2026-08-25T15:17:11Z",
+  "latest_scorecard_at": "2026-08-22T02:59:45Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "32858403506",
+    "workflow_run_id": "32864789049",
     "scope_path": "reporting/scope.json",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "openssf_scorecard",
@@ -164,16 +164,16 @@
       "score_status": "available",
       "workflow_status": "approved",
       "status": "available",
-      "date": "2026-08-22T03:01:55Z",
-      "commit": "fb410d74423dd86607ea79403fa84c81df36ad0a",
-      "commit_short": "fb410d7",
-      "commit_url": "https://github.com/diggsweden/DCAT-AP-SE-Processor/commit/fb410d74423dd86607ea79403fa84c81df36ad0a",
+      "date": "2026-08-19T02:59:24Z",
+      "commit": "3ee89bf59e2dc20db284dbc1b7edcb480fdaadbd",
+      "commit_short": "3ee89bf",
+      "commit_url": "https://github.com/diggsweden/DCAT-AP-SE-Processor/commit/3ee89bf59e2dc20db284dbc1b7edcb480fdaadbd",
       "previous_score": 7.4,
       "previous_date": "2026-07-22T05:35:20Z",
       "previous_commit": "3ee89bf59e2dc20db284dbc1b7edcb480fdaadbd",
       "delta": 0,
-      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/DCAT-AP-SE-Processor/compare/3ee89bf59e2dc20db284dbc1b7edcb480fdaadbd/fb410d74423dd86607ea79403fa84c81df36ad0a",
-      "report_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/DCAT-AP-SE-Processor/commit/fb410d74423dd86607ea79403fa84c81df36ad0a"
+      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/DCAT-AP-SE-Processor/compare/3ee89bf59e2dc20db284dbc1b7edcb480fdaadbd/3ee89bf59e2dc20db284dbc1b7edcb480fdaadbd",
+      "report_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/DCAT-AP-SE-Processor/commit/3ee89bf59e2dc20db284dbc1b7edcb480fdaadbd"
     },
     {
       "name": "diggsweden/devbase-check",
