@@ -320,11 +320,16 @@
             "score": 7.2,
             "date": "2026-08-26T02:12:32Z",
             "commit": "25a3e92ceec72b869e2d04e4cbdebd9660ad8b7a"
+          },
+          {
+            "score": 7.3,
+            "date": "2026-08-19T02:08:13Z",
+            "commit": "25a3e92ceec72b869e2d04e4cbdebd9660ad8b7a"
           }
         ],
         "current": {
-          "score": 7.3,
-          "date": "2026-08-19T02:08:13Z",
+          "score": 7.2,
+          "date": "2026-08-26T02:12:32Z",
           "commit": "25a3e92ceec72b869e2d04e4cbdebd9660ad8b7a"
         }
       },
