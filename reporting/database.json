@@ -1214,12 +1214,17 @@
             "score": 7.5,
             "date": "2026-08-28T13:07:37Z",
             "commit": "901d0379d8ca4e1e2c78a60bf39e64a5c89f536f"
+          },
+          {
+            "score": 7.6,
+            "date": "2026-09-03T12:47:14Z",
+            "commit": "3fb06bee160816df081e953b6b62d337c6cf620f"
           }
         ],
         "current": {
-          "score": 7.6,
-          "date": "2026-09-03T12:47:14Z",
-          "commit": "3fb06bee160816df081e953b6b62d337c6cf620f"
+          "score": 7.5,
+          "date": "2026-09-04T06:35:48Z",
+          "commit": "967461b83800a9885ae4ae28691fdba32a6fea4d"
         }
       },
       "wallet-attribute-attestation": {

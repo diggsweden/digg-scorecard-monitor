@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-04T06:14:03Z",
+  "generated_at": "2026-09-04T07:08:55Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "33843489719",
+    "workflow_run_id": "33847369826",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "reuse",
     "json_report_path": "reporting/reuse-report.json"
@@ -16,7 +16,7 @@
     "repositories_with_unknown_reuse_api_registration": 0,
     "repositories_reuse_compliant": 4,
     "repositories_with_reuse_badge": 14,
-    "repositories_with_reuse_metadata": 22,
+    "repositories_with_reuse_metadata": 23,
     "repositories_with_github_license": 16,
     "repositories_with_publiccode_yml": 7
   },
@@ -301,7 +301,7 @@
       "repo": "digg-scorecard-monitor",
       "url": "https://github.com/diggsweden/digg-scorecard-monitor",
       "default_branch": "main",
-      "pushed_at": "2026-09-04T05:10:19Z",
+      "pushed_at": "2026-09-04T06:15:12Z",
       "github_license": null,
       "license_file_present": false,
       "licenses_dir_present": false,
@@ -984,7 +984,7 @@
       "repo": "wallet-app-ios",
       "url": "https://github.com/diggsweden/wallet-app-ios",
       "default_branch": "main",
-      "pushed_at": "2026-09-03T13:55:14Z",
+      "pushed_at": "2026-09-04T06:35:28Z",
       "github_license": null,
       "license_file_present": false,
       "licenses_dir_present": true,
@@ -1209,11 +1209,14 @@
       "repo": "wallet-utvecklarportal",
       "url": "https://github.com/diggsweden/wallet-utvecklarportal",
       "default_branch": "main",
-      "pushed_at": "2026-09-03T16:39:56Z",
+      "pushed_at": "2026-09-04T06:34:12Z",
       "github_license": null,
       "license_file_present": false,
-      "licenses_dir_present": false,
-      "declared_licenses": [],
+      "licenses_dir_present": true,
+      "declared_licenses": [
+        "CC0-1.0",
+        "EUPL-1.2"
+      ],
       "reuse_registered": false,
       "reuse_status": "not_registered",
       "reuse_lint_code": null,
@@ -1224,8 +1227,8 @@
       "reuse_status_url": "https://api.reuse.software/status/github.com/diggsweden/wallet-utvecklarportal.json",
       "reuse_badge_url": "https://api.reuse.software/badge/github.com/diggsweden/wallet-utvecklarportal",
       "reuse_badge_present": false,
-      "reuse_metadata_present": false,
-      "reuse_toml_present": false,
+      "reuse_metadata_present": true,
+      "reuse_toml_present": true,
       "reuse_dep5_present": false,
       "publiccode_yml_present": false,
       "publiccode_license": null
