@@ -3,7 +3,7 @@
 ## Summary
 
 | Repository | Commit | Score | Date | Score Delta | Report |
-| -- | -- | -- | -- | -- | -- |
+| -- | -- | -- | -- | -- |
 | [diggsweden/.github](https://github.com/diggsweden/.github) | [369bfb6](https://github.com/diggsweden/.github/commit/369bfb64c52d971a54beebae5d788b377ae90a1d) | 7.2 | 2025-11-29T02:25:17Z | 0 / [Details](https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/.github/compare/369bfb64c52d971a54beebae5d788b377ae90a1d/369bfb64c52d971a54beebae5d788b377ae90a1d) | [View](https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/.github/commit/369bfb64c52d971a54beebae5d788b377ae90a1d) |
 | [diggsweden/android-access-mechanism](https://github.com/diggsweden/android-access-mechanism) | - | - | - | - | - |
 | [diggsweden/cose-lib](https://github.com/diggsweden/cose-lib) | [25a3e92](https://github.com/diggsweden/cose-lib/commit/25a3e92ceec72b869e2d04e4cbdebd9660ad8b7a) | 7.1 | 2026-09-02T02:04:14Z | 0 / [Details](https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/cose-lib/compare/25a3e92ceec72b869e2d04e4cbdebd9660ad8b7a/25a3e92ceec72b869e2d04e4cbdebd9660ad8b7a) | [View](https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/cose-lib/commit/25a3e92ceec72b869e2d04e4cbdebd9660ad8b7a) |
@@ -30,6 +30,8 @@
 | [diggsweden/reusable-ci](https://github.com/diggsweden/reusable-ci) | - | - | - | - | - |
 | [diggsweden/sdg-intermediation-eu](https://github.com/diggsweden/sdg-intermediation-eu) | - | - | - | - | - |
 | [diggsweden/sdg-intermediation-se](https://github.com/diggsweden/sdg-intermediation-se) | - | - | - | - | - |
+| [diggsweden/sib-federation-framework](https://github.com/diggsweden/sib-federation-framework) | - | - | - | - | - |
+| [diggsweden/sib-specifications](https://github.com/diggsweden/sib-specifications) | - | - | - | - | - |
 | [diggsweden/SwiftAccessMechanism](https://github.com/diggsweden/SwiftAccessMechanism) | - | - | - | - | - |
 | [diggsweden/wallet-account](https://github.com/diggsweden/wallet-account) | [16e6b8a](https://github.com/diggsweden/wallet-account/commit/16e6b8a6b2492ef08686ac12e34251d0e34893bd) | 6.9 | 2026-09-02T02:57:22Z | 0 / [Details](https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-account/compare/b4117a1ccd9816b4a9b92ae069dfb6c930b48bd9/16e6b8a6b2492ef08686ac12e34251d0e34893bd) | [View](https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-account/commit/16e6b8a6b2492ef08686ac12e34251d0e34893bd) |
 | [diggsweden/wallet-app-android](https://github.com/diggsweden/wallet-app-android) | [8176e4f](https://github.com/diggsweden/wallet-app-android/commit/8176e4fce94ebc4e0337017d0b2d33358e88f6bf) | 8.3 | 2026-09-02T02:21:38Z | 0 / [Details](https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-app-android/compare/f6b2323fdc50b4d62a712bf7a4fec137cca71b40/8176e4fce94ebc4e0337017d0b2d33358e88f6bf) | [View](https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-app-android/commit/8176e4fce94ebc4e0337017d0b2d33358e88f6bf) |
