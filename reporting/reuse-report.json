@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-04T10:09:03Z",
+  "generated_at": "2026-09-04T11:07:49Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "33861771630",
+    "workflow_run_id": "33866428953",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "reuse",
     "json_report_path": "reporting/reuse-report.json"
@@ -301,7 +301,7 @@
       "repo": "digg-scorecard-monitor",
       "url": "https://github.com/diggsweden/digg-scorecard-monitor",
       "default_branch": "main",
-      "pushed_at": "2026-09-04T09:12:10Z",
+      "pushed_at": "2026-09-04T10:11:12Z",
       "github_license": null,
       "license_file_present": false,
       "licenses_dir_present": false,
@@ -1265,7 +1265,7 @@
       "repo": "wallet-utvecklarportal",
       "url": "https://github.com/diggsweden/wallet-utvecklarportal",
       "default_branch": "main",
-      "pushed_at": "2026-09-04T09:01:58Z",
+      "pushed_at": "2026-09-04T11:02:51Z",
       "github_license": null,
       "license_file_present": false,
       "licenses_dir_present": true,
