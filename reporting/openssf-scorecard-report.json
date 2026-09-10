@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-10T08:12:03Z",
-  "latest_scorecard_at": "2026-09-09T02:50:35Z",
+  "generated_at": "2026-09-10T09:09:49Z",
+  "latest_scorecard_at": "2026-09-10T08:37:08Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "34453808332",
+    "workflow_run_id": "34459039211",
     "scope_path": "reporting/scope.json",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "openssf_scorecard",
@@ -850,16 +850,16 @@
       "score_status": "available",
       "workflow_status": "approved",
       "status": "available",
-      "date": "2026-09-09T02:47:30Z",
-      "commit": "bd3c4e40a32e38b52accc985540a91ceb6ec4c20",
-      "commit_short": "bd3c4e4",
-      "commit_url": "https://github.com/diggsweden/wallet-r2ps/commit/bd3c4e40a32e38b52accc985540a91ceb6ec4c20",
+      "date": "2026-09-10T08:37:08Z",
+      "commit": "bfb461d49fd6c6f3efff73c674edff8276bd0a3e",
+      "commit_short": "bfb461d",
+      "commit_url": "https://github.com/diggsweden/wallet-r2ps/commit/bfb461d49fd6c6f3efff73c674edff8276bd0a3e",
       "previous_score": 8.3,
       "previous_date": "2026-09-02T02:57:35Z",
       "previous_commit": "46bb7f90707aed278152cdac6bada87c8f4b8e37",
       "delta": 0,
-      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-r2ps/compare/46bb7f90707aed278152cdac6bada87c8f4b8e37/bd3c4e40a32e38b52accc985540a91ceb6ec4c20",
-      "report_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-r2ps/commit/bd3c4e40a32e38b52accc985540a91ceb6ec4c20"
+      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-r2ps/compare/46bb7f90707aed278152cdac6bada87c8f4b8e37/bfb461d49fd6c6f3efff73c674edff8276bd0a3e",
+      "report_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-r2ps/commit/bfb461d49fd6c6f3efff73c674edff8276bd0a3e"
     },
     {
       "name": "diggsweden/wallet-r2ps-specification",
