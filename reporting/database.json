@@ -1001,12 +1001,17 @@
             "score": 6.9,
             "date": "2026-07-18T05:11:31Z",
             "commit": "b4117a1ccd9816b4a9b92ae069dfb6c930b48bd9"
+          },
+          {
+            "score": 7,
+            "date": "2026-09-19T02:46:41Z",
+            "commit": "a594be5bc4b0274d13e7dbfb92db353afa1bc403"
           }
         ],
         "current": {
-          "score": 7,
-          "date": "2026-09-19T02:46:41Z",
-          "commit": "a594be5bc4b0274d13e7dbfb92db353afa1bc403"
+          "score": 7.9,
+          "date": "2026-09-23T12:05:20Z",
+          "commit": "68c75423a0e499c824d364eb5ecce1af44a3b157"
         }
       },
       "wallet-backend-reference": {
