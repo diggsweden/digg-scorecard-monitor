@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-27T20:08:10Z",
-  "latest_scorecard_at": "2026-09-26T02:51:45Z",
+  "generated_at": "2026-09-28T03:14:02Z",
+  "latest_scorecard_at": "2026-09-28T02:09:46Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "36346876270",
+    "workflow_run_id": "36372876935",
     "scope_path": "reporting/scope.json",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "openssf_scorecard",
@@ -358,16 +358,16 @@
       "score_status": "available",
       "workflow_status": "missing_approved_workflow",
       "status": "available",
-      "date": "2026-09-26T01:39:43Z",
-      "commit": "bae2137907dc6d6573b0e2531e4090f87a485ee9",
-      "commit_short": "bae2137",
-      "commit_url": "https://github.com/diggsweden/mla/commit/bae2137907dc6d6573b0e2531e4090f87a485ee9",
+      "date": "2026-09-28T02:09:46Z",
+      "commit": "3d403afac8108fd4203d9e157e64d01846d97928",
+      "commit_short": "3d403af",
+      "commit_url": "https://github.com/diggsweden/mla/commit/3d403afac8108fd4203d9e157e64d01846d97928",
       "previous_score": 8.5,
       "previous_date": "2026-09-12T01:35:01Z",
       "previous_commit": "8bc58229ad33e68e54240717e16c6b16d3ce2a46",
       "delta": 0,
-      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/mla/compare/8bc58229ad33e68e54240717e16c6b16d3ce2a46/bae2137907dc6d6573b0e2531e4090f87a485ee9",
-      "report_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/mla/commit/bae2137907dc6d6573b0e2531e4090f87a485ee9"
+      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/mla/compare/8bc58229ad33e68e54240717e16c6b16d3ce2a46/3d403afac8108fd4203d9e157e64d01846d97928",
+      "report_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/mla/commit/3d403afac8108fd4203d9e157e64d01846d97928"
     },
     {
       "name": "diggsweden/opaque-lib-java",
