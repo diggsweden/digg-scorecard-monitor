@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-28T20:09:20Z",
+  "generated_at": "2026-09-29T03:11:26Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "36477044157",
+    "workflow_run_id": "36515935333",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "sca_renovate",
     "json_report_path": "reporting/sca-renovate-report.json",
@@ -21,7 +21,7 @@
     "repositories_with_unknown_renovate_config": 0,
     "repositories_using_base_preset": 17,
     "repositories_missing_base_preset": 3,
-    "repositories_with_dependency_dashboard_issue": 19
+    "repositories_with_dependency_dashboard_issue": 6
   },
   "repositories": [
     {
@@ -224,7 +224,7 @@
       "repo": "digg-scorecard-monitor",
       "url": "https://github.com/diggsweden/digg-scorecard-monitor",
       "default_branch": "main",
-      "pushed_at": "2026-09-28T19:08:34Z",
+      "pushed_at": "2026-09-28T20:09:59Z",
       "renovate_config_present": true,
       "renovate_config_status": "present",
       "renovate_config_path": "renovate.json",
@@ -396,8 +396,8 @@
       "renovate_uses_base_preset": false,
       "renovate_config_valid_json": true,
       "enabled_managers": null,
-      "renovate_dashboard_found": true,
-      "renovate_dashboard_url": "https://github.com/diggsweden/mla/issues/83"
+      "renovate_dashboard_found": null,
+      "renovate_dashboard_url": "https://github.com/diggsweden/mla/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
     },
     {
       "name": "diggsweden/opaque_ke_uniffi",
@@ -439,8 +439,8 @@
         "github-actions",
         "mise"
       ],
-      "renovate_dashboard_found": true,
-      "renovate_dashboard_url": "https://github.com/diggsweden/open-source-project-template/issues/72"
+      "renovate_dashboard_found": null,
+      "renovate_dashboard_url": "https://github.com/diggsweden/open-source-project-template/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
     },
     {
       "name": "diggsweden/opensource-docs",
@@ -449,7 +449,7 @@
       "repo": "opensource-docs",
       "url": "https://github.com/diggsweden/opensource-docs",
       "default_branch": "main",
-      "pushed_at": "2026-09-28T19:33:11Z",
+      "pushed_at": "2026-09-28T20:35:10Z",
       "renovate_config_present": false,
       "renovate_config_status": "missing",
       "renovate_config_path": null,
@@ -489,7 +489,7 @@
       "repo": "rest-api-profil-lint-processor",
       "url": "https://github.com/diggsweden/rest-api-profil-lint-processor",
       "default_branch": "main",
-      "pushed_at": "2026-09-28T19:49:20Z",
+      "pushed_at": "2026-09-28T20:25:24Z",
       "renovate_config_present": true,
       "renovate_config_status": "present",
       "renovate_config_path": "renovate.json",
@@ -502,8 +502,8 @@
         "github-actions",
         "npm"
       ],
-      "renovate_dashboard_found": true,
-      "renovate_dashboard_url": "https://github.com/diggsweden/rest-api-profil-lint-processor/issues/304"
+      "renovate_dashboard_found": null,
+      "renovate_dashboard_url": "https://github.com/diggsweden/rest-api-profil-lint-processor/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
     },
     {
       "name": "diggsweden/reusable-ci",
@@ -526,8 +526,8 @@
         "mise",
         "custom.regex"
       ],
-      "renovate_dashboard_found": true,
-      "renovate_dashboard_url": "https://github.com/diggsweden/reusable-ci/issues/9"
+      "renovate_dashboard_found": null,
+      "renovate_dashboard_url": "https://github.com/diggsweden/reusable-ci/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
     },
     {
       "name": "diggsweden/reusable-ci-testsuite",
@@ -566,8 +566,8 @@
       "renovate_uses_base_preset": false,
       "renovate_config_valid_json": true,
       "enabled_managers": null,
-      "renovate_dashboard_found": true,
-      "renovate_dashboard_url": "https://github.com/diggsweden/sdg-authorization/issues/17"
+      "renovate_dashboard_found": null,
+      "renovate_dashboard_url": "https://github.com/diggsweden/sdg-authorization/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
     },
     {
       "name": "diggsweden/sdg-intermediation-eu",
@@ -712,8 +712,8 @@
         "docker-compose",
         "mise"
       ],
-      "renovate_dashboard_found": true,
-      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-account/issues/5"
+      "renovate_dashboard_found": null,
+      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-account/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
     },
     {
       "name": "diggsweden/wallet-app-android",
@@ -735,8 +735,8 @@
         "github-actions",
         "gradle"
       ],
-      "renovate_dashboard_found": true,
-      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-app-android/issues/6"
+      "renovate_dashboard_found": null,
+      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-app-android/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
     },
     {
       "name": "diggsweden/wallet-app-ios",
@@ -745,7 +745,7 @@
       "repo": "wallet-app-ios",
       "url": "https://github.com/diggsweden/wallet-app-ios",
       "default_branch": "main",
-      "pushed_at": "2026-09-27T20:28:30Z",
+      "pushed_at": "2026-09-28T23:37:46Z",
       "renovate_config_present": true,
       "renovate_config_status": "present",
       "renovate_config_path": "renovate.json",
@@ -755,8 +755,8 @@
       "renovate_uses_base_preset": false,
       "renovate_config_valid_json": true,
       "enabled_managers": null,
-      "renovate_dashboard_found": true,
-      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-app-ios/issues/56"
+      "renovate_dashboard_found": null,
+      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-app-ios/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
     },
     {
       "name": "diggsweden/wallet-client-gateway",
@@ -782,8 +782,8 @@
         "docker-compose",
         "mise"
       ],
-      "renovate_dashboard_found": true,
-      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-client-gateway/issues/27"
+      "renovate_dashboard_found": null,
+      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-client-gateway/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
     },
     {
       "name": "diggsweden/wallet-dss-cli",
@@ -802,7 +802,7 @@
       "renovate_uses_base_preset": true,
       "renovate_config_valid_json": true,
       "enabled_managers": null,
-      "renovate_dashboard_found": false,
+      "renovate_dashboard_found": null,
       "renovate_dashboard_url": "https://github.com/diggsweden/wallet-dss-cli/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
     },
     {
@@ -822,8 +822,8 @@
       "renovate_uses_base_preset": true,
       "renovate_config_valid_json": true,
       "enabled_managers": null,
-      "renovate_dashboard_found": true,
-      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-ecosystem/issues/87"
+      "renovate_dashboard_found": null,
+      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-ecosystem/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
     },
     {
       "name": "diggsweden/wallet-provider",
@@ -847,8 +847,8 @@
         "maven",
         "dockerfile"
       ],
-      "renovate_dashboard_found": true,
-      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-provider/issues/16"
+      "renovate_dashboard_found": null,
+      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-provider/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
     },
     {
       "name": "diggsweden/wallet-r2ps",
@@ -857,7 +857,7 @@
       "repo": "wallet-r2ps",
       "url": "https://github.com/diggsweden/wallet-r2ps",
       "default_branch": "main",
-      "pushed_at": "2026-09-27T10:58:11Z",
+      "pushed_at": "2026-09-28T23:12:54Z",
       "renovate_config_present": true,
       "renovate_config_status": "present",
       "renovate_config_path": "renovate.json",
@@ -871,8 +871,8 @@
         "cargo",
         "dockerfile"
       ],
-      "renovate_dashboard_found": true,
-      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-r2ps/issues/75"
+      "renovate_dashboard_found": null,
+      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-r2ps/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
     },
     {
       "name": "diggsweden/wallet-r2ps-specification",
@@ -956,8 +956,8 @@
         "dockerfile",
         "docker-compose"
       ],
-      "renovate_dashboard_found": true,
-      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-verifier-test-web/issues/28"
+      "renovate_dashboard_found": null,
+      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-verifier-test-web/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
     }
   ]
 }
