@@ -1,15 +1,15 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-30T10:09:16Z",
+  "generated_at": "2026-09-30T11:07:47Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "36700641084",
+    "workflow_run_id": "36706608598",
     "org": "diggsweden",
     "api_path": "/orgs/diggsweden/repos?type=public"
   },
   "summary": {
-    "total_repositories": 86,
+    "total_repositories": 87,
     "active_repositories": 0,
     "archived_repositories": 40,
     "fork_repositories": 9
@@ -274,7 +274,7 @@
       "repo": "digg-scorecard-monitor",
       "url": "https://github.com/diggsweden/digg-scorecard-monitor",
       "default_branch": "main",
-      "pushed_at": "2026-09-30T09:12:28Z",
+      "pushed_at": "2026-09-30T10:11:33Z",
       "fork": null,
       "archived": null,
       "private": null,
@@ -646,6 +646,20 @@
       "github_license": "GPL-3.0"
     },
     {
+      "name": "diggsweden/occ-wrap",
+      "platform": "github.com",
+      "org": "diggsweden",
+      "repo": "occ-wrap",
+      "url": "https://github.com/diggsweden/occ-wrap",
+      "default_branch": "main",
+      "pushed_at": "2026-09-30T10:49:45Z",
+      "fork": null,
+      "archived": null,
+      "private": null,
+      "visibility": "public",
+      "github_license": null
+    },
+    {
       "name": "diggsweden/opaque-lib-java",
       "platform": "github.com",
       "org": "diggsweden",
@@ -708,7 +722,7 @@
       "repo": "opensource-docs",
       "url": "https://github.com/diggsweden/opensource-docs",
       "default_branch": "main",
-      "pushed_at": "2026-09-30T09:38:20Z",
+      "pushed_at": "2026-09-30T10:36:29Z",
       "fork": null,
       "archived": null,
       "private": null,
@@ -988,7 +1002,7 @@
       "repo": "wallet-app-android",
       "url": "https://github.com/diggsweden/wallet-app-android",
       "default_branch": "main",
-      "pushed_at": "2026-09-30T08:10:32Z",
+      "pushed_at": "2026-09-30T10:44:16Z",
       "fork": null,
       "archived": null,
       "private": null,
