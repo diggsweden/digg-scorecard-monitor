@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-30T05:08:45Z",
+  "generated_at": "2026-09-30T06:15:04Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "36672053739",
+    "workflow_run_id": "36677266105",
     "org": "diggsweden",
     "api_path": "/orgs/diggsweden/repos?type=public"
   },
@@ -274,7 +274,7 @@
       "repo": "digg-scorecard-monitor",
       "url": "https://github.com/diggsweden/digg-scorecard-monitor",
       "default_branch": "main",
-      "pushed_at": "2026-09-30T04:13:05Z",
+      "pushed_at": "2026-09-30T05:10:44Z",
       "fork": null,
       "archived": null,
       "private": null,
@@ -708,7 +708,7 @@
       "repo": "opensource-docs",
       "url": "https://github.com/diggsweden/opensource-docs",
       "default_branch": "main",
-      "pushed_at": "2026-09-30T04:39:44Z",
+      "pushed_at": "2026-09-30T05:36:17Z",
       "fork": null,
       "archived": null,
       "private": null,
