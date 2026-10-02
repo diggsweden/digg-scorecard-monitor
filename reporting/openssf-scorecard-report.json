@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-02T13:09:32Z",
+  "generated_at": "2026-10-02T14:09:44Z",
   "latest_scorecard_at": "2026-10-02T08:31:29Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "37011091285",
+    "workflow_run_id": "37017853207",
     "scope_path": "reporting/scope.json",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "openssf_scorecard",
@@ -13,11 +13,11 @@
     "json_report_path": "reporting/openssf-scorecard-report.json"
   },
   "summary": {
-    "total_repositories": 46,
+    "total_repositories": 47,
     "repositories_with_score": 23,
-    "repositories_without_score": 23,
+    "repositories_without_score": 24,
     "repositories_with_approved_workflow": 16,
-    "repositories_without_approved_workflow": 24,
+    "repositories_without_approved_workflow": 25,
     "repositories_with_unknown_workflow": 6,
     "average_score": 7.4,
     "lowest_score": 6.2,
@@ -884,6 +884,28 @@
       "delta": 0,
       "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-ecosystem/compare/9869351ea1ec12377bf04e13053e66cbbc5da0c5/9869351ea1ec12377bf04e13053e66cbbc5da0c5",
       "report_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-ecosystem/commit/9869351ea1ec12377bf04e13053e66cbbc5da0c5"
+    },
+    {
+      "name": "diggsweden/wallet-pki-tool",
+      "platform": "github.com",
+      "org": "diggsweden",
+      "repo": "wallet-pki-tool",
+      "url": "https://github.com/diggsweden/wallet-pki-tool",
+      "score": null,
+      "score_status": "missing_scorecard_data",
+      "workflow_status": "missing_approved_workflow",
+      "status": "missing_scorecard_data",
+      "reason": "approved_scorecard_workflow_missing",
+      "date": null,
+      "commit": null,
+      "commit_short": null,
+      "commit_url": null,
+      "previous_score": null,
+      "previous_date": null,
+      "previous_commit": null,
+      "delta": null,
+      "details_url": null,
+      "report_url": null
     },
     {
       "name": "diggsweden/wallet-provider",
