@@ -121,12 +121,17 @@
             "score": 8.5,
             "date": "2026-09-23T02:37:28Z",
             "commit": "40588a5b2e32c55468ca20fe46c4cf0abdf08229"
+          },
+          {
+            "score": 8.1,
+            "date": "2026-09-30T02:43:58Z",
+            "commit": "de24d6f11ddaa3f93b4fa2f7891cbb81c3af2d67"
           }
         ],
         "current": {
-          "score": 8.1,
-          "date": "2026-09-30T02:43:58Z",
-          "commit": "de24d6f11ddaa3f93b4fa2f7891cbb81c3af2d67"
+          "score": 8,
+          "date": "2026-10-07T02:47:51Z",
+          "commit": "ab09e9dd5e0dc93d0d4fecd37ac7303c6045093b"
         }
       },
       "mla": {
@@ -706,12 +711,17 @@
             "score": 7.8,
             "date": "2026-09-30T02:52:02Z",
             "commit": "bcd404e082b40de002639964f0104241e71c6f4b"
+          },
+          {
+            "score": 7.5,
+            "date": "2026-10-03T02:58:05Z",
+            "commit": "d4e332e320ee5e955840bd591853d91c6e288a30"
           }
         ],
         "current": {
-          "score": 7.5,
-          "date": "2026-10-03T02:58:05Z",
-          "commit": "d4e332e320ee5e955840bd591853d91c6e288a30"
+          "score": 7.7,
+          "date": "2026-10-07T02:55:46Z",
+          "commit": "e5ba13a8c5eabe892b81c0d82bf5282ed530fdf9"
         }
       },
       "wallet-r2ps": {
@@ -1531,12 +1541,17 @@
             "score": 8.4,
             "date": "2026-09-26T02:47:51Z",
             "commit": "8cfebb099141bdf3e2b8fc5dc6dfd344553cc010"
+          },
+          {
+            "score": 8.3,
+            "date": "2026-09-30T02:53:31Z",
+            "commit": "9869351ea1ec12377bf04e13053e66cbbc5da0c5"
           }
         ],
         "current": {
-          "score": 8.3,
-          "date": "2026-09-30T02:53:31Z",
-          "commit": "9869351ea1ec12377bf04e13053e66cbbc5da0c5"
+          "score": 8.2,
+          "date": "2026-10-07T02:56:13Z",
+          "commit": "bb6e0ba8623bd577dca9dc85f495f57102ef7194"
         }
       },
       "wallet-utvecklarportal": {
