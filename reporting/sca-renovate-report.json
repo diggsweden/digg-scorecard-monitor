@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-10T09:10:12Z",
+  "generated_at": "2026-10-10T10:09:07Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "38040346876",
+    "workflow_run_id": "38043816892",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "sca_renovate",
     "json_report_path": "reporting/sca-renovate-report.json",
@@ -21,7 +21,7 @@
     "repositories_with_unknown_renovate_config": 0,
     "repositories_using_base_preset": 18,
     "repositories_missing_base_preset": 3,
-    "repositories_with_dependency_dashboard_issue": 18
+    "repositories_with_dependency_dashboard_issue": 19
   },
   "repositories": [
     {
@@ -224,7 +224,7 @@
       "repo": "digg-scorecard-monitor",
       "url": "https://github.com/diggsweden/digg-scorecard-monitor",
       "default_branch": "main",
-      "pushed_at": "2026-10-10T08:12:56Z",
+      "pushed_at": "2026-10-10T09:11:24Z",
       "renovate_config_present": true,
       "renovate_config_status": "present",
       "renovate_config_path": "renovate.json",
@@ -795,8 +795,8 @@
       "renovate_uses_base_preset": false,
       "renovate_config_valid_json": true,
       "enabled_managers": null,
-      "renovate_dashboard_found": null,
-      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-app-ios/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
+      "renovate_dashboard_found": true,
+      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-app-ios/issues/56"
     },
     {
       "name": "diggsweden/wallet-client-gateway",
