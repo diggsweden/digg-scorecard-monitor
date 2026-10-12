@@ -1,15 +1,15 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-12T06:23:07Z",
+  "generated_at": "2026-10-12T07:33:33Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "38212250713",
+    "workflow_run_id": "38218403359",
     "org": "diggsweden",
     "api_path": "/orgs/diggsweden/repos?type=public"
   },
   "summary": {
-    "total_repositories": 88,
+    "total_repositories": 90,
     "active_repositories": 0,
     "archived_repositories": 40,
     "fork_repositories": 9
@@ -148,7 +148,7 @@
       "repo": "DCAT-AP-SE-Processor",
       "url": "https://github.com/diggsweden/DCAT-AP-SE-Processor",
       "default_branch": "main",
-      "pushed_at": "2026-10-12T05:59:11Z",
+      "pushed_at": "2026-10-12T06:26:33Z",
       "fork": null,
       "archived": null,
       "private": null,
@@ -274,7 +274,7 @@
       "repo": "digg-scorecard-monitor",
       "url": "https://github.com/diggsweden/digg-scorecard-monitor",
       "default_branch": "main",
-      "pushed_at": "2026-10-12T05:17:42Z",
+      "pushed_at": "2026-10-12T06:25:35Z",
       "fork": null,
       "archived": null,
       "private": null,
@@ -492,6 +492,20 @@
       "github_license": null
     },
     {
+      "name": "diggsweden/forge-ci-blackbox-tests",
+      "platform": "github.com",
+      "org": "diggsweden",
+      "repo": "forge-ci-blackbox-tests",
+      "url": "https://github.com/diggsweden/forge-ci-blackbox-tests",
+      "default_branch": "main",
+      "pushed_at": "2026-10-12T06:45:02Z",
+      "fork": null,
+      "archived": null,
+      "private": null,
+      "visibility": "public",
+      "github_license": null
+    },
+    {
       "name": "diggsweden/hash2curve-lib-java",
       "platform": "github.com",
       "org": "diggsweden",
@@ -644,6 +658,20 @@
       "private": null,
       "visibility": "public",
       "github_license": "GPL-3.0"
+    },
+    {
+      "name": "diggsweden/nono-wrapper",
+      "platform": "github.com",
+      "org": "diggsweden",
+      "repo": "nono-wrapper",
+      "url": "https://github.com/diggsweden/nono-wrapper",
+      "default_branch": "main",
+      "pushed_at": "2026-10-12T06:42:18Z",
+      "fork": null,
+      "archived": null,
+      "private": null,
+      "visibility": "public",
+      "github_license": null
     },
     {
       "name": "diggsweden/occ-wrap",
