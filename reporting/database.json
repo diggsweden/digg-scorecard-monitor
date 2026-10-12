@@ -820,12 +820,17 @@
             "score": 8.2,
             "date": "2026-09-16T02:48:45Z",
             "commit": "deb012c63e7692b5e96fed92de7c362db723694a"
+          },
+          {
+            "score": 8.1,
+            "date": "2026-09-19T02:46:37Z",
+            "commit": "deb012c63e7692b5e96fed92de7c362db723694a"
           }
         ],
         "current": {
-          "score": 8.1,
-          "date": "2026-09-19T02:46:37Z",
-          "commit": "deb012c63e7692b5e96fed92de7c362db723694a"
+          "score": 8.3,
+          "date": "2026-10-12T14:04:12Z",
+          "commit": "f6869b042015a9effc85a42396b79171038eb12c"
         }
       },
       "wallet-provider": {
