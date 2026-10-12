@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-11T20:09:42Z",
-  "latest_scorecard_at": "2026-10-10T03:01:06Z",
+  "generated_at": "2026-10-12T03:21:26Z",
+  "latest_scorecard_at": "2026-10-12T02:00:26Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "38170969301",
+    "workflow_run_id": "38199383256",
     "scope_path": "reporting/scope.json",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "openssf_scorecard",
@@ -380,16 +380,16 @@
       "score_status": "available",
       "workflow_status": "missing_approved_workflow",
       "status": "available",
-      "date": "2026-10-10T01:51:23Z",
-      "commit": "c14eb6a0580a4c4498b19b5e62b78a47273948da",
-      "commit_short": "c14eb6a",
-      "commit_url": "https://github.com/diggsweden/mla/commit/c14eb6a0580a4c4498b19b5e62b78a47273948da",
+      "date": "2026-10-12T02:00:26Z",
+      "commit": "a4d7964e5278f353ddf8dc8af265c1525fdad614",
+      "commit_short": "a4d7964",
+      "commit_url": "https://github.com/diggsweden/mla/commit/a4d7964e5278f353ddf8dc8af265c1525fdad614",
       "previous_score": 8.1,
       "previous_date": "2026-10-10T01:51:23Z",
       "previous_commit": "c14eb6a0580a4c4498b19b5e62b78a47273948da",
       "delta": 0,
-      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/mla/compare/c14eb6a0580a4c4498b19b5e62b78a47273948da/c14eb6a0580a4c4498b19b5e62b78a47273948da",
-      "report_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/mla/commit/c14eb6a0580a4c4498b19b5e62b78a47273948da"
+      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/mla/compare/c14eb6a0580a4c4498b19b5e62b78a47273948da/a4d7964e5278f353ddf8dc8af265c1525fdad614",
+      "report_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/mla/commit/a4d7964e5278f353ddf8dc8af265c1525fdad614"
     },
     {
       "name": "diggsweden/occ-wrap",
