@@ -1,15 +1,15 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-13T19:06:34Z",
+  "generated_at": "2026-10-13T20:08:36Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "38452189060",
+    "workflow_run_id": "38460450297",
     "org": "diggsweden",
     "api_path": "/orgs/diggsweden/repos?type=public"
   },
   "summary": {
-    "total_repositories": 90,
+    "total_repositories": 91,
     "active_repositories": 0,
     "archived_repositories": 40,
     "fork_repositories": 9
@@ -204,7 +204,7 @@
       "repo": "devbase-core",
       "url": "https://github.com/diggsweden/devbase-core",
       "default_branch": "main",
-      "pushed_at": "2026-10-13T18:16:08Z",
+      "pushed_at": "2026-10-13T19:28:30Z",
       "fork": null,
       "archived": null,
       "private": null,
@@ -274,7 +274,7 @@
       "repo": "digg-scorecard-monitor",
       "url": "https://github.com/diggsweden/digg-scorecard-monitor",
       "default_branch": "main",
-      "pushed_at": "2026-10-13T18:15:24Z",
+      "pushed_at": "2026-10-13T19:10:13Z",
       "fork": null,
       "archived": null,
       "private": null,
@@ -912,6 +912,20 @@
       "github_license": "CC0-1.0"
     },
     {
+      "name": "diggsweden/sib-context-system-access",
+      "platform": "github.com",
+      "org": "diggsweden",
+      "repo": "sib-context-system-access",
+      "url": "https://github.com/diggsweden/sib-context-system-access",
+      "default_branch": "main",
+      "pushed_at": "2026-10-13T19:24:56Z",
+      "fork": null,
+      "archived": null,
+      "private": null,
+      "visibility": "public",
+      "github_license": "CC0-1.0"
+    },
+    {
       "name": "diggsweden/sib-federation-framework",
       "platform": "github.com",
       "org": "diggsweden",
@@ -1016,7 +1030,7 @@
       "repo": "wallet-account",
       "url": "https://github.com/diggsweden/wallet-account",
       "default_branch": "main",
-      "pushed_at": "2026-10-13T14:13:49Z",
+      "pushed_at": "2026-10-13T19:44:41Z",
       "fork": null,
       "archived": null,
       "private": null,
