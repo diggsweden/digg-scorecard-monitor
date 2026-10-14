@@ -731,12 +731,17 @@
             "score": 7.7,
             "date": "2026-10-07T02:55:46Z",
             "commit": "e5ba13a8c5eabe892b81c0d82bf5282ed530fdf9"
+          },
+          {
+            "score": 7.8,
+            "date": "2026-10-10T02:54:27Z",
+            "commit": "5a19770786fbb001b63c28e626592c43f799c45e"
           }
         ],
         "current": {
-          "score": 7.8,
-          "date": "2026-10-10T02:54:27Z",
-          "commit": "5a19770786fbb001b63c28e626592c43f799c45e"
+          "score": 8.2,
+          "date": "2026-10-14T02:48:09Z",
+          "commit": "c69912e95859789af5d6f56a062f9014aae84ade"
         }
       },
       "wallet-r2ps": {
@@ -939,12 +944,17 @@
             "score": 7.6,
             "date": "2026-10-03T03:01:04Z",
             "commit": "ac0ad81ac39e4f81fb998420ded0e9adb42110ec"
+          },
+          {
+            "score": 7.8,
+            "date": "2026-10-09T14:43:39Z",
+            "commit": "87b02649c43b676c391c58255b94b52b62a92ca3"
           }
         ],
         "current": {
-          "score": 7.8,
-          "date": "2026-10-09T14:43:39Z",
-          "commit": "87b02649c43b676c391c58255b94b52b62a92ca3"
+          "score": 7.7,
+          "date": "2026-10-14T02:49:29Z",
+          "commit": "488218b4e56c3e3db8b999c69a9d0ac16edffa13"
         }
       },
       "wallet-verifier-test-web": {
@@ -1591,12 +1601,17 @@
             "score": 8.2,
             "date": "2026-10-07T02:56:13Z",
             "commit": "bb6e0ba8623bd577dca9dc85f495f57102ef7194"
+          },
+          {
+            "score": 8.4,
+            "date": "2026-10-10T02:55:46Z",
+            "commit": "726b7d057ffe7f2e1f0aaf01274978ab51126e83"
           }
         ],
         "current": {
-          "score": 8.4,
-          "date": "2026-10-10T02:55:46Z",
-          "commit": "726b7d057ffe7f2e1f0aaf01274978ab51126e83"
+          "score": 8.5,
+          "date": "2026-10-14T02:49:18Z",
+          "commit": "f890a16d8fe1678c5f349b48c564a15adadd61ad"
         }
       },
       "wallet-utvecklarportal": {
