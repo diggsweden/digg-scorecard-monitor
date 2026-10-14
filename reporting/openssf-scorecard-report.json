@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-14T12:13:12Z",
+  "generated_at": "2026-10-14T13:07:48Z",
   "latest_scorecard_at": "2026-10-14T02:52:42Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "38562069653",
+    "workflow_run_id": "38569156267",
     "scope_path": "reporting/scope.json",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "openssf_scorecard",
@@ -13,10 +13,10 @@
     "json_report_path": "reporting/openssf-scorecard-report.json"
   },
   "summary": {
-    "total_repositories": 50,
+    "total_repositories": 51,
     "repositories_with_score": 23,
-    "repositories_without_score": 27,
-    "repositories_with_approved_workflow": 17,
+    "repositories_without_score": 28,
+    "repositories_with_approved_workflow": 18,
     "repositories_without_approved_workflow": 27,
     "repositories_with_unknown_workflow": 6,
     "average_score": 7.3,
@@ -823,6 +823,28 @@
       "delta": 0,
       "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-app-ios/compare/4c032de6792d7a55478b8c021e72664531464f67/1adc6a47941ec0859ab573f7a5c803394b79c80d",
       "report_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-app-ios/commit/1adc6a47941ec0859ab573f7a5c803394b79c80d"
+    },
+    {
+      "name": "diggsweden/wallet-attestation-issuer",
+      "platform": "github.com",
+      "org": "diggsweden",
+      "repo": "wallet-attestation-issuer",
+      "url": "https://github.com/diggsweden/wallet-attestation-issuer",
+      "score": null,
+      "score_status": "missing_scorecard_data",
+      "workflow_status": "approved",
+      "status": "missing_scorecard_data",
+      "reason": "scorecard_data_unavailable",
+      "date": null,
+      "commit": null,
+      "commit_short": null,
+      "commit_url": null,
+      "previous_score": null,
+      "previous_date": null,
+      "previous_commit": null,
+      "delta": null,
+      "details_url": null,
+      "report_url": null
     },
     {
       "name": "diggsweden/wallet-attribute-attestation",
