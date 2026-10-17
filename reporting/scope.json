@@ -24,7 +24,9 @@
         "wallet-ecosystem",
         "wallet-utvecklarportal",
         "DCAT-AP-SE-Processor",
-        "wallet-dss-cli"
+        "wallet-dss-cli",
+        "wallet-pki-tool",
+        "wallet-attestation-issuer"
       ],
       "excluded": [
         "dgc-java",

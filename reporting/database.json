@@ -736,12 +736,17 @@
             "score": 7.8,
             "date": "2026-10-10T02:54:27Z",
             "commit": "5a19770786fbb001b63c28e626592c43f799c45e"
+          },
+          {
+            "score": 8.2,
+            "date": "2026-10-14T02:48:09Z",
+            "commit": "c69912e95859789af5d6f56a062f9014aae84ade"
           }
         ],
         "current": {
-          "score": 8.2,
-          "date": "2026-10-14T02:48:09Z",
-          "commit": "c69912e95859789af5d6f56a062f9014aae84ade"
+          "score": 7.7,
+          "date": "2026-10-17T02:46:08Z",
+          "commit": "33984ef3c3f9f67229b7ebc1a7465f11e7cb1c89"
         }
       },
       "wallet-r2ps": {
@@ -830,12 +835,17 @@
             "score": 8.1,
             "date": "2026-09-19T02:46:37Z",
             "commit": "deb012c63e7692b5e96fed92de7c362db723694a"
+          },
+          {
+            "score": 8.3,
+            "date": "2026-10-12T14:04:12Z",
+            "commit": "f6869b042015a9effc85a42396b79171038eb12c"
           }
         ],
         "current": {
-          "score": 8.3,
-          "date": "2026-10-12T14:04:12Z",
-          "commit": "f6869b042015a9effc85a42396b79171038eb12c"
+          "score": 7.7,
+          "date": "2026-10-17T02:48:08Z",
+          "commit": "b903f1b7bf0d98913e648c79e9580e437c0ce876"
         }
       },
       "wallet-provider": {
@@ -1769,6 +1779,22 @@
           "score": 6.7,
           "date": "2026-07-25T05:31:07Z",
           "commit": "7de828b45bbbcf99909eb110367b27513c167891"
+        }
+      },
+      "wallet-attestation-issuer": {
+        "previous": [],
+        "current": {
+          "score": 6.6,
+          "date": "2026-10-17T02:49:58Z",
+          "commit": "5370e20523ef586323d3655a3a96afd9a54f1406"
+        }
+      },
+      "wallet-pki-tool": {
+        "previous": [],
+        "current": {
+          "score": 5,
+          "date": "2026-10-17T02:48:51Z",
+          "commit": "4434e12cf002694da27c0a0fa948fbe416009e05"
         }
       }
     }
