@@ -840,11 +840,16 @@
             "score": 8.3,
             "date": "2026-10-12T14:04:12Z",
             "commit": "f6869b042015a9effc85a42396b79171038eb12c"
+          },
+          {
+            "score": 7.7,
+            "date": "2026-10-17T02:48:08Z",
+            "commit": "b903f1b7bf0d98913e648c79e9580e437c0ce876"
           }
         ],
         "current": {
-          "score": 7.7,
-          "date": "2026-10-17T02:48:08Z",
+          "score": 7.6,
+          "date": "2026-10-21T02:52:11Z",
           "commit": "b903f1b7bf0d98913e648c79e9580e437c0ce876"
         }
       },
@@ -1048,12 +1053,17 @@
             "score": 6.8,
             "date": "2026-10-03T03:06:06Z",
             "commit": "4265e608d7f8b348a56e003e8da6494e46995fd9"
+          },
+          {
+            "score": 7,
+            "date": "2026-10-10T03:01:06Z",
+            "commit": "fff99b057a7a74ad717de38524084e1fbc1b82b5"
           }
         ],
         "current": {
-          "score": 7,
-          "date": "2026-10-10T03:01:06Z",
-          "commit": "fff99b057a7a74ad717de38524084e1fbc1b82b5"
+          "score": 6.8,
+          "date": "2026-10-21T02:54:38Z",
+          "commit": "29e87442db524fe55bbea53881bbe079fc6a88f7"
         }
       },
       "opaque-lib-java": {
@@ -1532,12 +1542,17 @@
             "score": 7.2,
             "date": "2026-10-03T02:41:58Z",
             "commit": "32e0740f7fe376032b3c275f86dbab9a159aae2f"
+          },
+          {
+            "score": 7.3,
+            "date": "2026-10-10T02:41:10Z",
+            "commit": "d86905dc961a9ad7a26357376953c61cbbe3e88c"
           }
         ],
         "current": {
-          "score": 7.3,
-          "date": "2026-10-10T02:41:10Z",
-          "commit": "d86905dc961a9ad7a26357376953c61cbbe3e88c"
+          "score": 7.4,
+          "date": "2026-10-21T02:34:21Z",
+          "commit": "90fc587712c648abe932b9cfa5297e46d4a13546"
         }
       },
       "wallet-ecosystem": {
@@ -1782,11 +1797,17 @@
         }
       },
       "wallet-attestation-issuer": {
-        "previous": [],
+        "previous": [
+          {
+            "score": 6.6,
+            "date": "2026-10-17T02:49:58Z",
+            "commit": "5370e20523ef586323d3655a3a96afd9a54f1406"
+          }
+        ],
         "current": {
-          "score": 6.6,
-          "date": "2026-10-17T02:49:58Z",
-          "commit": "5370e20523ef586323d3655a3a96afd9a54f1406"
+          "score": 6.7,
+          "date": "2026-10-21T02:53:31Z",
+          "commit": "8ab871fdc5581234f48a6c376bc74c4313d11495"
         }
       },
       "wallet-pki-tool": {
