@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-21T14:20:28Z",
+  "generated_at": "2026-10-21T19:06:33Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "39615675112",
+    "workflow_run_id": "39658405068",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "sca_renovate",
     "json_report_path": "reporting/sca-renovate-report.json",
@@ -21,7 +21,7 @@
     "repositories_with_unknown_renovate_config": 0,
     "repositories_using_base_preset": 20,
     "repositories_missing_base_preset": 4,
-    "repositories_with_dependency_dashboard_issue": 9
+    "repositories_with_dependency_dashboard_issue": 19
   },
   "repositories": [
     {
@@ -205,7 +205,7 @@
       "repo": "devbase-core",
       "url": "https://github.com/diggsweden/devbase-core",
       "default_branch": "main",
-      "pushed_at": "2026-10-20T20:49:03Z",
+      "pushed_at": "2026-10-21T17:58:20Z",
       "renovate_config_present": true,
       "renovate_config_status": "present",
       "renovate_config_path": "renovate.json",
@@ -225,7 +225,7 @@
       "repo": "digg-scorecard-monitor",
       "url": "https://github.com/diggsweden/digg-scorecard-monitor",
       "default_branch": "main",
-      "pushed_at": "2026-10-21T08:16:19Z",
+      "pushed_at": "2026-10-21T14:22:19Z",
       "renovate_config_present": true,
       "renovate_config_status": "present",
       "renovate_config_path": "renovate.json",
@@ -433,7 +433,7 @@
       "repo": "mla",
       "url": "https://github.com/diggsweden/mla",
       "default_branch": "main",
-      "pushed_at": "2026-10-20T10:42:55Z",
+      "pushed_at": "2026-10-21T16:23:08Z",
       "renovate_config_present": true,
       "renovate_config_status": "present",
       "renovate_config_path": "renovate.json",
@@ -613,8 +613,8 @@
         "mise",
         "custom.regex"
       ],
-      "renovate_dashboard_found": null,
-      "renovate_dashboard_url": "https://github.com/diggsweden/reusable-ci/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
+      "renovate_dashboard_found": true,
+      "renovate_dashboard_url": "https://github.com/diggsweden/reusable-ci/issues/9"
     },
     {
       "name": "diggsweden/reusable-ci-testsuite",
@@ -653,8 +653,8 @@
       "renovate_uses_base_preset": false,
       "renovate_config_valid_json": true,
       "enabled_managers": null,
-      "renovate_dashboard_found": null,
-      "renovate_dashboard_url": "https://github.com/diggsweden/sdg-authorization/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
+      "renovate_dashboard_found": true,
+      "renovate_dashboard_url": "https://github.com/diggsweden/sdg-authorization/issues/17"
     },
     {
       "name": "diggsweden/sdg-intermediation-eu",
@@ -819,8 +819,8 @@
         "docker-compose",
         "mise"
       ],
-      "renovate_dashboard_found": null,
-      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-account/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
+      "renovate_dashboard_found": true,
+      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-account/issues/5"
     },
     {
       "name": "diggsweden/wallet-app-android",
@@ -842,8 +842,8 @@
         "github-actions",
         "gradle"
       ],
-      "renovate_dashboard_found": null,
-      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-app-android/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
+      "renovate_dashboard_found": true,
+      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-app-android/issues/6"
     },
     {
       "name": "diggsweden/wallet-app-ios",
@@ -862,8 +862,8 @@
       "renovate_uses_base_preset": false,
       "renovate_config_valid_json": true,
       "enabled_managers": null,
-      "renovate_dashboard_found": null,
-      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-app-ios/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
+      "renovate_dashboard_found": true,
+      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-app-ios/issues/56"
     },
     {
       "name": "diggsweden/wallet-attestation-issuer",
@@ -887,7 +887,7 @@
         "maven",
         "dockerfile"
       ],
-      "renovate_dashboard_found": null,
+      "renovate_dashboard_found": false,
       "renovate_dashboard_url": "https://github.com/diggsweden/wallet-attestation-issuer/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
     },
     {
@@ -914,8 +914,8 @@
         "docker-compose",
         "mise"
       ],
-      "renovate_dashboard_found": null,
-      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-client-gateway/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
+      "renovate_dashboard_found": true,
+      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-client-gateway/issues/27"
     },
     {
       "name": "diggsweden/wallet-client-gateway-ci-test",
@@ -941,7 +941,7 @@
         "docker-compose",
         "mise"
       ],
-      "renovate_dashboard_found": null,
+      "renovate_dashboard_found": false,
       "renovate_dashboard_url": "https://github.com/diggsweden/wallet-client-gateway-ci-test/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
     },
     {
@@ -961,7 +961,7 @@
       "renovate_uses_base_preset": true,
       "renovate_config_valid_json": true,
       "enabled_managers": null,
-      "renovate_dashboard_found": null,
+      "renovate_dashboard_found": false,
       "renovate_dashboard_url": "https://github.com/diggsweden/wallet-dss-cli/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
     },
     {
@@ -971,7 +971,7 @@
       "repo": "wallet-ecosystem",
       "url": "https://github.com/diggsweden/wallet-ecosystem",
       "default_branch": "main",
-      "pushed_at": "2026-10-21T08:58:01Z",
+      "pushed_at": "2026-10-21T15:38:23Z",
       "renovate_config_present": true,
       "renovate_config_status": "present",
       "renovate_config_path": "renovate.json",
@@ -981,8 +981,8 @@
       "renovate_uses_base_preset": true,
       "renovate_config_valid_json": true,
       "enabled_managers": null,
-      "renovate_dashboard_found": null,
-      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-ecosystem/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
+      "renovate_dashboard_found": true,
+      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-ecosystem/issues/87"
     },
     {
       "name": "diggsweden/wallet-pki-tool",
@@ -1011,7 +1011,7 @@
       "repo": "wallet-provider",
       "url": "https://github.com/diggsweden/wallet-provider",
       "default_branch": "main",
-      "pushed_at": "2026-10-17T20:51:45Z",
+      "pushed_at": "2026-10-21T15:31:43Z",
       "renovate_config_present": true,
       "renovate_config_status": "present",
       "renovate_config_path": "renovate.json",
@@ -1026,8 +1026,8 @@
         "maven",
         "dockerfile"
       ],
-      "renovate_dashboard_found": null,
-      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-provider/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
+      "renovate_dashboard_found": true,
+      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-provider/issues/16"
     },
     {
       "name": "diggsweden/wallet-r2ps",
@@ -1050,8 +1050,8 @@
         "cargo",
         "dockerfile"
       ],
-      "renovate_dashboard_found": null,
-      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-r2ps/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
+      "renovate_dashboard_found": true,
+      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-r2ps/issues/75"
     },
     {
       "name": "diggsweden/wallet-r2ps-specification",
@@ -1135,8 +1135,8 @@
         "dockerfile",
         "docker-compose"
       ],
-      "renovate_dashboard_found": null,
-      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-verifier-test-web/issues?q=is%3Aissue%20%22Dependency%20Dashboard%22"
+      "renovate_dashboard_found": true,
+      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-verifier-test-web/issues/28"
     }
   ]
 }
