@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-22T22:57:11Z",
+  "generated_at": "2026-10-23T08:12:56Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "39868381176",
+    "workflow_run_id": "39922913918",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "sca_renovate",
     "json_report_path": "reporting/sca-renovate-report.json",
@@ -15,13 +15,13 @@
     ]
   },
   "summary": {
-    "total_repositories": 52,
-    "repositories_with_renovate_config": 24,
+    "total_repositories": 51,
+    "repositories_with_renovate_config": 23,
     "repositories_without_renovate_config": 28,
     "repositories_with_unknown_renovate_config": 0,
-    "repositories_using_base_preset": 20,
+    "repositories_using_base_preset": 19,
     "repositories_missing_base_preset": 4,
-    "repositories_with_dependency_dashboard_issue": 19
+    "repositories_with_dependency_dashboard_issue": 18
   },
   "repositories": [
     {
@@ -225,7 +225,7 @@
       "repo": "digg-scorecard-monitor",
       "url": "https://github.com/diggsweden/digg-scorecard-monitor",
       "default_branch": "main",
-      "pushed_at": "2026-10-22T19:05:13Z",
+      "pushed_at": "2026-10-22T22:57:59Z",
       "renovate_config_present": true,
       "renovate_config_status": "present",
       "renovate_config_path": "renovate.json",
@@ -723,7 +723,7 @@
       "repo": "sib-context-system-access",
       "url": "https://github.com/diggsweden/sib-context-system-access",
       "default_branch": "main",
-      "pushed_at": "2026-10-20T07:48:17Z",
+      "pushed_at": "2026-10-23T07:40:41Z",
       "renovate_config_present": false,
       "renovate_config_status": "missing",
       "renovate_config_path": null,
@@ -852,7 +852,7 @@
       "repo": "wallet-app-ios",
       "url": "https://github.com/diggsweden/wallet-app-ios",
       "default_branch": "main",
-      "pushed_at": "2026-10-22T18:06:11Z",
+      "pushed_at": "2026-10-23T07:58:42Z",
       "renovate_config_present": true,
       "renovate_config_status": "present",
       "renovate_config_path": "renovate.json",
@@ -991,7 +991,7 @@
       "repo": "wallet-pki-tool",
       "url": "https://github.com/diggsweden/wallet-pki-tool",
       "default_branch": "main",
-      "pushed_at": "2026-10-22T13:26:32Z",
+      "pushed_at": "2026-10-23T07:30:20Z",
       "renovate_config_present": false,
       "renovate_config_status": "missing",
       "renovate_config_path": null,
@@ -1003,31 +1003,6 @@
       "enabled_managers": null,
       "renovate_dashboard_found": false,
       "renovate_dashboard_url": null
-    },
-    {
-      "name": "diggsweden/wallet-provider",
-      "platform": "github.com",
-      "org": "diggsweden",
-      "repo": "wallet-provider",
-      "url": "https://github.com/diggsweden/wallet-provider",
-      "default_branch": "main",
-      "pushed_at": "2026-10-21T15:31:43Z",
-      "renovate_config_present": true,
-      "renovate_config_status": "present",
-      "renovate_config_path": "renovate.json",
-      "renovate_config_url": "https://github.com/diggsweden/wallet-provider/blob/main/renovate.json",
-      "renovate_base_preset": "local>diggsweden/.github:renovate-base",
-      "renovate_matched_base_preset": "local>diggsweden/.github:renovate-base",
-      "renovate_uses_base_preset": true,
-      "renovate_config_valid_json": true,
-      "enabled_managers": [
-        "github-actions",
-        "npm",
-        "maven",
-        "dockerfile"
-      ],
-      "renovate_dashboard_found": true,
-      "renovate_dashboard_url": "https://github.com/diggsweden/wallet-provider/issues/16"
     },
     {
       "name": "diggsweden/wallet-r2ps",

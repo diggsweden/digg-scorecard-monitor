@@ -1,17 +1,17 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-22T22:55:45Z",
+  "generated_at": "2026-10-23T08:11:36Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "39868381176",
+    "workflow_run_id": "39922913918",
     "org": "diggsweden",
     "api_path": "/orgs/diggsweden/repos?type=public"
   },
   "summary": {
     "total_repositories": 92,
     "active_repositories": 0,
-    "archived_repositories": 40,
+    "archived_repositories": 41,
     "fork_repositories": 9
   },
   "repositories": [
@@ -274,7 +274,7 @@
       "repo": "digg-scorecard-monitor",
       "url": "https://github.com/diggsweden/digg-scorecard-monitor",
       "default_branch": "main",
-      "pushed_at": "2026-10-22T19:05:13Z",
+      "pushed_at": "2026-10-22T22:57:59Z",
       "fork": null,
       "archived": null,
       "private": null,
@@ -918,7 +918,7 @@
       "repo": "sib-context-system-access",
       "url": "https://github.com/diggsweden/sib-context-system-access",
       "default_branch": "main",
-      "pushed_at": "2026-10-20T07:48:17Z",
+      "pushed_at": "2026-10-23T07:40:41Z",
       "fork": null,
       "archived": null,
       "private": null,
@@ -1058,7 +1058,7 @@
       "repo": "wallet-app-ios",
       "url": "https://github.com/diggsweden/wallet-app-ios",
       "default_branch": "main",
-      "pushed_at": "2026-10-22T18:06:11Z",
+      "pushed_at": "2026-10-23T07:58:42Z",
       "fork": null,
       "archived": null,
       "private": null,
@@ -1170,7 +1170,7 @@
       "repo": "wallet-pki-tool",
       "url": "https://github.com/diggsweden/wallet-pki-tool",
       "default_branch": "main",
-      "pushed_at": "2026-10-22T13:26:32Z",
+      "pushed_at": "2026-10-23T07:30:20Z",
       "fork": null,
       "archived": null,
       "private": null,
@@ -1186,7 +1186,7 @@
       "default_branch": "main",
       "pushed_at": "2026-10-21T15:31:43Z",
       "fork": null,
-      "archived": null,
+      "archived": true,
       "private": null,
       "visibility": "public",
       "github_license": "EUPL-1.2"
