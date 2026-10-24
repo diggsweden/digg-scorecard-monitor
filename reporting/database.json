@@ -845,11 +845,16 @@
             "score": 7.7,
             "date": "2026-10-17T02:48:08Z",
             "commit": "b903f1b7bf0d98913e648c79e9580e437c0ce876"
+          },
+          {
+            "score": 7.6,
+            "date": "2026-10-21T02:52:11Z",
+            "commit": "b903f1b7bf0d98913e648c79e9580e437c0ce876"
           }
         ],
         "current": {
-          "score": 7.6,
-          "date": "2026-10-21T02:52:11Z",
+          "score": 7.5,
+          "date": "2026-10-24T02:49:31Z",
           "commit": "b903f1b7bf0d98913e648c79e9580e437c0ce876"
         }
       },
@@ -1811,11 +1816,17 @@
         }
       },
       "wallet-pki-tool": {
-        "previous": [],
+        "previous": [
+          {
+            "score": 5,
+            "date": "2026-10-17T02:48:51Z",
+            "commit": "4434e12cf002694da27c0a0fa948fbe416009e05"
+          }
+        ],
         "current": {
-          "score": 5,
-          "date": "2026-10-17T02:48:51Z",
-          "commit": "4434e12cf002694da27c0a0fa948fbe416009e05"
+          "score": 5.6,
+          "date": "2026-10-24T02:50:10Z",
+          "commit": "46698685555c38779c47fb29fdd5d7fce0298d13"
         }
       }
     }
