@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-28T16:24:48Z",
+  "generated_at": "2026-10-28T21:29:33Z",
   "latest_scorecard_at": "2026-10-28T14:25:10Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "40725533092",
+    "workflow_run_id": "40772257674",
     "scope_path": "reporting/scope.json",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "openssf_scorecard",
@@ -965,11 +965,11 @@
       "commit": "90911bbc9c737acfb8ed204d3d41091f0557ff4a",
       "commit_short": "90911bb",
       "commit_url": "https://github.com/diggsweden/wallet-ecosystem/commit/90911bbc9c737acfb8ed204d3d41091f0557ff4a",
-      "previous_score": 8.5,
-      "previous_date": "2026-10-14T02:49:18Z",
-      "previous_commit": "f890a16d8fe1678c5f349b48c564a15adadd61ad",
-      "delta": 0.3,
-      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-ecosystem/compare/f890a16d8fe1678c5f349b48c564a15adadd61ad/90911bbc9c737acfb8ed204d3d41091f0557ff4a",
+      "previous_score": 8.8,
+      "previous_date": "2026-10-28T11:36:58Z",
+      "previous_commit": "90911bbc9c737acfb8ed204d3d41091f0557ff4a",
+      "delta": 0,
+      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-ecosystem/compare/90911bbc9c737acfb8ed204d3d41091f0557ff4a/90911bbc9c737acfb8ed204d3d41091f0557ff4a",
       "report_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-ecosystem/commit/90911bbc9c737acfb8ed204d3d41091f0557ff4a"
     },
     {
@@ -1115,11 +1115,11 @@
       "commit": "4b761ac557712279e7e5bbbef6dac7a45fcfd985",
       "commit_short": "4b761ac",
       "commit_url": "https://github.com/diggsweden/wallet-utvecklarportal/commit/4b761ac557712279e7e5bbbef6dac7a45fcfd985",
-      "previous_score": 6.4,
-      "previous_date": "2026-10-03T02:59:57Z",
-      "previous_commit": "751b97f153500416515de559a569495ebc52ed51",
-      "delta": 0.3,
-      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-utvecklarportal/compare/751b97f153500416515de559a569495ebc52ed51/4b761ac557712279e7e5bbbef6dac7a45fcfd985",
+      "previous_score": 6.7,
+      "previous_date": "2026-10-28T14:25:10Z",
+      "previous_commit": "4b761ac557712279e7e5bbbef6dac7a45fcfd985",
+      "delta": 0,
+      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-utvecklarportal/compare/4b761ac557712279e7e5bbbef6dac7a45fcfd985/4b761ac557712279e7e5bbbef6dac7a45fcfd985",
       "report_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-utvecklarportal/commit/4b761ac557712279e7e5bbbef6dac7a45fcfd985"
     },
     {
@@ -1136,11 +1136,11 @@
       "commit": "7479637c027b9d7d321af7724a7a303111cb69b6",
       "commit_short": "7479637",
       "commit_url": "https://github.com/diggsweden/wallet-verifier-test-web/commit/7479637c027b9d7d321af7724a7a303111cb69b6",
-      "previous_score": 6.8,
-      "previous_date": "2026-10-21T02:54:38Z",
-      "previous_commit": "29e87442db524fe55bbea53881bbe079fc6a88f7",
-      "delta": 0.2,
-      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-verifier-test-web/compare/29e87442db524fe55bbea53881bbe079fc6a88f7/7479637c027b9d7d321af7724a7a303111cb69b6",
+      "previous_score": 7,
+      "previous_date": "2026-10-28T09:38:48Z",
+      "previous_commit": "7479637c027b9d7d321af7724a7a303111cb69b6",
+      "delta": 0,
+      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-verifier-test-web/compare/7479637c027b9d7d321af7724a7a303111cb69b6/7479637c027b9d7d321af7724a7a303111cb69b6",
       "report_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-verifier-test-web/commit/7479637c027b9d7d321af7724a7a303111cb69b6"
     }
   ]
