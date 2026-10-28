@@ -1083,12 +1083,17 @@
             "score": 7,
             "date": "2026-10-10T03:01:06Z",
             "commit": "fff99b057a7a74ad717de38524084e1fbc1b82b5"
+          },
+          {
+            "score": 6.8,
+            "date": "2026-10-21T02:54:38Z",
+            "commit": "29e87442db524fe55bbea53881bbe079fc6a88f7"
           }
         ],
         "current": {
-          "score": 6.8,
-          "date": "2026-10-21T02:54:38Z",
-          "commit": "29e87442db524fe55bbea53881bbe079fc6a88f7"
+          "score": 7,
+          "date": "2026-10-28T09:38:48Z",
+          "commit": "7479637c027b9d7d321af7724a7a303111cb69b6"
         }
       },
       "opaque-lib-java": {
@@ -1661,12 +1666,17 @@
             "score": 8.4,
             "date": "2026-10-10T02:55:46Z",
             "commit": "726b7d057ffe7f2e1f0aaf01274978ab51126e83"
+          },
+          {
+            "score": 8.5,
+            "date": "2026-10-14T02:49:18Z",
+            "commit": "f890a16d8fe1678c5f349b48c564a15adadd61ad"
           }
         ],
         "current": {
-          "score": 8.5,
-          "date": "2026-10-14T02:49:18Z",
-          "commit": "f890a16d8fe1678c5f349b48c564a15adadd61ad"
+          "score": 8.8,
+          "date": "2026-10-28T11:36:58Z",
+          "commit": "90911bbc9c737acfb8ed204d3d41091f0557ff4a"
         }
       },
       "wallet-utvecklarportal": {
@@ -1740,12 +1750,17 @@
             "score": 6.5,
             "date": "2026-09-12T02:46:46Z",
             "commit": "fa62a287861d9b6c18ee4306b536dd493cd4dc98"
+          },
+          {
+            "score": 6.4,
+            "date": "2026-10-03T02:59:57Z",
+            "commit": "751b97f153500416515de559a569495ebc52ed51"
           }
         ],
         "current": {
-          "score": 6.4,
-          "date": "2026-10-03T02:59:57Z",
-          "commit": "751b97f153500416515de559a569495ebc52ed51"
+          "score": 6.7,
+          "date": "2026-10-28T14:25:10Z",
+          "commit": "4b761ac557712279e7e5bbbef6dac7a45fcfd985"
         }
       },
       "DCAT-AP-SE-Processor": {
