@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-29T16:33:43Z",
+  "generated_at": "2026-10-29T21:31:03Z",
   "latest_scorecard_at": "2026-10-29T13:07:51Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "40912658938",
+    "workflow_run_id": "40958308416",
     "scope_path": "reporting/scope.json",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "openssf_scorecard",
@@ -189,11 +189,11 @@
       "commit": "e47a88aa79eba1eccc375f64053608672f11b0fc",
       "commit_short": "e47a88a",
       "commit_url": "https://github.com/diggsweden/dcat-ap-se-processor/commit/e47a88aa79eba1eccc375f64053608672f11b0fc",
-      "previous_score": null,
-      "previous_date": null,
-      "previous_commit": null,
+      "previous_score": 7.9,
+      "previous_date": "2026-10-29T13:07:51Z",
+      "previous_commit": "e47a88aa79eba1eccc375f64053608672f11b0fc",
       "delta": 0,
-      "details_url": null,
+      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/dcat-ap-se-processor/compare/e47a88aa79eba1eccc375f64053608672f11b0fc/e47a88aa79eba1eccc375f64053608672f11b0fc",
       "report_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/dcat-ap-se-processor/commit/e47a88aa79eba1eccc375f64053608672f11b0fc"
     },
     {
