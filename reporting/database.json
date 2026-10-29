@@ -1868,6 +1868,14 @@
           "date": "2026-10-28T08:57:23Z",
           "commit": "d990a6dfd2d26a8af03d6f60e1d6b2e15c5678f8"
         }
+      },
+      "dcat-ap-se-processor": {
+        "previous": [],
+        "current": {
+          "score": 7.9,
+          "date": "2026-10-29T13:07:51Z",
+          "commit": "e47a88aa79eba1eccc375f64053608672f11b0fc"
+        }
       }
     }
   }

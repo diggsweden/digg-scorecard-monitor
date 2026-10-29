@@ -26,7 +26,8 @@
         "DCAT-AP-SE-Processor",
         "wallet-dss-cli",
         "wallet-pki-tool",
-        "wallet-attestation-issuer"
+        "wallet-attestation-issuer",
+        "dcat-ap-se-processor"
       ],
       "excluded": [
         "dgc-java",
