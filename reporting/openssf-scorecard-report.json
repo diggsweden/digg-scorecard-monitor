@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-03T10:25:20Z",
-  "latest_scorecard_at": "2026-11-02T14:03:51Z",
+  "generated_at": "2026-11-03T18:12:56Z",
+  "latest_scorecard_at": "2026-11-03T12:22:22Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "41619025555",
+    "workflow_run_id": "41691499876",
     "scope_path": "reporting/scope.json",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "openssf_scorecard",
@@ -834,16 +834,16 @@
       "score_status": "available",
       "workflow_status": "approved",
       "status": "available",
-      "date": "2026-11-02T14:03:51Z",
-      "commit": "e2e131eaf607ac650486241c6b77e66cafb53e01",
-      "commit_short": "e2e131e",
-      "commit_url": "https://github.com/diggsweden/wallet-app-ios/commit/e2e131eaf607ac650486241c6b77e66cafb53e01",
+      "date": "2026-11-03T12:22:22Z",
+      "commit": "dc5e9a5dacb7ee3f0b52e337d465687f0c62cbde",
+      "commit_short": "dc5e9a5",
+      "commit_url": "https://github.com/diggsweden/wallet-app-ios/commit/dc5e9a5dacb7ee3f0b52e337d465687f0c62cbde",
       "previous_score": 7.2,
       "previous_date": "2026-11-02T14:03:51Z",
       "previous_commit": "e2e131eaf607ac650486241c6b77e66cafb53e01",
       "delta": 0,
-      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-app-ios/compare/e2e131eaf607ac650486241c6b77e66cafb53e01/e2e131eaf607ac650486241c6b77e66cafb53e01",
-      "report_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-app-ios/commit/e2e131eaf607ac650486241c6b77e66cafb53e01"
+      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-app-ios/compare/e2e131eaf607ac650486241c6b77e66cafb53e01/dc5e9a5dacb7ee3f0b52e337d465687f0c62cbde",
+      "report_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/wallet-app-ios/commit/dc5e9a5dacb7ee3f0b52e337d465687f0c62cbde"
     },
     {
       "name": "diggsweden/wallet-attestation-issuer",
