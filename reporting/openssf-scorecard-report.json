@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-15T22:25:27Z",
-  "latest_scorecard_at": "2026-11-14T09:26:28Z",
+  "generated_at": "2026-11-16T10:34:12Z",
+  "latest_scorecard_at": "2026-11-16T03:35:21Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "43769124329",
+    "workflow_run_id": "43849851998",
     "scope_path": "reporting/scope.json",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "openssf_scorecard",
@@ -423,16 +423,16 @@
       "score_status": "available",
       "workflow_status": "missing_approved_workflow",
       "status": "available",
-      "date": "2026-11-14T07:42:18Z",
-      "commit": "0da83160593ccc81e4b1ac695729f98249a8e161",
-      "commit_short": "0da8316",
-      "commit_url": "https://github.com/diggsweden/mla/commit/0da83160593ccc81e4b1ac695729f98249a8e161",
+      "date": "2026-11-16T03:35:21Z",
+      "commit": "c1c029272842a203e5382fdf09e554e4bc79ac8d",
+      "commit_short": "c1c0292",
+      "commit_url": "https://github.com/diggsweden/mla/commit/c1c029272842a203e5382fdf09e554e4bc79ac8d",
       "previous_score": 7.9,
       "previous_date": "2026-10-31T07:08:28Z",
       "previous_commit": "0690df346c2ee632fefd31e8292406627c18da71",
       "delta": 0,
-      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/mla/compare/0690df346c2ee632fefd31e8292406627c18da71/0da83160593ccc81e4b1ac695729f98249a8e161",
-      "report_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/mla/commit/0da83160593ccc81e4b1ac695729f98249a8e161"
+      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/mla/compare/0690df346c2ee632fefd31e8292406627c18da71/c1c029272842a203e5382fdf09e554e4bc79ac8d",
+      "report_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/mla/commit/c1c029272842a203e5382fdf09e554e4bc79ac8d"
     },
     {
       "name": "diggsweden/nono-wrapper",
