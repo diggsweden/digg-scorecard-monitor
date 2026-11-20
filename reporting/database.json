@@ -146,12 +146,17 @@
             "score": 8.7,
             "date": "2026-10-28T08:39:26Z",
             "commit": "4f8ee9bdd6d5b505ba4b6fa92c61d801db3c832f"
+          },
+          {
+            "score": 8.4,
+            "date": "2026-10-31T08:30:47Z",
+            "commit": "1011280d6b50f29ddd3dda936bc9c769d58b460f"
           }
         ],
         "current": {
-          "score": 8.4,
-          "date": "2026-10-31T08:30:47Z",
-          "commit": "1011280d6b50f29ddd3dda936bc9c769d58b460f"
+          "score": 8.5,
+          "date": "2026-11-20T13:32:11Z",
+          "commit": "26c484dd6391adf17dc36ef03a0cc57f86b3a2d7"
         }
       },
       "mla": {
