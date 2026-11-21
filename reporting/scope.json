@@ -28,7 +28,8 @@
         "wallet-pki-tool",
         "wallet-attestation-issuer",
         "dcat-ap-se-processor",
-        "wallet-keycloak"
+        "wallet-keycloak",
+        "wallet-auth"
       ],
       "excluded": [
         "dgc-java",

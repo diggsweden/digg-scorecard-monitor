@@ -668,11 +668,16 @@
             "score": 6.8,
             "date": "2026-11-11T09:18:59Z",
             "commit": "27e2ed2c3d1794e84fbc9cc4c67474c61b2a144a"
+          },
+          {
+            "score": 6.5,
+            "date": "2026-11-18T10:04:56Z",
+            "commit": "27e2ed2c3d1794e84fbc9cc4c67474c61b2a144a"
           }
         ],
         "current": {
-          "score": 6.5,
-          "date": "2026-11-18T10:04:56Z",
+          "score": 6.4,
+          "date": "2026-11-21T09:41:45Z",
           "commit": "27e2ed2c3d1794e84fbc9cc4c67474c61b2a144a"
         }
       },
@@ -1850,12 +1855,17 @@
             "score": 6.6,
             "date": "2026-11-04T09:46:19Z",
             "commit": "4b761ac557712279e7e5bbbef6dac7a45fcfd985"
+          },
+          {
+            "score": 6.7,
+            "date": "2026-11-07T09:12:48Z",
+            "commit": "4b761ac557712279e7e5bbbef6dac7a45fcfd985"
           }
         ],
         "current": {
-          "score": 6.7,
-          "date": "2026-11-07T09:12:48Z",
-          "commit": "4b761ac557712279e7e5bbbef6dac7a45fcfd985"
+          "score": 6.8,
+          "date": "2026-11-21T10:09:34Z",
+          "commit": "2752233dd7e3bf26ce8d6ac9d8ddc590b0d7b4b2"
         }
       },
       "DCAT-AP-SE-Processor": {
@@ -2000,12 +2010,17 @@
             "score": 8.4,
             "date": "2026-11-04T09:47:14Z",
             "commit": "fef4dc7b138b2de5933d4bf4078ac26a2380f26b"
+          },
+          {
+            "score": 8.5,
+            "date": "2026-11-18T10:39:07Z",
+            "commit": "c5b9d2a7c8269e0f9798babfece9372ddefc70a6"
           }
         ],
         "current": {
-          "score": 8.5,
-          "date": "2026-11-18T10:39:07Z",
-          "commit": "c5b9d2a7c8269e0f9798babfece9372ddefc70a6"
+          "score": 8.3,
+          "date": "2026-11-21T10:12:28Z",
+          "commit": "8330e6667fdaf6b9f620e8efd1f122296bfe7450"
         }
       },
       "wallet-keycloak": {
@@ -2030,6 +2045,14 @@
           "score": 6.6,
           "date": "2026-11-18T10:39:20Z",
           "commit": "62242176c4b7ab62c58d97ea19827dcebba4b34d"
+        }
+      },
+      "wallet-auth": {
+        "previous": [],
+        "current": {
+          "score": 5.2,
+          "date": "2026-11-21T09:45:10Z",
+          "commit": "4a981be229657630a705b916a83ea702590ce0f4"
         }
       }
     }
