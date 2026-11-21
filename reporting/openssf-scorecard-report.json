@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-20T18:57:11Z",
+  "generated_at": "2026-11-21T00:37:53Z",
   "latest_scorecard_at": "2026-11-20T13:32:11Z",
   "source": {
     "repository": "diggsweden/digg-scorecard-monitor",
     "workflow": "scorecard-monitor.yml",
-    "workflow_run_id": "44797426978",
+    "workflow_run_id": "44845006512",
     "scope_path": "reporting/scope.json",
     "report_exclusions_path": "reporting/report-exclusions.json",
     "report_exclusion_key": "openssf_scorecard",
@@ -577,11 +577,11 @@
       "commit": "26c484dd6391adf17dc36ef03a0cc57f86b3a2d7",
       "commit_short": "26c484d",
       "commit_url": "https://github.com/diggsweden/rest-api-profil-lint-processor/commit/26c484dd6391adf17dc36ef03a0cc57f86b3a2d7",
-      "previous_score": 8.4,
-      "previous_date": "2026-10-31T08:30:47Z",
-      "previous_commit": "1011280d6b50f29ddd3dda936bc9c769d58b460f",
-      "delta": 0.1,
-      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/rest-api-profil-lint-processor/compare/1011280d6b50f29ddd3dda936bc9c769d58b460f/26c484dd6391adf17dc36ef03a0cc57f86b3a2d7",
+      "previous_score": 8.5,
+      "previous_date": "2026-11-20T13:32:11Z",
+      "previous_commit": "26c484dd6391adf17dc36ef03a0cc57f86b3a2d7",
+      "delta": 0,
+      "details_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/rest-api-profil-lint-processor/compare/26c484dd6391adf17dc36ef03a0cc57f86b3a2d7/26c484dd6391adf17dc36ef03a0cc57f86b3a2d7",
       "report_url": "https://ossf.github.io/scorecard-visualizer/#/projects/github.com/diggsweden/rest-api-profil-lint-processor/commit/26c484dd6391adf17dc36ef03a0cc57f86b3a2d7"
     },
     {
