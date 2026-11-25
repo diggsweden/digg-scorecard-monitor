@@ -2015,12 +2015,17 @@
             "score": 8.5,
             "date": "2026-11-18T10:39:07Z",
             "commit": "c5b9d2a7c8269e0f9798babfece9372ddefc70a6"
+          },
+          {
+            "score": 8.3,
+            "date": "2026-11-21T10:12:28Z",
+            "commit": "8330e6667fdaf6b9f620e8efd1f122296bfe7450"
           }
         ],
         "current": {
-          "score": 8.3,
-          "date": "2026-11-21T10:12:28Z",
-          "commit": "8330e6667fdaf6b9f620e8efd1f122296bfe7450"
+          "score": 8.2,
+          "date": "2026-11-25T11:39:57Z",
+          "commit": "aa06c623c505d0b9e9c8a944a3cbcf01aaec8afa"
         }
       },
       "wallet-keycloak": {
