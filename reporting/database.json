@@ -2054,12 +2054,17 @@
             "score": 6.5,
             "date": "2026-11-07T09:10:39Z",
             "commit": "e1363854a1f36275da374a63138c276d3e6c0fe7"
+          },
+          {
+            "score": 6.6,
+            "date": "2026-11-18T10:39:20Z",
+            "commit": "62242176c4b7ab62c58d97ea19827dcebba4b34d"
           }
         ],
         "current": {
-          "score": 6.6,
-          "date": "2026-11-18T10:39:20Z",
-          "commit": "62242176c4b7ab62c58d97ea19827dcebba4b34d"
+          "score": 6.7,
+          "date": "2026-11-28T10:47:54Z",
+          "commit": "c98ae04a205247d1bbe2d8e573fc5ebf380818a6"
         }
       },
       "wallet-auth": {
